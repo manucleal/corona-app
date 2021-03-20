@@ -17,7 +17,8 @@ namespace Dominio
         public int TasaDescuento
         {
             get { return tasaDescuento; }
-            set { if (tasaDescuento == -1) tasaDescuento = value; }
+            //set { if (tasaDescuento == -1) tasaDescuento = value; }
+            set { tasaDescuento = value; }
         }
 
         public Categoria()
