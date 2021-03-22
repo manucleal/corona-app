@@ -4,3 +4,9 @@ C:\emanuel_ort\first_week\WebApplicationBD\Dominio\obj\Debug\Dominio.csprojAssem
 C:\emanuel_ort\first_week\WebApplicationBD\Dominio\obj\Debug\Dominio.csproj.CoreCompileInputs.cache
 C:\emanuel_ort\first_week\WebApplicationBD\Dominio\obj\Debug\Dominio.dll
 C:\emanuel_ort\first_week\WebApplicationBD\Dominio\obj\Debug\Dominio.pdb
+C:\emanuel_ort\corona-app\Dominio\bin\Debug\Dominio.dll
+C:\emanuel_ort\corona-app\Dominio\bin\Debug\Dominio.pdb
+C:\emanuel_ort\corona-app\Dominio\obj\Debug\Dominio.csprojAssemblyReference.cache
+C:\emanuel_ort\corona-app\Dominio\obj\Debug\Dominio.csproj.CoreCompileInputs.cache
+C:\emanuel_ort\corona-app\Dominio\obj\Debug\Dominio.dll
+C:\emanuel_ort\corona-app\Dominio\obj\Debug\Dominio.pdb

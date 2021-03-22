@@ -50,7 +50,7 @@ namespace WebApplication.Controllers
 
             SqlCommand cmd = new SqlCommand();
             cmd.Connection = myConnection;
-            cmd.CommandText = "INSERT INTO Categoria VALUES ('Nueva Categoria')";
+            cmd.CommandText = "INSERT INTO Usuario VALUES ('1','Emanuel','46902781','12345')";
             myConnection.Open();
 
             int filasAfectadas = cmd.ExecuteNonQuery();

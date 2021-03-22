@@ -1,2 +1,5 @@
 /packages
 /.vs
+/Dominio/bin
+/WebApplication/Web.config
+WebApplication/bin
