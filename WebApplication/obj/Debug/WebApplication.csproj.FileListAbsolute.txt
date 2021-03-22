@@ -152,3 +152,5 @@ C:\emanuel_ort\corona-app\WebApplication\obj\Debug\WebApplication.csproj.CoreCom
 C:\emanuel_ort\corona-app\WebApplication\obj\Debug\WebApplication.csproj.CopyComplete
 C:\emanuel_ort\corona-app\WebApplication\obj\Debug\WebApplication.dll
 C:\emanuel_ort\corona-app\WebApplication\obj\Debug\WebApplication.pdb
+C:\emanuel_ort\corona-app\WebApplication\bin\Repositorios.dll
+C:\emanuel_ort\corona-app\WebApplication\bin\Repositorios.pdb
