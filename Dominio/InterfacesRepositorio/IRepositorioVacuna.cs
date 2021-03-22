@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Dominio.InterfacesRepositorio
 {
-    interface IRepositorioVacuna
+    public interface IRepositorioVacuna
     {
         bool Add(Vacuna unaVacuna);
 
