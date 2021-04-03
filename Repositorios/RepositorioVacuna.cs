@@ -12,10 +12,10 @@ namespace Repositorios
     {
         public bool Add(Vacuna unaVacuna)
         {
-            if (unaVacuna == null || !unaVacuna.Validar())
-            {
-                return false;
-            }
+            //if (unaVacuna == null || !unaVacuna.Validar())
+            //{
+            //    return false;
+            //}
 
             Conexion handler = new Conexion();
             SqlConnection con = new Conexion().crearConexion();

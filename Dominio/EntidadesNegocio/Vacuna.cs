@@ -5,21 +5,21 @@ namespace Dominio.EntidadesNegocio
 {
     public class Vacuna: IValidable
     {
-        public int id { get; }
-        public string nombre { get; set; }
-        public int cantidadDosis { get; set; }
-        public int lapsoDiasDosis { get; set; }
-        public int rangoEdad { get; set; }
-        public int efPrev { get; set; }
-        public int efHosp { get; set; }
-        public int efCti { get; set; }
-        public int rangoTemp { get; set; }
-        public int produccionAnual { get; set; }
-        public int faseClinicaAprob { get; set; }
-        public bool emergencia { get; set; }
-        public string efectosAdversos { get; set; }
-        public decimal precio { get; set; }
-        public DateTime ultimaModificacion { get; set; }
+        public int Id { get; }
+        public string Nombre { get; set; }
+        public int CantidadDosis { get; set; }
+        public int LapsoDiasDosis { get; set; }
+        public int RangoEdad { get; set; }
+        public int EfPrev { get; set; }
+        public int EfHosp { get; set; }
+        public int EfCti { get; set; }
+        public int RangoTemp { get; set; }
+        public int ProduccionAnual { get; set; }
+        public int FaseClinicaAprob { get; set; }
+        public bool Emergencia { get; set; }
+        public string EfectosAdversos { get; set; }
+        public decimal Precio { get; set; }
+        public DateTime UltimaModificacion { get; set; }
         //List<Pais> status;
         //Usuario usuario;
         //List<Laboratorio> laboratorios;

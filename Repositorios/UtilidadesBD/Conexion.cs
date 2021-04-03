@@ -5,16 +5,16 @@ namespace Repositorios.UtilidadesBD
 {
     public class Conexion
     {
-        public string stringConecction { get; set; }
+        public string StringConecction { get; set; }
 
         public SqlConnection crearConexion()
         {
-            return new SqlConnection(stringConecction);
+            return new SqlConnection(StringConecction);
         }
 
         public Conexion()
         {
-            stringConecction = System.Configuration.ConfigurationManager.ConnectionStrings["myConnection"].ConnectionString;
+            StringConecction = System.Configuration.ConfigurationManager.ConnectionStrings["myConnection"].ConnectionString;
         }
 
         public bool AbrirConexcion(SqlConnection con)

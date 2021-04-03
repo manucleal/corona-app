@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
-using System.Data;
+﻿using System.Web.Mvc;
 using System.Data.SqlClient;
-
+using Dominio.EntidadesNegocio;
+using Repositorios.RepositorioVacuna;
+using System;
 
 namespace WebApplication.Controllers
 {
@@ -14,7 +11,28 @@ namespace WebApplication.Controllers
         // GET: Home
         public ActionResult Index()
         {
-            SqlConnection myConnection = new SqlConnection();
+            //agregando vacuna
+            Vacuna Vacuna = new Vacuna();
+            Vacuna.Nombre = "Nombre Vacuna 1";
+            Vacuna.CantidadDosis = 2;
+            Vacuna.LapsoDiasDosis = 20;
+            Vacuna.RangoEdad = 50-60;
+            Vacuna.EfPrev = 65;
+            Vacuna.EfHosp = 80;
+            Vacuna.EfCti = 75;
+            Vacuna.RangoTemp = -10;
+            Vacuna.ProduccionAnual = 1000000;
+            Vacuna.FaseClinicaAprob = 3;
+            Vacuna.Emergencia = false;
+            Vacuna.EfectosAdversos = "fiebre y dolor de cabeza";
+            Vacuna.Precio = 100;
+            Vacuna.UltimaModificacion = new DateTime();
+            return View();
+        }
+        // GET: Home
+        //public ActionResult Index()
+        //{
+            //SqlConnection myConnection = new SqlConnection();
             
             //Hardcodeado en el controller
             //myConnection.ConnectionString = @"SERVER=(localDb)\MsSqlLocalDb;
@@ -31,16 +49,16 @@ namespace WebApplication.Controllers
             //Dominio.Helpers.Validacion;
 
 
-            if (AltaCategoria())
-            {
-                ViewBag.Message = "Se dio de alta";
-            }
-            else
-            {
-                ViewBag.Message = "No se dio de alta";
-            }
-            return View();
-        }
+            //if (AltaCategoria())
+            //{
+            //    ViewBag.Message = "Se dio de alta";
+            //}
+            //else
+            //{
+            //    ViewBag.Message = "No se dio de alta";
+            //}
+            //return View();
+        //}
 
         private bool AltaCategoria()
         {
