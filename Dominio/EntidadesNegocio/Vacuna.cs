@@ -25,5 +25,16 @@ namespace Dominio.EntidadesNegocio
         //List<Laboratorio> laboratorios;
         //TipoVacuna tipoVacuna;
 
+        public Vacuna()
+        {
+
+        }
+
+        public bool AddVacuna(Vacuna unaVacuna)
+        {
+            bool response = false;
+
+            return response;
+        }
     }
 }

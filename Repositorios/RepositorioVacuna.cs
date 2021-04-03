@@ -5,7 +5,7 @@ using Dominio.EntidadesNegocio;
 using Dominio.InterfacesRepositorio;
 using Repositorios.UtilidadesBD;
 
-namespace Repositorios
+namespace Repositorios.RepositorioVacuna
 {
     public class RepositorioVacuna : IRepositorioVacuna
 
