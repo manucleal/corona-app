@@ -5,3 +5,5 @@
 /WebApplication/Web.config
 WebApplication/bin
 /WebApplication/obj/Debug
+/Repositorios/obj/Debug
+/Dominio/obj/Debug
