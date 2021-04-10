@@ -1,4 +1,4 @@
-﻿@*@model Dominio.Vacuna*@
+﻿@model Dominio.EntidadesNegocio.Vacuna
 
 @{
     ViewBag.H1 = "Crear Vacuna";
@@ -13,15 +13,23 @@
             <div class="infoPersonal">
                 <label for="nombre"></label>
                 <input type="text" name="nombre" placeholder="Nombre Vacuna (*)" required />
-                <input type="number" name="duracionEstimadaDias" placeholder="Duración estimada en días (*)" required />
-                <select name="tipo" id="selectVacuna" required>
-                    <option value="">Seleccione un tipo de Vacuna (*)</option>
-                    <option id="optionP" onclick="getValue()" value="Presupuestado">Presupuestado</option>
-                    <option id="optionH" value="Hora">Hora</option>
+                <input type="number" name="cantidadDosis" placeholder="Cantidad dosis (*)" required />
+                <input type="number" name="lapsoDiasDosis" placeholder="Días entre dosis (*)" required />
+                <input type="number" name="produccionAnual" placeholder="Producción anual (*)" required />
+
+
+                <select name="emergencia">
+                    <option value="">Indique si es de emergencia (*)</option>
+                    <option value="1">Si</option>
+                    <option value="0">No</option>
                 </select>
-                <select name="clienteRut" id="selectCliente" required>
-                    <option value="">Seleccione el Cliente (*)</option>
-                    @*@foreach (Dominio.Cliente item in ViewBag.Clientes)
+
+                <select name="tipo">
+                    <option value="">Seleccione un tipo de Vacuna (*)</option>
+                </select>
+                <select name="laboratorio">
+                    <option value="">Seleccione el/los laboratorios (*)</option>
+                    @*@foreach (Laboratorio item in laboratorios)
                     {
                         <option value="@item.Rut">@item.Nombre"</option>
                     }*@
@@ -29,17 +37,44 @@
             </div>
             <div class="formInfo">
                 <fieldset>
-                    <legend>Fecha Comienzo</legend>
-                    <input type="date" name="fechaComienzo" required />
+                    <legend>Mínima edad (*)</legend>
+                    <input type="number" name="minEdad" class="ajustarAnchoInput" min="18" max="100" required />
                 </fieldset>
-                <fieldset class="montoHide">
-                    <legend>Monto Inicial</legend>
-                    <input type="text" id="montoHide" name="montoInicial" required />
+                <fieldset>
+                    <legend>Máxima edad (*)</legend>
+                    <input type="number" name="maxEdad" class="ajustarAnchoInput" min="18" max="100" required />
                 </fieldset>
-                <fieldset class="sueldoHide">
-                    <legend>Sueldo Hora</legend>
-                    <input type="text" id="sueldoHide" name="SueldoHora" required />
+                <fieldset>
+                    <legend>Eficacia Prevención</legend>
+                    <input type="number" id="montoHide" name="eficaciaPrev" required />
                 </fieldset>
+                <fieldset>
+                    <legend>Eficacia Hospitalización</legend>
+                    <input type="number" name="eficaciaHosp" required />
+                </fieldset>
+                <fieldset>
+                    <legend>Eficacia CTI</legend>
+                    <input type="number" name="eficaciaCti" required />
+                </fieldset>
+                <fieldset>
+                    <legend>Mínima Temperatura (*)</legend>
+                    <input type="number" name="minTemp" required />
+                </fieldset>
+                <fieldset>
+                    <legend>Máxima Temperatura (*)</legend>
+                    <input type="number" name="maxTemp" required />
+                </fieldset>
+                <fieldset>
+                    <legend>Precio en USD (*)</legend>
+                    <input type="number" name="precio" required />
+                </fieldset>
+                <fieldset>
+                    <legend>Fase clínica de aprobación (*)</legend>
+                    <input type="number" name="faseClinicaAprob" class="ajustarAnchoInput" min="1" max="4" />
+                </fieldset>
+                <textarea name="efectosAdversos" rows="15">
+                        Los efectos adversos de la Vacuna son:
+                </textarea>
             </div>
             <div class="divFooter">
                 <span>Campos Obligatorios (*)</span>

@@ -92,6 +92,13 @@ input#usuario, #pass{
 }
 /* fin login */
 
+/* inputs form */
+
+.ajustarAnchoInput {
+    width: 25%;
+}
+/* inputs form */
+
 /*Main*/
 
 main{
@@ -411,12 +418,12 @@ input[type=date]{
 .formInfo fieldset{
     width: 100%;
     border:0;
-    padding: 4% 2%;
+    padding: 2% 2%;
 }
 .formInfo fieldset legend{
     float: left;
     display: block;
-    width: 35%;
+    width: 39%;
 }
 .formInfo fieldset label{
     color: #ccc;
@@ -656,8 +663,8 @@ input#email{
     margin-left: 1%;
 }
 
-textarea{
-    background:#efefef;
+textarea {
+    background: #efefef;
     border: none;
     font-size: 14px;
     width: 100%;
