@@ -9,11 +9,13 @@ namespace Dominio.EntidadesNegocio
         public string Nombre { get; set; }
         public int CantidadDosis { get; set; }
         public int LapsoDiasDosis { get; set; }
-        public int RangoEdad { get; set; }
-        public int EfPrev { get; set; }
-        public int EfHosp { get; set; }
-        public int EfCti { get; set; }
-        public int RangoTemp { get; set; }
+        public int MinEdad { get; set; }
+        public int MaxEdad { get; set; }
+        public int EficaciaPrev { get; set; }
+        public int EficaciaHosp { get; set; }
+        public int EficaciaCti { get; set; }
+        public int MinTemp { get; set; }
+        public int MaxTemp { get; set; }
         public int ProduccionAnual { get; set; }
         public int FaseClinicaAprob { get; set; }
         public bool Emergencia { get; set; }

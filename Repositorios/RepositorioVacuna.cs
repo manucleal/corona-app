@@ -5,7 +5,7 @@ using Dominio.EntidadesNegocio;
 using Dominio.InterfacesRepositorio;
 using Repositorios.UtilidadesBD;
 
-namespace Repositorios.RepositorioVacuna
+namespace Repositorios
 {
     public class RepositorioVacuna : IRepositorioVacuna
 
@@ -17,12 +17,32 @@ namespace Repositorios.RepositorioVacuna
             //    return false;
             //}
 
-            Conexion handler = new Conexion();
-            SqlConnection con = new Conexion().crearConexion();
-            SqlCommand cmd = new SqlCommand("INSERT INTO Vacunas VALUES (@nombre)", con);
-            cmd.Parameters.Add(new SqlParameter("@nombre", "variable"));
             try
             {
+                Conexion handler = new Conexion();
+                SqlConnection con = new Conexion().crearConexion();
+
+                SqlCommand cmd = new SqlCommand("INSERT INTO Vacunas VALUES (@Nombre,@IdTipo,@CantidadDosis," +
+                    "@LapsoDiasDosis,@MaxEdad,@MinEdad,@EficaciaPrev,@EficaciaHosp,@EficaciaCti,@MaxTemp,@MinTemp,@ProduccionAnual,@FaseClinicaAprob," +
+                    "@Emergencia,@EfectosAdversos,@Precio)", con);
+
+                cmd.Parameters.AddWithValue("@nombre", unaVacuna.Nombre);
+                cmd.Parameters.AddWithValue("@IdTipo","VV");
+                cmd.Parameters.AddWithValue("@CantidadDosis", unaVacuna.CantidadDosis);
+                cmd.Parameters.AddWithValue("@LapsoDiasDosis", unaVacuna.LapsoDiasDosis);
+                cmd.Parameters.AddWithValue("@MaxEdad", unaVacuna.MaxEdad);
+                cmd.Parameters.AddWithValue("@MinEdad", unaVacuna.MinEdad);
+                cmd.Parameters.AddWithValue("@EficaciaPrev", unaVacuna.EficaciaPrev);
+                cmd.Parameters.AddWithValue("@EficaciaHosp", unaVacuna.EficaciaHosp);
+                cmd.Parameters.AddWithValue("@EficaciaCti", unaVacuna.EficaciaCti);
+                cmd.Parameters.AddWithValue("@MaxTemp", unaVacuna.MaxTemp);
+                cmd.Parameters.AddWithValue("@MinTemp", unaVacuna.MinTemp);
+                cmd.Parameters.AddWithValue("@ProduccionAnual", unaVacuna.ProduccionAnual);
+                cmd.Parameters.AddWithValue("@FaseClinicaAprob", unaVacuna.FaseClinicaAprob);
+                cmd.Parameters.AddWithValue("@Emergencia", unaVacuna.Emergencia);
+                cmd.Parameters.AddWithValue("@EfectosAdversos", unaVacuna.EfectosAdversos);
+                cmd.Parameters.AddWithValue("@Precio", unaVacuna.Precio);
+                
                 if (handler.AbrirConexcion(con))
                 {
                     int filas = cmd.ExecuteNonQuery();

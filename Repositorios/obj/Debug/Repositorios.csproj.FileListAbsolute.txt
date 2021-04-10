@@ -4,3 +4,6 @@ C:\emanuel_ort\corona-app\Repositorios\obj\Debug\Repositorios.csprojAssemblyRefe
 C:\emanuel_ort\corona-app\Repositorios\obj\Debug\Repositorios.csproj.CoreCompileInputs.cache
 C:\emanuel_ort\corona-app\Repositorios\obj\Debug\Repositorios.dll
 C:\emanuel_ort\corona-app\Repositorios\obj\Debug\Repositorios.pdb
+C:\emanuel_ort\corona-app\Repositorios\bin\Debug\Dominio.dll
+C:\emanuel_ort\corona-app\Repositorios\bin\Debug\Dominio.pdb
+C:\emanuel_ort\corona-app\Repositorios\obj\Debug\Repositorios.csproj.CopyComplete

@@ -1,0 +1,52 @@
+﻿@*@model Dominio.Vacuna*@
+
+@{
+    ViewBag.H1 = "Crear Vacuna";
+    ViewBag.Title = "Crear Vacuna";
+
+}
+
+<main>
+    <small>Dashboard / <em>Crear Vacuna <p style="color:red;">@ViewBag.mensaje</p></em></small>
+    <div class="FormEmpleados">
+        <form method="post" action="/Vacuna/alta" autocomplete="on">
+            <div class="infoPersonal">
+                <label for="nombre"></label>
+                <input type="text" name="nombre" placeholder="Nombre Vacuna (*)" required />
+                <input type="number" name="duracionEstimadaDias" placeholder="Duración estimada en días (*)" required />
+                <select name="tipo" id="selectVacuna" required>
+                    <option value="">Seleccione un tipo de Vacuna (*)</option>
+                    <option id="optionP" onclick="getValue()" value="Presupuestado">Presupuestado</option>
+                    <option id="optionH" value="Hora">Hora</option>
+                </select>
+                <select name="clienteRut" id="selectCliente" required>
+                    <option value="">Seleccione el Cliente (*)</option>
+                    @*@foreach (Dominio.Cliente item in ViewBag.Clientes)
+                    {
+                        <option value="@item.Rut">@item.Nombre"</option>
+                    }*@
+                </select>
+            </div>
+            <div class="formInfo">
+                <fieldset>
+                    <legend>Fecha Comienzo</legend>
+                    <input type="date" name="fechaComienzo" required />
+                </fieldset>
+                <fieldset class="montoHide">
+                    <legend>Monto Inicial</legend>
+                    <input type="text" id="montoHide" name="montoInicial" required />
+                </fieldset>
+                <fieldset class="sueldoHide">
+                    <legend>Sueldo Hora</legend>
+                    <input type="text" id="sueldoHide" name="SueldoHora" required />
+                </fieldset>
+            </div>
+            <div class="divFooter">
+                <span>Campos Obligatorios (*)</span>
+                <input type="submit" class="botones" value="CREAR">
+                <input type="reset" id="limpiar" value="LIMPIAR">
+            </div>
+        </form>
+    </div>
+</main>
+

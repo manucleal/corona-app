@@ -1,40 +1,108 @@
-﻿<!DOCTYPE html>
+﻿@*<!DOCTYPE html>
+    <html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>@ViewBag.Title - My ASP.NET Application</title>
+        <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
+        <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
+        <script src="~/Scripts/modernizr-2.6.2.js"></script>
+    </head>
+    <body>
+        <div class="navbar navbar-inverse navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                </div>
+                <div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container body-content">
+            @RenderBody()
+            <hr />
+            <footer>
+                <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+            </footer>
+        </div>
+
+        <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+        <script src="~/Scripts/bootstrap.min.js"></script>
+    </body>
+    </html>*@
+
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <title>@ViewBag.Title - SoftwORT</title>
     <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
-    <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
-    <script src="~/Scripts/modernizr-2.6.2.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                </ul>
-            </div>
+    <aside>
+        <div class="contentLogo">
+            <img class="logo" src="~/Content/img/logo.jpeg" alt="Logo SoftwORT">
         </div>
-    </div>
+        <nav>
+            <ul>
+                @if ((string)Session["rol"] == "Administrador")
+                {
+                    <li><a href="/Empleado/Alta">Crear Empleado</a></li>
+                    <li><a href="/Proyecto/Alta">Crear Proyecto</a></li>
+                    <li><a href="/Cliente/Index">Lista Clientes</a></li>
+                    <li><a href="/Empleado/Index">Lista Empleados</a></li>
+                }
+                @if ((string)Session["rol"] == "Empleado" || (string)Session["rol"] == "Administrador" || (string)Session["rol"] == "Cliente")
+                {
+                    <li><a href="/Proyecto/Index">Lista Proyectos</a></li>
+                }
 
-    <div class="container body-content">
-        @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
-        </footer>
+            </ul>
+            <ul>
+                <li>HOLAAAAAAA</li>
+            </ul>
+</nav>
+    </aside>
+    <div class="contentHeader">
+        <header>
+            <h1>@ViewBag.H1</h1>
+            <div id="iconPersona">
+                <span>
+                    @if ((string)Session["rol"] == "Administrador")
+                    {
+                        @Session["user"]
+                    }
+                    else
+                    {
+                        @Session["nombre"]
+                    }
+                </span>
+                @*<a href="/usuario/salir"><img src="~/Content/img/iconPersona.png" alt="icono de persona"></a>*@
+            </div>
+        </header>
     </div>
+    @RenderBody()
+    <footer id="footerListado">
 
+        <div class="circulo">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </footer>
     <script src="~/Scripts/jquery-1.10.2.min.js"></script>
-    <script src="~/Scripts/bootstrap.min.js"></script>
+    @*<script type="text/javascript" src="~/Scripts/dinamicFuncitons.js"></script>*@
+
+    <script src="~/Scripts/bootstrap.min.js"></script>*
 </body>
 </html>
