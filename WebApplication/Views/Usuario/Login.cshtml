@@ -1,7 +1,42 @@
-﻿
+﻿@model Dominio.EntidadesNegocio.Usuario
+
 @{
-    ViewBag.Title = "Login";
+    ViewBag.Title = "LOGIN";
+    Layout = null;
+
 }
 
-<h2>Login</h2>
+<!DOCTYPE html>
 
+<html lang="es">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - CoronApp</title>
+    <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
+    <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div id="contenedorLogin">
+        <form method="post" autocomplete="off">
+            <div id="cajaLogin">
+                <img src="~/Content/img/logo.png" alt="Logo CoronApp" />
+                <input id="usuario" type="text" name="documento" placeholder="Documento" required>
+                @ViewBag.mensaje
+                <input id="pass" type="password" name="password" placeholder="Contraseña" required>
+                <input type="submit" id="login" value="LOGIN">
+            </div>
+        </form>
+        <footer>
+            <div class="left">
+                <span> Sitio CoronApp </span>
+            </div>
+            <div class="circulo">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </footer>
+    </div>
+</body>
+</html>

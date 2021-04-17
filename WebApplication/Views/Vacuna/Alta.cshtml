@@ -1,4 +1,4 @@
-﻿@model Dominio.EntidadesNegocio.Usuario
+﻿@model Dominio.EntidadesNegocio.Vacuna
 
 @{
     ViewBag.H1 = "Crear Usuario";
@@ -7,9 +7,10 @@
 }
 
 <main>
-    <small>Dashboard / <em>Crear Usuario <p style="color:red;">@ViewBag.mensaje</p></em></small>
+    <small>Dashboard / <em>Crear Vacuna <p style="color:red;">@ViewBag.mensaje</p></em></small>
+    @*<small>Dashboard / <em>Crear Empleado <p style="color:red;">@ViewBag.mensaje</p></em></small>*@
     <div class="FormEmpleados">
-        <form method="post" action="/Usuario/alta" autocomplete="on">
+        <form method="post" action="/Vacunas/alta" autocomplete="on">
             <div class="infoPersonal">
                 <label for="nombre"></label>
                 <input type="text" name="nombre" placeholder="Nombre Usuario (*)" required />
@@ -30,9 +31,9 @@
                 <select name="laboratorio">
                     <option value="">Seleccione el/los laboratorios (*)</option>
                     @*@foreach (Laboratorio item in laboratorios)
-                    {
-                        <option value="@item.Rut">@item.Nombre"</option>
-                    }*@
+                        {
+                            <option value="@item.Rut">@item.Nombre"</option>
+                        }*@
                 </select>
             </div>
             <div class="formInfo">
