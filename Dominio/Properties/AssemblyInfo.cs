@@ -19,7 +19,7 @@ using System.Runtime.InteropServices;
 // COM, establezca el atributo ComVisible en true en este tipo.
 [assembly: ComVisible(false)]
 
-// El siguiente GUID sirve como id. de typelib si este Vacuna se expone a COM.
+// El siguiente GUID sirve como id. de typelib si este Usuario se expone a COM.
 [assembly: Guid("48acdba2-ceb3-4597-ba43-9abe1602a2c2")]
 
 // La información de versión de un ensamblado consta de los cuatro valores siguientes:

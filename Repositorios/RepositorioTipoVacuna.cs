@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Repositorios
 {
-    class RepositorioTipoVacuna
+    class RepositorioTipoUsuario
     {
     }
 }

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Dominio.EntidadesNegocio
 {
-    public class Vacuna: IValidable
+    public class Vacuna : IValidable
     {
         public int Id { get; }
         public string Nombre { get; set; }
@@ -22,11 +22,9 @@ namespace Dominio.EntidadesNegocio
         public string EfectosAdversos { get; set; }
         public decimal Precio { get; set; }
         public DateTime UltimaModificacion { get; set; }
-        //List<Pais> status;
-        //Usuario usuario;
-        //List<Laboratorio> laboratorios;
-        //TipoVacuna tipoVacuna;
-
+        public string IdUsuario { get; set; }
+        public string IdTipo { get; set; }
+        
         public Vacuna()
         {
 

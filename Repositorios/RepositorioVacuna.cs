@@ -24,7 +24,7 @@ namespace Repositorios
 
                 SqlCommand cmd = new SqlCommand("INSERT INTO Vacunas VALUES (@Nombre,@IdTipo,@CantidadDosis," +
                     "@LapsoDiasDosis,@MaxEdad,@MinEdad,@EficaciaPrev,@EficaciaHosp,@EficaciaCti,@MaxTemp,@MinTemp,@ProduccionAnual,@FaseClinicaAprob," +
-                    "@Emergencia,@EfectosAdversos,@Precio)", con);
+                    "@Emergencia,@EfectosAdversos,@Precio,@IdUsuario,@IdTipo)", con);
 
                 cmd.Parameters.AddWithValue("@nombre", unaVacuna.Nombre);
                 cmd.Parameters.AddWithValue("@IdTipo","VV");
@@ -42,7 +42,9 @@ namespace Repositorios
                 cmd.Parameters.AddWithValue("@Emergencia", unaVacuna.Emergencia);
                 cmd.Parameters.AddWithValue("@EfectosAdversos", unaVacuna.EfectosAdversos);
                 cmd.Parameters.AddWithValue("@Precio", unaVacuna.Precio);
-                
+                cmd.Parameters.AddWithValue("@IdUsuario", unaVacuna.IdUsuario);
+                cmd.Parameters.AddWithValue("@IdTipo", unaVacuna.IdTipo);
+
                 if (handler.AbrirConexcion(con))
                 {
                     int filas = cmd.ExecuteNonQuery();
@@ -65,6 +67,11 @@ namespace Repositorios
         }
 
         public Vacuna FindByAll(string nombre)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Vacuna FindById(int idVacuna)
         {
             throw new NotImplementedException();
         }

@@ -11,7 +11,7 @@ namespace Dominio.InterfacesRepositorio
 
         bool Update(Vacuna unaVacuna);
 
-        Vacuna FingById(int idVacuna);
+        Vacuna FindById(int idVacuna);
 
         IEnumerable<Vacuna> FindAll();
 

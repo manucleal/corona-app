@@ -1,18 +1,18 @@
-﻿@model Dominio.EntidadesNegocio.Vacuna
+﻿@model Dominio.EntidadesNegocio.Usuario
 
 @{
-    ViewBag.H1 = "Crear Vacuna";
-    ViewBag.Title = "Crear Vacuna";
+    ViewBag.H1 = "Crear Usuario";
+    ViewBag.Title = "Crear Usuario";
 
 }
 
 <main>
-    <small>Dashboard / <em>Crear Vacuna <p style="color:red;">@ViewBag.mensaje</p></em></small>
+    <small>Dashboard / <em>Crear Usuario <p style="color:red;">@ViewBag.mensaje</p></em></small>
     <div class="FormEmpleados">
-        <form method="post" action="/Vacuna/alta" autocomplete="on">
+        <form method="post" action="/Usuario/alta" autocomplete="on">
             <div class="infoPersonal">
                 <label for="nombre"></label>
-                <input type="text" name="nombre" placeholder="Nombre Vacuna (*)" required />
+                <input type="text" name="nombre" placeholder="Nombre Usuario (*)" required />
                 <input type="number" name="cantidadDosis" placeholder="Cantidad dosis (*)" required />
                 <input type="number" name="lapsoDiasDosis" placeholder="Días entre dosis (*)" required />
                 <input type="number" name="produccionAnual" placeholder="Producción anual (*)" required />
@@ -25,7 +25,7 @@
                 </select>
 
                 <select name="tipo">
-                    <option value="">Seleccione un tipo de Vacuna (*)</option>
+                    <option value="">Seleccione un tipo de Usuario (*)</option>
                 </select>
                 <select name="laboratorio">
                     <option value="">Seleccione el/los laboratorios (*)</option>
@@ -73,7 +73,7 @@
                     <input type="number" name="faseClinicaAprob" class="ajustarAnchoInput" min="1" max="4" />
                 </fieldset>
                 <textarea name="efectosAdversos" rows="15">
-                        Los efectos adversos de la Vacuna son:
+                        Los efectos adversos de la Usuario son:
                 </textarea>
             </div>
             <div class="divFooter">
