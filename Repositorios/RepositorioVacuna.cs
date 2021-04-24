@@ -63,47 +63,52 @@ namespace Repositorios
 
         public IEnumerable<Vacuna> FindAll()
         {
-            Conexion manejadorConexion = new Conexion();
-            SqlConnection cn = manejadorConexion.crearConexion();
             try
             {
-                SqlCommand cmd = new SqlCommand("SELECT * FROM Vacunas WHERE Email=@email", cn);
+                Conexion manejadorConexion = new Conexion();
+                SqlConnection cn = manejadorConexion.crearConexion();
+                SqlCommand cmd = new SqlCommand("SELECT * FROM Vacunas", cn);
 
                 //cmd.Parameters.AddWithValue("@email", mail);
                 manejadorConexion.AbrirConexion(cn);
                 SqlDataReader dr = cmd.ExecuteReader();
-                Vacuna cli = null;
-                if (dr.HasRows)
+                manejadorConexion.CerrarConexion(cn);
+                List<Vacuna> vacunas = new List<Vacuna>();
+
+                while (dr.Read())
                 {
-                    cli = new Vacuna();
-                    if (dr.Read())
+                    vacunas.Add(new Vacuna
                     {
-                        //cli.Nombre = dr["Nombre"].ToString();
-                        //cli.Apellido = dr["Apellido"].ToString();
-                        //cli.Email = mail;
-                        //cli.Password = dr["Password"].ToString();
-                    }
-                    dr.NextResult();
-                    while (dr.Read())
-                    {
-                        //cli.MisTelefonos.Add(new Telefono
-                        //{
-                        //    CodigoArea = (int)dr["CodArea"],
-                        //    Numero = (int)dr["Numero"],
-                        //    EsCelular = (bool)dr["EsCelular"]
-                        //});
-                    }
+                        Id = (int)dr["Id"],
+                        Nombre = (string)dr["Nombre"],
+                        IdTipo = (string)dr["IdTipo"],
+                        CantidadDosis = (int)dr["CantidadDosis"],
+                        LapsoDiasDosis = (int)dr["LapsoDiasDosis"],
+                        MaxEdad = (int)dr["MaxEdad"],
+                        MinEdad = (int)dr["MinEdad"],
+                        EficaciaPrev = (int)dr["EficaciaPrev"],
+                        EficaciaHosp = (int)dr["EficaciaHosp"],
+                        EficaciaCti = (int)dr["EficaciaCti"],
+                        MaxTemp = (int)dr["MaxTemp"],
+                        MinTemp = (int)dr["MinTemp"],
+                        ProduccionAnual = (int)dr["ProduccionAnual"],
+                        FaseClinicaAprob = (int)dr["FaseClinicaAprob"],
+                        Emergencia = (bool)dr["Emergencia"],
+                        EfectosAdversos = (string)dr["EfectosAdversos"],
+                        Precio = (decimal)dr["Precio"],
+                        IdUsuario = (string)dr["IdUsuario"]
+                    });
                 }
-                return new List<Vacuna>();
+                return vacunas;
             }
-            catch (Exception ex)
+            catch (Exception e)
             {
                 return null;
             }
-            finally
-            {
-                manejadorConexion.CerrarConexion(cn);
-            }
+            //finally
+            //{
+            //    manejadorConexion.CerrarConexion(cn);
+            //}
         }
 
         public Vacuna FindByAll(string nombre)

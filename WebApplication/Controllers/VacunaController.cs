@@ -10,12 +10,17 @@ namespace WebApplication.Controllers
         // GET: Vacuna
         public ActionResult Index()
         {
+
             if ((string)Session["documento"] == null)
             {
                 Session["documento"] = null;
                 Session["nombre"] = null;
                 return RedirectToAction("Login", "Usuario");
             }
+
+            RepositorioVacuna repoVacuna = new RepositorioVacuna();
+            repoVacuna.FindAll();
+
             return View();
         }
 
@@ -39,6 +44,7 @@ namespace WebApplication.Controllers
             unaVacuna.ProduccionAnual = 1000000;
             unaVacuna.UltimaModificacion = new DateTime();
             RepositorioVacuna repoVacuna = new RepositorioVacuna();
+
             bool result = repoVacuna.Add(unaVacuna);
 
             //if ((string)Session["rol"] == null || (string)Session["rol"] != "Administrador")

@@ -5,7 +5,7 @@ namespace Dominio.EntidadesNegocio
 {
     public class Vacuna : IValidable
     {
-        public int Id { get; }
+        public int Id { get; set; }
         public string Nombre { get; set; }
         public int CantidadDosis { get; set; }
         public int LapsoDiasDosis { get; set; }
