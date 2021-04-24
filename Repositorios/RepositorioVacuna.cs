@@ -45,10 +45,10 @@ namespace Repositorios
                 cmd.Parameters.AddWithValue("@IdUsuario", unaVacuna.IdUsuario);
                 cmd.Parameters.AddWithValue("@IdTipo", unaVacuna.IdTipo);
 
-                if (handler.AbrirConexcion(con))
+                if (handler.AbrirConexion(con))
                 {
                     int filas = cmd.ExecuteNonQuery();
-                    handler.CerrarConexcion(con);
+                    handler.CerrarConexion(con);
                     return filas >= 1;
                 }
                 return false;
@@ -63,7 +63,47 @@ namespace Repositorios
 
         public IEnumerable<Vacuna> FindAll()
         {
-            throw new NotImplementedException();
+            Conexion manejadorConexion = new Conexion();
+            SqlConnection cn = manejadorConexion.crearConexion();
+            try
+            {
+                SqlCommand cmd = new SqlCommand("SELECT * FROM Vacunas WHERE Email=@email", cn);
+
+                //cmd.Parameters.AddWithValue("@email", mail);
+                manejadorConexion.AbrirConexion(cn);
+                SqlDataReader dr = cmd.ExecuteReader();
+                Vacuna cli = null;
+                if (dr.HasRows)
+                {
+                    cli = new Vacuna();
+                    if (dr.Read())
+                    {
+                        //cli.Nombre = dr["Nombre"].ToString();
+                        //cli.Apellido = dr["Apellido"].ToString();
+                        //cli.Email = mail;
+                        //cli.Password = dr["Password"].ToString();
+                    }
+                    dr.NextResult();
+                    while (dr.Read())
+                    {
+                        //cli.MisTelefonos.Add(new Telefono
+                        //{
+                        //    CodigoArea = (int)dr["CodArea"],
+                        //    Numero = (int)dr["Numero"],
+                        //    EsCelular = (bool)dr["EsCelular"]
+                        //});
+                    }
+                }
+                return new List<Vacuna>();
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+            finally
+            {
+                manejadorConexion.CerrarConexion(cn);
+            }
         }
 
         public Vacuna FindByAll(string nombre)
@@ -72,11 +112,6 @@ namespace Repositorios
         }
 
         public Vacuna FindById(int idVacuna)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Vacuna FingById(int idVacuna)
         {
             throw new NotImplementedException();
         }

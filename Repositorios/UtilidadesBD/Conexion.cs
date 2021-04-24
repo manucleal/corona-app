@@ -17,7 +17,7 @@ namespace Repositorios.UtilidadesBD
             StringConecction = System.Configuration.ConfigurationManager.ConnectionStrings["myConnection"].ConnectionString;
         }
 
-        public bool AbrirConexcion(SqlConnection con)
+        public bool AbrirConexion(SqlConnection con)
         {
             if (con == null) return false;
             try
@@ -36,7 +36,7 @@ namespace Repositorios.UtilidadesBD
             }
         }
 
-        public bool CerrarConexcion(SqlConnection con)
+        public bool CerrarConexion(SqlConnection con)
         {
             if (con == null) return false;
             try

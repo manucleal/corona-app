@@ -36,7 +36,7 @@ namespace Repositorios
                 SqlCommand cmd = new SqlCommand("SELECT * FROM Usuarios WHERE Documento=@documento", con);
                 cmd.Parameters.AddWithValue("@documento", documento);
 
-                if (handler.AbrirConexcion(con))
+                if (handler.AbrirConexion(con))
                 {
                     SqlDataReader reader = cmd.ExecuteReader();
                     if (reader.HasRows)
@@ -53,7 +53,7 @@ namespace Repositorios
                     }
                 }
             }
-            catch(Exception exp)
+            catch (Exception exp)
             {
                 System.Diagnostics.Debug.Assert(false, "Error al ingresar Vacuna" + exp.Message);
                 return new Usuario();
