@@ -22,7 +22,7 @@ namespace Repositorios
 
                 cmd.Parameters.AddWithValue("@Documento", unaUsuario.Documento);
                 cmd.Parameters.AddWithValue("@Nombre", unaUsuario.Nombre);
-                cmd.Parameters.AddWithValue("@Password", unaUsuario.Password);
+                cmd.Parameters.AddWithValue("@Password", Usuario.EncodePasswordToBase64(unaUsuario.Password));
 
                 if (handler.AbrirConexion(con))
                 {
@@ -100,7 +100,7 @@ namespace Repositorios
             bool logged = false;
             Usuario usuariobd = this.FindById(unUsuario.Documento);
 
-            if (usuariobd != null && usuariobd.Password == unUsuario.Password)
+            if (usuariobd != null && usuariobd.Password == Usuario.EncodePasswordToBase64(unUsuario.Password))
             {
                 logged = true;
             }

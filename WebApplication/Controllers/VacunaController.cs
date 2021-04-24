@@ -10,17 +10,24 @@ namespace WebApplication.Controllers
         // GET: Vacuna
         public ActionResult Index()
         {
+            if ((string)Session["documento"] == null)
+            {
+                Session["documento"] = null;
+                Session["nombre"] = null;
+                return RedirectToAction("Login", "Usuario");
+            }
             return View();
         }
 
         [HttpGet]
         public ActionResult Alta()
         {
-            //if ((string)Session["rol"] == null || (string)Session["rol"] != "Administrador")
-            //{
-            //    return RedirectToAction("login", "usuario");
-            //}
-            //ViewBag.Clientes = Sistema.Instancia.Clientes;
+            if ((string)Session["documento"] == null)
+            {
+                Session["documento"] = null;
+                Session["nombre"] = null;
+                return RedirectToAction("Login", "Usuario");
+            }
             return View();
         }
 
