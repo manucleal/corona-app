@@ -11,11 +11,11 @@ namespace Dominio.EntidadesNegocio
         [StringLength(8, ErrorMessage = "Documento incorrecto")]
         public string Documento { get; set; }
 
-        [StringLength(3, ErrorMessage = "Debe superar 3 caracteres")]
+        [MinLength(3, ErrorMessage = "Debe superar 3 caracteres")]
         public string Nombre { get; set; }
 
         [Required(ErrorMessage = "El password es obligatorio")]
-        [StringLength(6, ErrorMessage = "Debe superar 6 caracteres")]
+        [MinLength(6, ErrorMessage = "Debe superar 6 caracteres")]
         public string Password { get; set; }
 
         public Usuario()

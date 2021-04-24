@@ -95,17 +95,16 @@ namespace Repositorios
             throw new NotImplementedException();
         }
 
-        public bool Login(Usuario unUsuario)
+        public Usuario Login(Usuario unUsuario)
         {
-            bool logged = false;
             Usuario usuariobd = this.FindById(unUsuario.Documento);
 
             if (usuariobd != null && usuariobd.Password == Usuario.EncodePasswordToBase64(unUsuario.Password))
             {
-                logged = true;
+                return usuariobd;
             }
 
-            return logged;
+            return new Usuario();
         }
     }
 }

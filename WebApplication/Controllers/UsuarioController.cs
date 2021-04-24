@@ -14,52 +14,62 @@ namespace WebApplication.Controllers
         [HttpPost]
         public ActionResult Registro(Usuario unUsuario)
         {
-            if (unUsuario.Documento.Length == 8 && unUsuario.Nombre.Length >= 6)
+
+            if (this.VerificoPass(unUsuario.Password))
             {
-                //TO DO validar password (una mayuscula, una minuscula, un numero como minimo)
                 RepositorioUsuario repoUsuario = new RepositorioUsuario();
                 Usuario usuario = repoUsuario.FindById(unUsuario.Documento);
 
                 if (usuario.Documento != null)
                 {
-                    ViewBag.Mensaje = "El Usuario ya existe";
+                    ModelState.AddModelError("documento", "El documento ya está registrado");
+                }
+                else if (repoUsuario.Add(unUsuario))
+                {
+                    Session["documento"] = unUsuario.Documento;
+                    Session["nombre"] = usuario.Nombre;
+                    return RedirectToAction("Index", "Vacuna");
                 }
                 else
                 {
-                    if (repoUsuario.Add(unUsuario))
-                    {
-                        Session["documento"] = unUsuario.Documento;
-                        Session["nombre"] = unUsuario.Nombre;
-                        ViewBag.Mensaje = "El usuario se registró correctamente";
-                        return RedirectToAction("index", "vacuna");
-                    }
+                    View("Registro");
                 }
             }
             else
             {
-                ViewBag.Mensaje = "Los campos ingresados no son correctos";
+                ModelState.AddModelError("password", "Contraseña débil");
             }
+
             return View("Registro");
         }
 
         public ActionResult Login()
         {
+            string doc = (string)Session["documento"];
+            string nom = (string)Session["nombre"];
+
+            if ((string)Session["documento"] != null && Session["nombre"] != null)
+            {
+                return RedirectToAction("Index", "Vacuna");
+            }
             return View();
         }
 
         [HttpPost]
-        public ActionResult Login(Usuario unUsuario) { 
-
-            RepositorioUsuario repoUsuario = new RepositorioUsuario();
+        public ActionResult Login(Usuario unUsuario)
+        { 
 
             if (ModelState.IsValid)
             {
                 if (this.VerificoPass(unUsuario.Password))
                 {
-                    if (repoUsuario.Login(unUsuario))
+                    RepositorioUsuario repoUsuario = new RepositorioUsuario();
+                    Usuario usuario = repoUsuario.Login(unUsuario);
+
+                    if (usuario.Documento != null)
                     {
-                        Session["documento"] = unUsuario.Documento;
-                        Session["nombre"] = unUsuario.Nombre;
+                        Session["documento"] = usuario.Documento;
+                        Session["nombre"] = usuario.Nombre;
                         return RedirectToAction("Index", "Vacuna");
                     }
                     else
