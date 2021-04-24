@@ -13,7 +13,30 @@ namespace Repositorios
 
         public bool Add(Usuario unaUsuario)
         {
-            throw new NotImplementedException();
+            try
+            {
+                Conexion handler = new Conexion();
+                SqlConnection con = new Conexion().crearConexion();
+
+                SqlCommand cmd = new SqlCommand("INSERT INTO Usuarios VALUES (@Documento,@Nombre,@Password)", con);
+
+                cmd.Parameters.AddWithValue("@Documento", unaUsuario.Documento);
+                cmd.Parameters.AddWithValue("@Nombre", unaUsuario.Nombre);
+                cmd.Parameters.AddWithValue("@Password", unaUsuario.Password);
+
+                if (handler.AbrirConexion(con))
+                {
+                    int filas = cmd.ExecuteNonQuery();
+                    handler.CerrarConexion(con);
+                    return filas >= 1;
+                }
+                return false;
+            }
+            catch (Exception exp)
+            {
+                System.Diagnostics.Debug.Assert(false, "Error al ingresar Usuario" + exp.Message);
+                return false;
+            }
         }
 
         public IEnumerable<Usuario> FindAll()

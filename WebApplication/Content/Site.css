@@ -58,8 +58,18 @@ h4{
     letter-spacing: 2px;
 }
 
-input#usuario, #pass{
+/*input#usuario, #pass{
     background:rgb(215,215,215);
+    border: none;
+    font-size: 14px;
+    width: 80%;
+    line-height: 15px;
+    margin-bottom: 5%;letter-spacing    box-sizing: border-box;
+    padding: 2%;
+}*/
+
+.inputRegistroLogin {
+    background: rgb(215,215,215);
     border: none;
     font-size: 14px;
     width: 80%;
@@ -82,7 +92,7 @@ input#usuario, #pass{
 
 #contenedorLogin input[value]{
     color: white;
-    letter-spacing: 5px;
+    letter-spacing: 2px;
 }
 
 #contenedorLogin img{

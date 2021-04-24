@@ -18,17 +18,21 @@ namespace WebApplication.Controllers
             {
                 //TO DO validar password (una mayuscula, una minuscula, un numero como minimo)
                 RepositorioUsuario repoUsuario = new RepositorioUsuario();
+                Usuario usuario = repoUsuario.FindById(unUsuario.Documento);
 
-                if (repoUsuario.FindById(unUsuario.Documento) != null)
+                if (usuario.Documento != null)
                 {
                     ViewBag.Mensaje = "El Usuario ya existe";
                 }
                 else
                 {
-                    Session["documento"] = unUsuario.Documento;
-                    Session["nombre"] = unUsuario.Nombre;
-                    ViewBag.Mensaje = "El usuario se registró correctamente";
-                    return RedirectToAction("index", "vacuna");
+                    if (repoUsuario.Add(unUsuario))
+                    {
+                        Session["documento"] = unUsuario.Documento;
+                        Session["nombre"] = unUsuario.Nombre;
+                        ViewBag.Mensaje = "El usuario se registró correctamente";
+                        return RedirectToAction("index", "vacuna");
+                    }
                 }
             }
             else

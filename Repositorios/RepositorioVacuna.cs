@@ -26,7 +26,7 @@ namespace Repositorios
                     "@LapsoDiasDosis,@MaxEdad,@MinEdad,@EficaciaPrev,@EficaciaHosp,@EficaciaCti,@MaxTemp,@MinTemp,@ProduccionAnual,@FaseClinicaAprob," +
                     "@Emergencia,@EfectosAdversos,@Precio,@IdUsuario,@IdTipo)", con);
 
-                cmd.Parameters.AddWithValue("@nombre", unaVacuna.Nombre);
+                cmd.Parameters.AddWithValue("@Nombre", unaVacuna.Nombre);
                 cmd.Parameters.AddWithValue("@IdTipo","VV");
                 cmd.Parameters.AddWithValue("@CantidadDosis", unaVacuna.CantidadDosis);
                 cmd.Parameters.AddWithValue("@LapsoDiasDosis", unaVacuna.LapsoDiasDosis);

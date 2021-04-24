@@ -16,7 +16,7 @@ namespace WebApplication
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Vacuna", action = "Alta", id = UrlParameter.Optional }
+                defaults: new { controller = "Usuario", action = "Login", id = UrlParameter.Optional }
             );
         }
     }
