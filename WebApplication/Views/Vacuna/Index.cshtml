@@ -1,41 +1,60 @@
-﻿
+﻿@model IEnumerable<Dominio.EntidadesNegocio.Vacuna>
 @{
     ViewBag.H1 = "Listar Vacuna";
     ViewBag.Title = "Listar Vacuna";
 }
 <!DOCTYPE html>
 <html lang="es">
-    <body>
-        <main>
-            <small>Dashboard / <em>Lista Vacunas <p style="color:red;">@ViewBag.mensaje</p></em></small>
-            <div id="tableEmpleados">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Nombre</th>
-                            <th>Tipo</th>
-                            <th>Cantidad dosis</th>
-                            <th>Lapso entre dosis</th>
-
-                            <th>Edad max</th>
-                            <th>Edad min</th>
-                            <th>Eficacia prevención</th>
-                            <th>Eficacia hospitalización</th>
-                            <th>Eficacia CTI</th>
-                            <th>Temp max</th>
-                            <th>Temp in</th>
-                            <th>Producción anual</th>
-                            <th>Fase clínica de aprob</th>
-                            <th>Emergencia</th>
-                            <th>Efectos adversos</th>
-                            <th>Precio</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-
-                    </tbody>
-                 </table>
-            </div>
-        </main>
-    </body>
+<body>
+    <main>
+        <small>Dashboard / <em>Lista Vacunas <p style="color:red;">@ViewBag.mensaje</p></em></small>
+        <div id="tableEmpleados">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Tipo</th>
+                        <th>Cantidad dosis</th>
+                        <th>Lapso entre dosis</th>
+                        <th>Edad max</th>
+                        <th>Edad min</th>
+                        <th>Eficacia prevención</th>
+                        <th>Eficacia hospitalización</th>
+                        <th>Eficacia CTI</th>
+                        <th>Temp max</th>
+                        <th>Temp in</th>
+                        <th>Producción anual</th>
+                        <th>Fase clínica de aprob</th>
+                        <th>Emergencia</th>
+                        <th>Efectos adversos</th>
+                        <th>Precio</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (Dominio.EntidadesNegocio.Vacuna item in Model)
+                    {
+                    <tr>
+                        <td>@item.Nombre</td>
+                        <th>@item.IdTipo</th>
+                        <th>@item.CantidadDosis</th>
+                        <th>@item.LapsoDiasDosis</th>
+                        <th>@item.MaxEdad</th>
+                        <th>@item.MinEdad</th>
+                        <th>@item.EficaciaPrev</th>
+                        <th>@item.EficaciaHosp</th>
+                        <th>@item.EficaciaCti</th>
+                        <th>@item.MaxTemp</th>
+                        <th>@item.MinTemp</th>
+                        <th>@item.ProduccionAnual</th>
+                        <th>@item.FaseClinicaAprob</th>
+                        <th>@item.Emergencia</th>
+                        <th>@item.EfectosAdversos</th>
+                        <th>@item.Precio</th>
+                    </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </main>
+</body>
 </html>

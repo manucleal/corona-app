@@ -12,11 +12,6 @@ namespace Repositorios
     {
         public bool Add(Vacuna unaVacuna)
         {
-            //if (unaVacuna == null || !unaVacuna.Validar())
-            //{
-            //    return false;
-            //}
-
             try
             {
                 Conexion handler = new Conexion();
@@ -24,7 +19,7 @@ namespace Repositorios
 
                 SqlCommand cmd = new SqlCommand("INSERT INTO Vacunas VALUES (@Nombre,@IdTipo,@CantidadDosis," +
                     "@LapsoDiasDosis,@MaxEdad,@MinEdad,@EficaciaPrev,@EficaciaHosp,@EficaciaCti,@MaxTemp,@MinTemp,@ProduccionAnual,@FaseClinicaAprob," +
-                    "@Emergencia,@EfectosAdversos,@Precio,@IdUsuario,@IdTipo)", con);
+                    "@Emergencia,@EfectosAdversos,@Precio,@IdUsuario)", con);
 
                 cmd.Parameters.AddWithValue("@Nombre", unaVacuna.Nombre);
                 cmd.Parameters.AddWithValue("@IdTipo","VV");
@@ -43,7 +38,6 @@ namespace Repositorios
                 cmd.Parameters.AddWithValue("@EfectosAdversos", unaVacuna.EfectosAdversos);
                 cmd.Parameters.AddWithValue("@Precio", unaVacuna.Precio);
                 cmd.Parameters.AddWithValue("@IdUsuario", unaVacuna.IdUsuario);
-                cmd.Parameters.AddWithValue("@IdTipo", unaVacuna.IdTipo);
 
                 if (handler.AbrirConexion(con))
                 {
@@ -53,10 +47,9 @@ namespace Repositorios
                 }
                 return false;
             }
-            catch (Exception exp)
+            catch (Exception e)
             {
-
-                System.Diagnostics.Debug.Assert(false, "Error al ingresar Vacuna" + exp.Message);
+                System.Diagnostics.Debug.Assert(false, "Error al ingresar Vacuna" + e.Message);
                 return false;
             }
         }
@@ -69,46 +62,42 @@ namespace Repositorios
                 SqlConnection cn = manejadorConexion.crearConexion();
                 SqlCommand cmd = new SqlCommand("SELECT * FROM Vacunas", cn);
 
-                //cmd.Parameters.AddWithValue("@email", mail);
                 manejadorConexion.AbrirConexion(cn);
-                SqlDataReader dr = cmd.ExecuteReader();
+                SqlDataReader dataReader = cmd.ExecuteReader();
                 manejadorConexion.CerrarConexion(cn);
                 List<Vacuna> vacunas = new List<Vacuna>();
 
-                while (dr.Read())
+                while (dataReader.Read())
                 {
                     vacunas.Add(new Vacuna
                     {
-                        Id = (int)dr["Id"],
-                        Nombre = (string)dr["Nombre"],
-                        IdTipo = (string)dr["IdTipo"],
-                        CantidadDosis = (int)dr["CantidadDosis"],
-                        LapsoDiasDosis = (int)dr["LapsoDiasDosis"],
-                        MaxEdad = (int)dr["MaxEdad"],
-                        MinEdad = (int)dr["MinEdad"],
-                        EficaciaPrev = (int)dr["EficaciaPrev"],
-                        EficaciaHosp = (int)dr["EficaciaHosp"],
-                        EficaciaCti = (int)dr["EficaciaCti"],
-                        MaxTemp = (int)dr["MaxTemp"],
-                        MinTemp = (int)dr["MinTemp"],
-                        ProduccionAnual = (int)dr["ProduccionAnual"],
-                        FaseClinicaAprob = (int)dr["FaseClinicaAprob"],
-                        Emergencia = (bool)dr["Emergencia"],
-                        EfectosAdversos = (string)dr["EfectosAdversos"],
-                        Precio = (decimal)dr["Precio"],
-                        IdUsuario = (string)dr["IdUsuario"]
+                        Id = (int)dataReader["Id"],
+                        Nombre = (string)dataReader["Nombre"],
+                        IdTipo = (string)dataReader["IdTipo"],
+                        CantidadDosis = (int)dataReader["CantidadDosis"],
+                        LapsoDiasDosis = (int)dataReader["LapsoDiasDosis"],
+                        MaxEdad = (int)dataReader["MaxEdad"],
+                        MinEdad = (int)dataReader["MinEdad"],
+                        EficaciaPrev = (int)dataReader["EficaciaPrev"],
+                        EficaciaHosp = (int)dataReader["EficaciaHosp"],
+                        EficaciaCti = (int)dataReader["EficaciaCti"],
+                        MaxTemp = (int)dataReader["MaxTemp"],
+                        MinTemp = (int)dataReader["MinTemp"],
+                        ProduccionAnual = (int)dataReader["ProduccionAnual"],
+                        FaseClinicaAprob = (int)dataReader["FaseClinicaAprob"],
+                        Emergencia = (bool)dataReader["Emergencia"],
+                        EfectosAdversos = (string)dataReader["EfectosAdversos"],
+                        Precio = (decimal)dataReader["Precio"],
+                        IdUsuario = (string)dataReader["IdUsuario"]
                     });
                 }
                 return vacunas;
             }
             catch (Exception e)
             {
+                System.Diagnostics.Debug.Assert(false, "Error al ingresar Vacuna" + e.Message);
                 return null;
             }
-            //finally
-            //{
-            //    manejadorConexion.CerrarConexion(cn);
-            //}
         }
 
         public Vacuna FindByAll(string nombre)

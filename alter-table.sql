@@ -1,0 +1,4 @@
+ALTER TABLE [dbo].[Vacunas] ALTER COLUMN [MaxEdad] INT NOT NULL;
+ALTER TABLE [dbo].[Vacunas] ALTER COLUMN [MinEdad] INT NOT NULL;
+ALTER TABLE [dbo].[Vacunas] ALTER COLUMN [MaxTemp] INT NOT NULL;
+ALTER TABLE [dbo].[Vacunas] ALTER COLUMN [MinTemp] INT NOT NULL;

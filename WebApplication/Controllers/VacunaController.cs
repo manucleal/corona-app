@@ -21,7 +21,7 @@ namespace WebApplication.Controllers
             RepositorioVacuna repoVacuna = new RepositorioVacuna();
             repoVacuna.FindAll();
 
-            return View();
+            return View(repoVacuna.FindAll());
         }
 
         [HttpGet]
@@ -39,36 +39,15 @@ namespace WebApplication.Controllers
         [HttpPost]
         public ActionResult Alta(Vacuna unaVacuna)
         {
-            ViewBag.mensaje = "";
-
+            unaVacuna.IdUsuario = (string)Session["documento"];
             unaVacuna.ProduccionAnual = 1000000;
             unaVacuna.UltimaModificacion = new DateTime();
             RepositorioVacuna repoVacuna = new RepositorioVacuna();
 
-            bool result = repoVacuna.Add(unaVacuna);
-
-            //if ((string)Session["rol"] == null || (string)Session["rol"] != "Administrador")
-            //{
-            //    return RedirectToAction("login", "usuario");
-            //}
-            //if (tipo == "Presupuestado")
-            //{
-            //    Cliente cliente = Sistema.Instancia.BuscarCliente(clienteRut);
-            //    if (Sistema.Instancia.AltaProyectoPresupuestado(nombre, fechaComienzo, duracionEstimadaDias, cliente, (int)montoInicial))
-            //        ViewBag.mensaje = "Se ingreso correctamente!!";
-            //    else
-            //        ViewBag.mensaje = "Los datos no son correctos";
-
-            //}
-            //else if (tipo == "Hora")
-            //{
-            //    Cliente cliente = Sistema.Instancia.BuscarCliente(clienteRut);
-            //    if (Sistema.Instancia.AltaProyectoHora(nombre, fechaComienzo, duracionEstimadaDias, cliente, (int)sueldoHora))
-            //        ViewBag.mensaje = "Se ingreso correctamente!!";
-            //    else
-            //        ViewBag.mensaje = "Los datos no son correctos";
-            //}
-            //ViewBag.Clientes = Sistema.Instancia.Clientes;
+            if (repoVacuna.Add(unaVacuna))
+            {
+                return RedirectToAction("Index", "Vacuna");
+            }
             return View();
         }
 
