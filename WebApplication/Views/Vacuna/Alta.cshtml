@@ -18,19 +18,25 @@
 
                 <select name="Emergencia">
                     <option value="">Indique si es de emergencia (*)</option>
-                    <option value="1">Si</option>
-                    <option value="0">No</option>
+                    <option value="true">Si</option>
+                    <option value="false">No</option>
+                </select>
+
+                <select name="Covax">
+                    <option value="">Indique si pertenece a COVAX(*)</option>
+                    <option value="true">Si</option>
+                    <option value="false">No</option>
                 </select>
 
                 <select name="IdTipo">
                     <option value="">Seleccione un tipo de vacuna (*)</option>
-                    @foreach (Dominio.EntidadesNegocio.Laboratorio item in ViewBag.Laboratorios2)
+                    @foreach (Dominio.EntidadesNegocio.TipoVacuna item in ViewBag.TipoVacunas)
                     {
-                        <option value="@item.Id">@item.Nombre</option>
+                        <option value="@item.Id">@item.Descripcion</option>
                     }
                 </select>
 
-                <select name="Laboratorios"  multiple>
+                <select name="Laboratorios" multiple>
                     <option value="">Seleccione el/los laboratorios (*)</option>
                     @foreach (Dominio.EntidadesNegocio.Laboratorio item in ViewBag.Laboratorios)
                     {
@@ -91,7 +97,7 @@
                 </fieldset>
                 <fieldset>
                     <legend>Mínima Temperatura (*)</legend>
-                    <input type="number" name="minTemp" required />
+                    <input type="number" name="MinTemp" required />
                     <div class="has-error">
                         <span className="text-danger text-small d-block mb-2">
                             @Html.ValidationMessageFor(model => model.MinTemp, "", new { @class = "help-block" })
@@ -101,7 +107,7 @@
                 </fieldset>
                 <fieldset>
                     <legend>Máxima Temperatura (*)</legend>
-                    <input type="number" name="maxTemp" required />
+                    <input type="number" name="MaxTemp" required />
                     <div class="has-error">
                         <span className="text-danger text-small d-block mb-2">
                             @Html.ValidationMessageFor(model => model.MaxTemp, "", new { @class = "help-block" })

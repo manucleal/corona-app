@@ -36,6 +36,8 @@ namespace WebApplication.Controllers
             
             RepositorioLaboratorio repoLaboratorio = new RepositorioLaboratorio();
             ViewBag.Laboratorios = repoLaboratorio.FindAll();
+            RepositorioTipoVacuna repoTipoVacuna = new RepositorioTipoVacuna();
+            ViewBag.TipoVacunas = repoTipoVacuna.FindAll();
 
             return View();
         }
@@ -51,8 +53,6 @@ namespace WebApplication.Controllers
                 if (unaVacuna.MinTemp <= unaVacuna.MinTemp)
                 {
                     unaVacuna.IdUsuario = (string)Session["documento"];
-                    //unaVacuna.ProduccionAnual = 1000000;
-                    unaVacuna.UltimaModificacion = new DateTime();
                     RepositorioVacuna repoVacuna = new RepositorioVacuna();
 
                     if (repoVacuna.Add(unaVacuna))

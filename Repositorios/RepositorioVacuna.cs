@@ -16,13 +16,13 @@ namespace Repositorios
                 Conexion handler = new Conexion();
                 SqlConnection con = new Conexion().crearConexion();
 
-                SqlCommand cmd = new SqlCommand("INSERT INTO Vacunas VALUES (@Nombre,@IdTipo,@IdUsuario,@CantidadDosis," +
-                    "@LapsoDiasDosis,@MaxEdad,@MinEdad,@EficaciaPrev,@EficaciaHosp,@EficaciaCti,@MaxTemp,@MinTemp,@ProduccionAnual,@FaseClinicaAprob," +
-                    "@Emergencia,@EfectosAdversos,@Precio)", con);
-
-                cmd.Parameters.AddWithValue("@Nombre", unaVacuna.Nombre);
-                cmd.Parameters.AddWithValue("@IdTipo","VV");
+                SqlCommand cmd = new SqlCommand("INSERT INTO Vacunas VALUES (@IdTipo,@IdUsuario,@Nombre,@CantidadDosis," +
+                    "@LapsoDiasDosis,@MaxEdad,@MinEdad,@EficaciaPrev,@EficaciaHosp,@EficaciaCti,@MaxTemp,@MinTemp," + 
+                    "@ProduccionAnual,@FaseClinicaAprob,@Emergencia,@EfectosAdversos,@Precio,@UltimaModificacion,@Covax)", con);
+                
+                cmd.Parameters.AddWithValue("@IdTipo", unaVacuna.IdTipo);
                 cmd.Parameters.AddWithValue("@IdUsuario", unaVacuna.IdUsuario);
+                cmd.Parameters.AddWithValue("@Nombre", unaVacuna.Nombre);
                 cmd.Parameters.AddWithValue("@CantidadDosis", unaVacuna.CantidadDosis);
                 cmd.Parameters.AddWithValue("@LapsoDiasDosis", unaVacuna.LapsoDiasDosis);
                 cmd.Parameters.AddWithValue("@MaxEdad", unaVacuna.MaxEdad);
@@ -37,7 +37,8 @@ namespace Repositorios
                 cmd.Parameters.AddWithValue("@Emergencia", unaVacuna.Emergencia);
                 cmd.Parameters.AddWithValue("@EfectosAdversos", unaVacuna.EfectosAdversos);
                 cmd.Parameters.AddWithValue("@Precio", unaVacuna.Precio);
-                cmd.Parameters.AddWithValue("@UltimaModificacion", unaVacuna.UltimaModificacion);
+                cmd.Parameters.AddWithValue("@UltimaModificacion", DateTime.Now);
+                cmd.Parameters.AddWithValue("@Covax", unaVacuna.Covax);
 
                 if (handler.AbrirConexion(con))
                 {
