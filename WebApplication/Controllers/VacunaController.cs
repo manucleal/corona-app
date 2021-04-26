@@ -33,21 +33,40 @@ namespace WebApplication.Controllers
                 Session["nombre"] = null;
                 return RedirectToAction("Login", "Usuario");
             }
+            
+            RepositorioLaboratorio repoLaboratorio = new RepositorioLaboratorio();
+            ViewBag.Laboratorios = repoLaboratorio.FindAll();
+
             return View();
         }
 
         [HttpPost]
         public ActionResult Alta(Vacuna unaVacuna)
         {
-            unaVacuna.IdUsuario = (string)Session["documento"];
-            unaVacuna.ProduccionAnual = 1000000;
-            unaVacuna.UltimaModificacion = new DateTime();
-            RepositorioVacuna repoVacuna = new RepositorioVacuna();
+            RepositorioLaboratorio repoLaboratorio = new RepositorioLaboratorio();
+            ViewBag.Laboratorios = new MultiSelectList(repoLaboratorio.FindAll(), "Id", "Nombre");
 
-            if (repoVacuna.Add(unaVacuna))
+            if (ModelState.IsValid)
             {
-                return RedirectToAction("Index", "Vacuna");
+                if (unaVacuna.MinTemp <= unaVacuna.MinTemp)
+                {
+                    unaVacuna.IdUsuario = (string)Session["documento"];
+                    //unaVacuna.ProduccionAnual = 1000000;
+                    unaVacuna.UltimaModificacion = new DateTime();
+                    RepositorioVacuna repoVacuna = new RepositorioVacuna();
+
+                    if (repoVacuna.Add(unaVacuna))
+                    {
+                        return RedirectToAction("Index", "Vacuna");
+                    }
+                }
+                else
+                {
+                    ModelState.AddModelError("minTemp", "Debe ser menor o igual a Máxima temp.");
+                }
+
             }
+
             return View();
         }
 

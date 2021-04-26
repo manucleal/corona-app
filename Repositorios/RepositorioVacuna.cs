@@ -8,7 +8,6 @@ using Repositorios.UtilidadesBD;
 namespace Repositorios
 {
     public class RepositorioVacuna : IRepositorioVacuna
-
     {
         public bool Add(Vacuna unaVacuna)
         {
@@ -17,12 +16,13 @@ namespace Repositorios
                 Conexion handler = new Conexion();
                 SqlConnection con = new Conexion().crearConexion();
 
-                SqlCommand cmd = new SqlCommand("INSERT INTO Vacunas VALUES (@Nombre,@IdTipo,@CantidadDosis," +
+                SqlCommand cmd = new SqlCommand("INSERT INTO Vacunas VALUES (@Nombre,@IdTipo,@IdUsuario,@CantidadDosis," +
                     "@LapsoDiasDosis,@MaxEdad,@MinEdad,@EficaciaPrev,@EficaciaHosp,@EficaciaCti,@MaxTemp,@MinTemp,@ProduccionAnual,@FaseClinicaAprob," +
-                    "@Emergencia,@EfectosAdversos,@Precio,@IdUsuario)", con);
+                    "@Emergencia,@EfectosAdversos,@Precio)", con);
 
                 cmd.Parameters.AddWithValue("@Nombre", unaVacuna.Nombre);
                 cmd.Parameters.AddWithValue("@IdTipo","VV");
+                cmd.Parameters.AddWithValue("@IdUsuario", unaVacuna.IdUsuario);
                 cmd.Parameters.AddWithValue("@CantidadDosis", unaVacuna.CantidadDosis);
                 cmd.Parameters.AddWithValue("@LapsoDiasDosis", unaVacuna.LapsoDiasDosis);
                 cmd.Parameters.AddWithValue("@MaxEdad", unaVacuna.MaxEdad);
@@ -37,7 +37,7 @@ namespace Repositorios
                 cmd.Parameters.AddWithValue("@Emergencia", unaVacuna.Emergencia);
                 cmd.Parameters.AddWithValue("@EfectosAdversos", unaVacuna.EfectosAdversos);
                 cmd.Parameters.AddWithValue("@Precio", unaVacuna.Precio);
-                cmd.Parameters.AddWithValue("@IdUsuario", unaVacuna.IdUsuario);
+                cmd.Parameters.AddWithValue("@UltimaModificacion", unaVacuna.UltimaModificacion);
 
                 if (handler.AbrirConexion(con))
                 {

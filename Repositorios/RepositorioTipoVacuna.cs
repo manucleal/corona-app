@@ -1,12 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Data.SqlClient;
+using Dominio.EntidadesNegocio;
+using Dominio.InterfacesRepositorio;
+using Repositorios.UtilidadesBD;
 
 namespace Repositorios
 {
-    class RepositorioTipoUsuario
+    public class RepositorioTipoVacuna
     {
+
     }
 }

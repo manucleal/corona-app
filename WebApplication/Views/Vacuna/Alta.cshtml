@@ -11,60 +11,106 @@
         <form method="post" action="/Vacuna/Alta" autocomplete="on">
             <div class="infoPersonal">
                 <label for="nombre"></label>
-                <input type="text" name="nombre" placeholder="Nombre Usuario (*)" required />
+                <input type="text" name="nombre" placeholder="Nombre vacuna (*)" required />
                 <input type="number" name="cantidadDosis" placeholder="Cantidad dosis (*)" required />
                 <input type="number" name="lapsoDiasDosis" placeholder="Días entre dosis (*)" required />
                 <input type="number" name="produccionAnual" placeholder="Producción anual (*)" required />
 
-
-                <select name="emergencia">
+                <select name="Emergencia">
                     <option value="">Indique si es de emergencia (*)</option>
                     <option value="1">Si</option>
                     <option value="0">No</option>
                 </select>
 
-                <select name="tipo">
-                    <option value="">Seleccione un tipo de Usuario (*)</option>
+                <select name="IdTipo">
+                    <option value="">Seleccione un tipo de vacuna (*)</option>
+                    @foreach (Dominio.EntidadesNegocio.Laboratorio item in ViewBag.Laboratorios2)
+                    {
+                        <option value="@item.Id">@item.Nombre</option>
+                    }
                 </select>
-                <select name="laboratorio">
+
+                <select name="Laboratorios"  multiple>
                     <option value="">Seleccione el/los laboratorios (*)</option>
-                    @*@foreach (Laboratorio item in laboratorios)
-                        {
-                            <option value="@item.Rut">@item.Nombre"</option>
-                        }*@
+                    @foreach (Dominio.EntidadesNegocio.Laboratorio item in ViewBag.Laboratorios)
+                    {
+                        <option value="@item.Id">@item.Nombre</option>
+                    }
                 </select>
             </div>
             <div class="formInfo">
                 <fieldset>
                     <legend>Mínima edad (*)</legend>
                     <input type="number" name="minEdad" class="ajustarAnchoInput" min="18" max="100" required />
+                    <div class="has-error">
+                        <span className="text-danger text-small d-block mb-2">
+                            @Html.ValidationMessageFor(model => model.MinEdad, "", new { @class = "help-block" })
+                            @Html.HiddenFor(model => model.MinEdad)
+                        </span>
+                    </div>
                 </fieldset>
                 <fieldset>
                     <legend>Máxima edad (*)</legend>
                     <input type="number" name="maxEdad" class="ajustarAnchoInput" min="18" max="100" required />
+                    <div class="has-error">
+                        <span className="text-danger text-small d-block mb-2">
+                            @Html.ValidationMessageFor(model => model.MaxEdad, "", new { @class = "help-block" })
+                            @Html.HiddenFor(model => model.MaxEdad)
+                        </span>
+                    </div>
                 </fieldset>
                 <fieldset>
                     <legend>Eficacia Prevención</legend>
                     <input type="number" id="montoHide" name="eficaciaPrev" required />
+                    <div class="has-error">
+                        <span className="text-danger text-small d-block mb-2">
+                            @Html.ValidationMessageFor(model => model.EficaciaPrev, "", new { @class = "help-block" })
+                            @Html.HiddenFor(model => model.EficaciaPrev)
+                        </span>
+                    </div>
                 </fieldset>
                 <fieldset>
                     <legend>Eficacia Hospitalización</legend>
                     <input type="number" name="eficaciaHosp" required />
+                    <div class="has-error">
+                        <span className="text-danger text-small d-block mb-2">
+                            @Html.ValidationMessageFor(model => model.EficaciaHosp, "", new { @class = "help-block" })
+                            @Html.HiddenFor(model => model.EficaciaHosp)
+                        </span>
+                    </div>
                 </fieldset>
                 <fieldset>
                     <legend>Eficacia CTI</legend>
                     <input type="number" name="eficaciaCti" required />
+                    <div class="has-error">
+                        <span className="text-danger text-small d-block mb-2">
+                            @Html.ValidationMessageFor(model => model.EficaciaCti, "", new { @class = "help-block" })
+                            @Html.HiddenFor(model => model.EficaciaCti)
+                        </span>
+                    </div>
                 </fieldset>
                 <fieldset>
                     <legend>Mínima Temperatura (*)</legend>
                     <input type="number" name="minTemp" required />
+                    <div class="has-error">
+                        <span className="text-danger text-small d-block mb-2">
+                            @Html.ValidationMessageFor(model => model.MinTemp, "", new { @class = "help-block" })
+                            @Html.HiddenFor(model => model.MinTemp)
+                        </span>
+                    </div>
                 </fieldset>
                 <fieldset>
                     <legend>Máxima Temperatura (*)</legend>
                     <input type="number" name="maxTemp" required />
+                    <div class="has-error">
+                        <span className="text-danger text-small d-block mb-2">
+                            @Html.ValidationMessageFor(model => model.MaxTemp, "", new { @class = "help-block" })
+                            @Html.HiddenFor(model => model.MaxTemp)
+                        </span>
+                    </div>
                 </fieldset>
                 <fieldset>
-                    <legend>Precio en USD (*)</legend>
+                    <legend>Precio en USD </legend>
                     <input type="number" name="precio" required />
                 </fieldset>
                 <fieldset>
@@ -77,8 +123,8 @@
             </div>
             <div class="divFooter">
                 <span>Campos Obligatorios (*)</span>
-                <input type="submit" class="botones" value="CREAR">
-                <input type="reset" id="limpiar" value="LIMPIAR">
+                <input type="submit" class="botones" value="Crear">
+                <input type="reset" id="limpiar" value="Limpiar">
             </div>
         </form>
     </div>
