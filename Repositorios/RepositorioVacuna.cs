@@ -16,7 +16,7 @@ namespace Repositorios
                 Conexion handler = new Conexion();
                 SqlConnection con = new Conexion().crearConexion();
 
-                SqlCommand cmd = new SqlCommand("INSERT INTO Vacunas VALUES (@IdTipo,@IdUsuario,@Nombre,@CantidadDosis," +
+                SqlCommand cmd = new SqlCommand("INSERT INTO Vacunas output INSERTED.ID VALUES (@IdTipo,@IdUsuario,@Nombre,@CantidadDosis," +
                     "@LapsoDiasDosis,@MaxEdad,@MinEdad,@EficaciaPrev,@EficaciaHosp,@EficaciaCti,@MaxTemp,@MinTemp," + 
                     "@ProduccionAnual,@FaseClinicaAprob,@Emergencia,@EfectosAdversos,@Precio,@UltimaModificacion,@Covax)", con);
                 
@@ -42,10 +42,20 @@ namespace Repositorios
 
                 if (handler.AbrirConexion(con))
                 {
-                    int filas = cmd.ExecuteNonQuery();
+                    int modified = (int)cmd.ExecuteScalar();
+
+                    SqlCommand cmd2 = new SqlCommand("INSERT INTO VacunaLaboratorios VALUES (@IdVacuna,@IdLaboratorio)", con);
+                    foreach (int lab in unaVacuna.Laboratorios)
+                    {
+                        cmd2.Parameters.Clear();
+                        cmd2.Parameters.AddWithValue("@IdVacuna", (int)modified);
+                        cmd2.Parameters.AddWithValue("@IdLaboratorio", (int)lab);
+                        cmd2.ExecuteNonQuery();
+                    }
                     handler.CerrarConexion(con);
-                    return filas >= 1;
+                    return true;
                 }
+
                 return false;
             }
             catch (Exception e)

@@ -14,19 +14,20 @@
                     <tr>
                         <th>Nombre</th>
                         <th>Tipo</th>
-                        <th>Cantidad dosis</th>
+                        <th>Cant. dosis</th>
                         <th>Lapso entre dosis</th>
                         <th>Edad max</th>
                         <th>Edad min</th>
-                        <th>Eficacia prevención</th>
-                        <th>Eficacia hospitalización</th>
+                        <th>Eficacia prev.</th>
+                        <th>Eficacia hosp.</th>
                         <th>Eficacia CTI</th>
-                        <th>Temp max</th>
-                        <th>Temp min</th>
+                        <th>Temp. max</th>
+                        <th>Temp. min</th>
                         <th>Producción anual</th>
                         <th>Fase clínica de aprob</th>
-                        <th>Emergencia</th>
-                        <th>Efectos adversos</th>
+                        <th>Emerg.</th>
+                        <th>Covax</th>
+                        <th>Efect. adversos</th>
                         <th>Precio</th>
                     </tr>
                 </thead>
@@ -47,7 +48,8 @@
                         <th>@item.MinTemp °C</th>
                         <th>@item.ProduccionAnual</th>
                         <th>@item.FaseClinicaAprob</th>
-                        <th>@item.Emergencia</th>
+                        <th>@(item.Emergencia ? "Si" : "No")</th>
+                        <th>@(item.Covax ? "Si" : "No")</th>
                         <th>@item.EfectosAdversos</th>
                         <th>$ @item.Precio</th>
                     </tr>

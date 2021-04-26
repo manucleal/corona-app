@@ -45,9 +45,6 @@ namespace WebApplication.Controllers
         [HttpPost]
         public ActionResult Alta(Vacuna unaVacuna)
         {
-            RepositorioLaboratorio repoLaboratorio = new RepositorioLaboratorio();
-            ViewBag.Laboratorios = new MultiSelectList(repoLaboratorio.FindAll(), "Id", "Nombre");
-
             if (ModelState.IsValid)
             {
                 if (unaVacuna.MinTemp <= unaVacuna.MinTemp)
