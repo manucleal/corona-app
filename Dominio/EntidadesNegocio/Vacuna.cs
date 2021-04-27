@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace Dominio.EntidadesNegocio
@@ -58,6 +59,7 @@ namespace Dominio.EntidadesNegocio
         public string IdUsuario { get; set; }
         public string IdTipo { get; set; }
         public int[] Laboratorios { get; set; }
+        public ICollection<Laboratorio> ListaLaboratorios { get; set; } = new List<Laboratorio>();
         public bool Covax { get; set; }
 
         public Vacuna()

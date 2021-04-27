@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Data.SqlClient;
+using System.Linq;
 using Dominio.EntidadesNegocio;
 using Dominio.InterfacesRepositorio;
 using Repositorios.UtilidadesBD;
@@ -67,22 +69,23 @@ namespace Repositorios
 
         public IEnumerable<Vacuna> FindAll()
         {
+            Conexion manejadorConexion = new Conexion();
+            SqlConnection con = manejadorConexion.crearConexion();
+
             try
             {
-                Conexion manejadorConexion = new Conexion();
-                SqlConnection cn = manejadorConexion.crearConexion();
-                SqlCommand cmd = new SqlCommand("SELECT * FROM Vacunas", cn);
-
-                manejadorConexion.AbrirConexion(cn);
+                SqlCommand cmd = new SqlCommand("SELECT * FROM Vacunas", con);
+                manejadorConexion.AbrirConexion(con);
                 SqlDataReader dataReader = cmd.ExecuteReader();
-                manejadorConexion.CerrarConexion(cn);
+                
                 List<Vacuna> vacunas = new List<Vacuna>();
 
                 while (dataReader.Read())
                 {
-                    vacunas.Add(new Vacuna
+                    int idVacuna = (int)dataReader["Id"];
+                    Vacuna unaVacuna = new Vacuna()
                     {
-                        Id = (int)dataReader["Id"],
+                        Id = idVacuna,
                         Nombre = (string)dataReader["Nombre"],
                         IdTipo = (string)dataReader["IdTipo"],
                         CantidadDosis = (int)dataReader["CantidadDosis"],
@@ -100,14 +103,43 @@ namespace Repositorios
                         EfectosAdversos = (string)dataReader["EfectosAdversos"],
                         Precio = (decimal)dataReader["Precio"],
                         IdUsuario = (string)dataReader["IdUsuario"]
-                    });
+                    };
+
+                    vacunas.Add(unaVacuna);
+
+                    SqlCommand query = new SqlCommand("SELECT * FROM Laboratorios l " +
+                                                      "WHERE l.Id IN (SELECT IdLaboratorio FROM VacunaLaboratorios vl " + 
+                                                      "WHERE IdVacuna=@IdVacuna)", con);
+                    query.Parameters.AddWithValue("@IdVacuna", idVacuna);
+                    SqlDataReader labs = query.ExecuteReader();
+
+                    while (labs.Read())
+                    {
+                        Laboratorio lab = new Laboratorio()
+                        {
+                            Id = (int)labs["Id"],
+                            Nombre = (string)labs["Nombre"],
+                            PaisOrigen = (string)labs["PaisOrigen"],
+                            Experiencia = (bool)labs["Experiencia"]
+                        };
+
+                        unaVacuna.ListaLaboratorios.Add(lab);
+                    }
+
+                    labs.Close();
                 }
+                dataReader.Close();
+
                 return vacunas;
             }
             catch (Exception e)
             {
                 System.Diagnostics.Debug.Assert(false, "Error al ingresar Vacuna" + e.Message);
                 return null;
+            }
+            finally
+            {
+                manejadorConexion.CerrarConexion(con);
             }
         }
 

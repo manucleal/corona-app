@@ -19,8 +19,6 @@ namespace WebApplication.Controllers
             }
 
             RepositorioVacuna repoVacuna = new RepositorioVacuna();
-            repoVacuna.FindAll();
-
             return View(repoVacuna.FindAll());
         }
 

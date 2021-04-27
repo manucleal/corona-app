@@ -15,7 +15,7 @@
                         <th>Nombre</th>
                         <th>Tipo</th>
                         <th>Cant. dosis</th>
-                        <th>Lapso entre dosis</th>
+                        <th>Lapso<br>días<br>entr<br> dosis</th>
                         <th>Edad max</th>
                         <th>Edad min</th>
                         <th>Eficacia prev.</th>
@@ -24,12 +24,12 @@
                         <th>Temp. max</th>
                         <th>Temp. min</th>
                         <th>Producción anual</th>
-                        <th>Fase clínica de aprob</th>
+                        <th>Fase<br>clínica<br>de aprob.</th>
                         <th>Emerg.</th>
                         <th>Covax</th>
-                        <th>Efect. adversos</th>
+                        <th>Labs</th>
                         <th>Precio</th>
-                    </tr>
+                        <th>Efect.<br>Adversos</th>
                 </thead>
                 <tbody>
                     @foreach (Dominio.EntidadesNegocio.Vacuna item in Model)
@@ -50,7 +50,21 @@
                         <th>@item.FaseClinicaAprob</th>
                         <th>@(item.Emergencia ? "Si" : "No")</th>
                         <th>@(item.Covax ? "Si" : "No")</th>
-                        <th>@item.EfectosAdversos</th>
+
+                        @if (item.ListaLaboratorios.Count > 0)
+                        {
+                        <th>
+                            @foreach (var lab in item.ListaLaboratorios)
+                            {
+                                @lab.Nombre<br>
+                            }
+                        </th>
+                        }
+                        else
+                        {
+                            <th>N/a</th>
+                        }
+                        <th>$ @item.Precio</th>
                         <th>$ @item.Precio</th>
                     </tr>
                     }
