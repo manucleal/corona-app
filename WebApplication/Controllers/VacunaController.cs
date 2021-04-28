@@ -3,6 +3,7 @@ using System.Web.Mvc;
 using Repositorios;
 using Dominio.EntidadesNegocio;
 using WcfServicioCoronApp;
+using System.Collections.Generic;
 
 namespace WebApplication.Controllers
 {
@@ -20,7 +21,32 @@ namespace WebApplication.Controllers
             }
 
             ServicioVacunas serviciosVacunas = new ServicioVacunas();
-            return View(serviciosVacunas.GetTodasLasVacunas());
+            IEnumerable<DtoVacunas> vacunas = serviciosVacunas.GetTodasLasVacunas();
+            if (vacunas != null)
+            {
+                ViewBag.Vacunas = vacunas;
+            }
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Index(string tipoFiltro, string filtro)
+        {
+            ServicioVacunas serviciosVacunas = new ServicioVacunas();
+
+            if (tipoFiltro != null && filtro != null)
+            {
+                if (tipoFiltro == "PorNombre") {
+
+                    ViewBag.Vacunas = serviciosVacunas.GetTodasLasVacunasPorNombre(filtro);
+                }
+            }
+            else
+            {
+                ViewBag.Vacunas = serviciosVacunas.GetTodasLasVacunas();
+            }
+
+            return View();
         }
 
         [HttpGet]

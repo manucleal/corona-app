@@ -16,6 +16,12 @@ namespace WcfServicioCoronApp
             if (vacunas == null) return null;            return ConvertirListaDtosDesdeVacunas(vacunas);
         }
 
+        public IEnumerable<DtoVacunas> GetTodasLasVacunasPorNombre(string nombre)
+        {
+            IEnumerable<Vacuna> vacunas = repositorioVacuna.FindAllByName(nombre);
+            if (vacunas == null) return null;            return ConvertirListaDtosDesdeVacunas(vacunas);
+        }
+
         private IEnumerable<DtoVacunas> ConvertirListaDtosDesdeVacunas(IEnumerable<Vacuna> vacunas)
         {
             List<DtoVacunas> lista = new List<DtoVacunas>();

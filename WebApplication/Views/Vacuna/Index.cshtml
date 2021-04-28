@@ -7,6 +7,20 @@
 <html lang="es">
 <body>
     <main>
+
+
+        @if ((string)Session["documento"] != null)
+        {
+            <form method="post" action="/Vacuna/Index" autocomplete="on">
+                <select name="TipoFiltro">
+                    <option value="">Seleccione el filtro </option>
+                    <option value="PorNombre">Nombre</option>
+                    <option value="PorFaseAprob">Fase Aprobación</option>
+                </select>
+                <input type="text" name="filtro" />
+                <input type="submit" id="login" value="Buscar">
+            </form>
+        }
         <small>Dashboard / <em>Lista Vacunas <p style="color:red;">@ViewBag.mensaje</p></em></small>
         <div id="tableEmpleados">
             <table>
@@ -30,43 +44,51 @@
                         <th>Labs</th>
                         <th>Precio</th>
                         <th>Efect.<br>Adversos</th>
+                    </tr>
                 </thead>
                 <tbody>
-                    @foreach (WcfServicioCoronApp.DtoVacunas item in Model)
+                    @if (ViewBag.Vacunas != null)
                     {
-                    <tr>
-                        <td>@item.Nombre</td>
-                        <th>@item.IdTipo</th>
-                        <th>@item.CantidadDosis</th>
-                        <th>@item.LapsoDiasDosis</th>
-                        <th>@item.MaxEdad</th>
-                        <th>@item.MinEdad</th>
-                        <th>@item.EficaciaPrev %</th>
-                        <th>@item.EficaciaHosp %</th>
-                        <th>@item.EficaciaCti %</th>
-                        <th>@item.MaxTemp °C</th>
-                        <th>@item.MinTemp °C</th>
-                        <th>@item.ProduccionAnual</th>
-                        <th>@item.FaseClinicaAprob</th>
-                        <th>@(item.Emergencia ? "Si" : "No")</th>
-                        <th>@(item.Covax ? "Si" : "No")</th>
+                        foreach (WcfServicioCoronApp.DtoVacunas item in ViewBag.Vacunas)
+                        {
+                            <tr>
+                                <th>@item.Nombre</th>
+                                <th>@item.IdTipo</th>
+                                <th>@item.CantidadDosis</th>
+                                <th>@item.LapsoDiasDosis</th>
+                                <th>@item.MaxEdad</th>
+                                <th>@item.MinEdad</th>
+                                <th>@item.EficaciaPrev %</th>
+                                <th>@item.EficaciaHosp %</th>
+                                <th>@item.EficaciaCti %</th>
+                                <th>@item.MaxTemp °C</th>
+                                <th>@item.MinTemp °C</th>
+                                <th>@item.ProduccionAnual</th>
+                                <th>@item.FaseClinicaAprob</th>
+                                <th>@(item.Emergencia ? "Si" : "No")</th>
+                                <th>@(item.Covax ? "Si" : "No")</th>
 
-                        @if (item.ListaLaboratorios.Count > 0)
-                        {
-                        <th>
-                            @foreach (var lab in item.ListaLaboratorios)
-                            {
-                                @lab.Nombre<br>
-                            }
-                        </th>
+                                @if (item.ListaLaboratorios.Count > 0)
+                                {
+                                    <th>
+                                        @foreach (var lab in item.ListaLaboratorios)
+                                        {
+                                            @lab.Nombre<br>
+                                        }
+                                    </th>
+                                }
+                                else
+                                {
+                                    <th>N/a</th>
+                                }
+                                <th>$ @item.Precio</th>
+                                <th>$ @item.Precio</th>
+                            </tr>
                         }
-                        else
-                        {
-                            <th>N/a</th>
-                        }
-                        <th>$ @item.Precio</th>
-                        <th>$ @item.Precio</th>
-                    </tr>
+                    }
+                    else
+                    {
+                        <tr><th colspan="15">No hay datos disponible</th></tr>
                     }
                 </tbody>
             </table>
