@@ -143,6 +143,114 @@ namespace Repositorios
             }
         }
 
+        public IEnumerable<Vacuna> FindAllByName(string nombre)
+        {
+            Conexion manejadorConexion = new Conexion();
+            SqlConnection con = manejadorConexion.crearConexion();
+
+            try
+            {
+                SqlCommand query = new SqlCommand("Select * from Vacunas where Nombre = @Nombre", con);
+                manejadorConexion.AbrirConexion(con);
+
+                query.Parameters.AddWithValue("@Nombre", nombre);
+                SqlDataReader dataReader = query.ExecuteReader();
+
+                List<Vacuna> vacunas = new List<Vacuna>();
+
+                while (dataReader.Read())
+                {
+                    Vacuna unaVacuna = new Vacuna()
+                    {
+                        Nombre = (string)dataReader["Nombre"],
+                        IdTipo = (string)dataReader["IdTipo"],
+                        Precio = (decimal)dataReader["Precio"],
+
+                    };
+                    vacunas.Add(unaVacuna);
+                }
+                return vacunas;
+            }
+            catch (Exception e)
+            {
+                System.Diagnostics.Debug.Assert(false, "Error al listar vacunas por nombre" + e.Message);
+                return null;
+            }
+            finally
+            {
+                manejadorConexion.CerrarConexion(con);
+            }
+        }
+
+        public IEnumerable<Vacuna> FindAllByApprovalPhase(int FaseClinicaAprob)
+        {
+            Conexion manejadorConexion = new Conexion();
+            SqlConnection con = manejadorConexion.crearConexion();
+
+            try
+            {
+                SqlCommand query = new SqlCommand("Select * from Vacunas where FaseClinicaAprob = @FaseClinicaAprob", con);
+                manejadorConexion.AbrirConexion(con);
+
+                query.Parameters.AddWithValue("@FaseClinicaAprob", FaseClinicaAprob);
+                SqlDataReader dataReader = query.ExecuteReader();
+
+                List<Vacuna> vacunas = new List<Vacuna>();
+
+                while (dataReader.Read())
+                {
+                    Vacuna unaVacuna = new Vacuna()
+                    {
+                        Nombre = (string)dataReader["Nombre"],
+                        IdTipo = (string)dataReader["IdTipo"],
+                        Precio = (decimal)dataReader["Precio"],
+
+                    };
+                    vacunas.Add(unaVacuna);
+                }
+                return vacunas;
+            }
+            catch (Exception e)
+            {
+                System.Diagnostics.Debug.Assert(false, "Error al listar vacunas por fase clinica aprobacion" + e.Message);
+                return null;
+            }
+            finally
+            {
+                manejadorConexion.CerrarConexion(con);
+            }
+        }
+
+        public IEnumerable<Vacuna> FindAllByCountry(string pais)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IEnumerable<Vacuna> FindAllByIdTypeVac(int idVac)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IEnumerable<Vacuna> FindAllByIdVac(int idVac)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IEnumerable<Vacuna> FindAllByLabName(string nombreLab)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IEnumerable<Vacuna> FindAllByMaxPrice(int precioMax)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IEnumerable<Vacuna> FindAllByMinPrice(int precioMin)
+        {
+            throw new NotImplementedException();
+        }
+
         public Vacuna FindByAll(string nombre)
         {
             throw new NotImplementedException();
@@ -162,5 +270,12 @@ namespace Repositorios
         {
             throw new NotImplementedException();
         }
+
+
+
+
+
+
+
     }
 }
