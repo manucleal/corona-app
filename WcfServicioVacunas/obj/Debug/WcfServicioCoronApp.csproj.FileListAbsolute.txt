@@ -10,3 +10,15 @@ C:\emanuel_ort\corona-app\WcfServicioVacunas\obj\Debug\WcfServicioCoronApp.cspro
 C:\emanuel_ort\corona-app\WcfServicioVacunas\obj\Debug\WcfServicioCoronApp.csproj.CopyComplete
 C:\emanuel_ort\corona-app\WcfServicioVacunas\obj\Debug\WcfServicioVacunas.dll
 C:\emanuel_ort\corona-app\WcfServicioVacunas\obj\Debug\WcfServicioVacunas.pdb
+C:\Users\tatop\corona-app\WcfServicioVacunas\bin\WcfServicioVacunas.dll.config
+C:\Users\tatop\corona-app\WcfServicioVacunas\bin\WcfServicioVacunas.dll
+C:\Users\tatop\corona-app\WcfServicioVacunas\bin\WcfServicioVacunas.pdb
+C:\Users\tatop\corona-app\WcfServicioVacunas\bin\Dominio.dll
+C:\Users\tatop\corona-app\WcfServicioVacunas\bin\Repositorios.dll
+C:\Users\tatop\corona-app\WcfServicioVacunas\bin\Dominio.pdb
+C:\Users\tatop\corona-app\WcfServicioVacunas\bin\Repositorios.pdb
+C:\Users\tatop\corona-app\WcfServicioVacunas\obj\Debug\WcfServicioCoronApp.csprojAssemblyReference.cache
+C:\Users\tatop\corona-app\WcfServicioVacunas\obj\Debug\WcfServicioCoronApp.csproj.CoreCompileInputs.cache
+C:\Users\tatop\corona-app\WcfServicioVacunas\obj\Debug\WcfServicioCoronApp.csproj.CopyComplete
+C:\Users\tatop\corona-app\WcfServicioVacunas\obj\Debug\WcfServicioVacunas.dll
+C:\Users\tatop\corona-app\WcfServicioVacunas\obj\Debug\WcfServicioVacunas.pdb

@@ -223,32 +223,215 @@ namespace Repositorios
 
         public IEnumerable<Vacuna> FindAllByCountry(string pais)
         {
-            throw new NotImplementedException();
+            Conexion manejadorConexion = new Conexion();
+            SqlConnection con = manejadorConexion.crearConexion();
+
+            try
+            {
+                SqlCommand query = new SqlCommand("Select * from Vacunas " +
+                                                   "where Id in (select IdVacuna " +
+                                                                "from VacunaLaboratorios" +
+                                                                "where IdLaboratorio in (select Id" +
+                                                                                        "from Laboratorios" +
+                                                                                        "where @PaisOrigen = PaisOrigen)", con);
+                manejadorConexion.AbrirConexion(con);
+
+                query.Parameters.AddWithValue("@pais", pais);
+                SqlDataReader dataReader = query.ExecuteReader();
+
+                List<Vacuna> vacunas = new List<Vacuna>();
+
+                while (dataReader.Read())
+                {
+                    Vacuna unaVacuna = new Vacuna()
+                    {
+                        Nombre = (string)dataReader["Nombre"],
+                        IdTipo = (string)dataReader["IdTipo"],
+                        Precio = (decimal)dataReader["Precio"],
+
+                    };
+                    vacunas.Add(unaVacuna);
+                }
+                return vacunas;
+            }
+            catch (Exception e)
+            {
+                System.Diagnostics.Debug.Assert(false, "Error al listar vacunas por país de origen del laboratorio" + e.Message);
+                return null;
+            }
+            finally
+            {
+                manejadorConexion.CerrarConexion(con);
+            }
+
         }
 
         public IEnumerable<Vacuna> FindAllByIdTypeVac(int idVac)
         {
-            throw new NotImplementedException();
-        }
+            Conexion manejadorConexion = new Conexion();
+            SqlConnection con = manejadorConexion.crearConexion();
 
-        public IEnumerable<Vacuna> FindAllByIdVac(int idVac)
-        {
-            throw new NotImplementedException();
+            try
+            {
+                SqlCommand query = new SqlCommand("select * " +
+                                                  "from Vacunas" +
+                                                  "where IdTipo in (select Id" +
+                                                                    "from TipoVacunas" +
+                                                                    "where Id = @Id)", con);
+                manejadorConexion.AbrirConexion(con);
+
+                query.Parameters.AddWithValue("@idVac", idVac);
+                SqlDataReader dataReader = query.ExecuteReader();
+
+                List<Vacuna> vacunas = new List<Vacuna>();
+
+                while (dataReader.Read())
+                {
+                    Vacuna unaVacuna = new Vacuna()
+                    {
+                        Nombre = (string)dataReader["Nombre"],
+                        IdTipo = (string)dataReader["IdTipo"],
+                        Precio = (decimal)dataReader["Precio"],
+
+                    };
+                    vacunas.Add(unaVacuna);
+                }
+                return vacunas;
+            }
+            catch (Exception e)
+            {
+                System.Diagnostics.Debug.Assert(false, "Error al listar vacunas por identificador de tipo de vacuna" + e.Message);
+                return null;
+            }
+            finally
+            {
+                manejadorConexion.CerrarConexion(con);
+            }
+
         }
 
         public IEnumerable<Vacuna> FindAllByLabName(string nombreLab)
         {
-            throw new NotImplementedException();
+            Conexion manejadorConexion = new Conexion();
+            SqlConnection con = manejadorConexion.crearConexion();
+
+            try
+            {
+                SqlCommand query = new SqlCommand("select * " +
+                                                  "from Vacunas" +
+                                                  "where Id in (select IdVacuna" +
+                                                                "from VacunaLaboratorios" +
+                                                                "where IdLaboratorio in (select Id" +
+                                                                                        "from Laboratorios" +
+                                                                                        "where Nombre like @Nombre %)", con);
+                manejadorConexion.AbrirConexion(con);
+
+                query.Parameters.AddWithValue("@idVac", nombreLab);
+                SqlDataReader dataReader = query.ExecuteReader();
+
+                List<Vacuna> vacunas = new List<Vacuna>();
+
+                while (dataReader.Read())
+                {
+                    Vacuna unaVacuna = new Vacuna()
+                    {
+                        Nombre = (string)dataReader["Nombre"],
+                        IdTipo = (string)dataReader["IdTipo"],
+                        Precio = (decimal)dataReader["Precio"],
+
+                    };
+                    vacunas.Add(unaVacuna);
+                }
+                return vacunas;
+            }
+            catch (Exception e)
+            {
+                System.Diagnostics.Debug.Assert(false, "Error al listar vacunas por nombre de laboratorio" + e.Message);
+                return null;
+            }
+            finally
+            {
+                manejadorConexion.CerrarConexion(con);
+            }
         }
 
         public IEnumerable<Vacuna> FindAllByMaxPrice(int precioMax)
         {
-            throw new NotImplementedException();
+            Conexion manejadorConexion = new Conexion();
+            SqlConnection con = manejadorConexion.crearConexion();
+
+            try
+            {
+                SqlCommand query = new SqlCommand("Select * from Vacunas where Precio <= @Precio", con);
+                manejadorConexion.AbrirConexion(con);
+
+                query.Parameters.AddWithValue("@idVac", precioMax);
+                SqlDataReader dataReader = query.ExecuteReader();
+
+                List<Vacuna> vacunas = new List<Vacuna>();
+
+                while (dataReader.Read())
+                {
+                    Vacuna unaVacuna = new Vacuna()
+                    {
+                        Nombre = (string)dataReader["Nombre"],
+                        IdTipo = (string)dataReader["IdTipo"],
+                        Precio = (decimal)dataReader["Precio"],
+
+                    };
+                    vacunas.Add(unaVacuna);
+                }
+                return vacunas;
+            }
+            catch (Exception e)
+            {
+                System.Diagnostics.Debug.Assert(false, "Error al listar vacunas por tope superior de precio" + e.Message);
+                return null;
+            }
+            finally
+            {
+                manejadorConexion.CerrarConexion(con);
+            }
+
         }
 
         public IEnumerable<Vacuna> FindAllByMinPrice(int precioMin)
         {
-            throw new NotImplementedException();
+            Conexion manejadorConexion = new Conexion();
+            SqlConnection con = manejadorConexion.crearConexion();
+
+            try
+            {
+                SqlCommand query = new SqlCommand("Select * from vacunas where Precio >= @Precio", con);
+                manejadorConexion.AbrirConexion(con);
+
+                query.Parameters.AddWithValue("@idVac", precioMin);
+                SqlDataReader dataReader = query.ExecuteReader();
+
+                List<Vacuna> vacunas = new List<Vacuna>();
+
+                while (dataReader.Read())
+                {
+                    Vacuna unaVacuna = new Vacuna()
+                    {
+                        Nombre = (string)dataReader["Nombre"],
+                        IdTipo = (string)dataReader["IdTipo"],
+                        Precio = (decimal)dataReader["Precio"],
+
+                    };
+                    vacunas.Add(unaVacuna);
+                }
+                return vacunas;
+            }
+            catch (Exception e)
+            {
+                System.Diagnostics.Debug.Assert(false, "Error al listar vacunas por tope inferior de precio" + e.Message);
+                return null;
+            }
+            finally
+            {
+                manejadorConexion.CerrarConexion(con);
+            }
         }
 
         public Vacuna FindByAll(string nombre)

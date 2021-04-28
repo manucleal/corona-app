@@ -27,8 +27,6 @@ namespace Dominio.InterfacesRepositorio
 
         IEnumerable<Vacuna> FindAllByMinPrice(int precioMin);
 
-        IEnumerable<Vacuna> FindAllByIdVac(int idVac);
-
         IEnumerable<Vacuna> FindAllByIdTypeVac(int idVac);
 
         IEnumerable<Vacuna> FindAllByLabName(string nombreLab);
