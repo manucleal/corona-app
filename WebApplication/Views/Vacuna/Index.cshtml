@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Dominio.EntidadesNegocio.Vacuna>
+﻿@model IEnumerable<WcfServicioCoronApp.DtoVacunas>
 @{
     ViewBag.H1 = "Listar Vacuna";
     ViewBag.Title = "Listar Vacuna";
@@ -32,7 +32,7 @@
                         <th>Efect.<br>Adversos</th>
                 </thead>
                 <tbody>
-                    @foreach (Dominio.EntidadesNegocio.Vacuna item in Model)
+                    @foreach (WcfServicioCoronApp.DtoVacunas item in Model)
                     {
                     <tr>
                         <td>@item.Nombre</td>

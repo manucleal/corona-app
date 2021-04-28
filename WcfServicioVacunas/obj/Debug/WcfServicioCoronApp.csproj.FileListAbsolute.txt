@@ -1,0 +1,12 @@
+C:\emanuel_ort\corona-app\WcfServicioVacunas\bin\WcfServicioVacunas.dll.config
+C:\emanuel_ort\corona-app\WcfServicioVacunas\bin\WcfServicioVacunas.dll
+C:\emanuel_ort\corona-app\WcfServicioVacunas\bin\WcfServicioVacunas.pdb
+C:\emanuel_ort\corona-app\WcfServicioVacunas\bin\Dominio.dll
+C:\emanuel_ort\corona-app\WcfServicioVacunas\bin\Repositorios.dll
+C:\emanuel_ort\corona-app\WcfServicioVacunas\bin\Dominio.pdb
+C:\emanuel_ort\corona-app\WcfServicioVacunas\bin\Repositorios.pdb
+C:\emanuel_ort\corona-app\WcfServicioVacunas\obj\Debug\WcfServicioCoronApp.csprojAssemblyReference.cache
+C:\emanuel_ort\corona-app\WcfServicioVacunas\obj\Debug\WcfServicioCoronApp.csproj.CoreCompileInputs.cache
+C:\emanuel_ort\corona-app\WcfServicioVacunas\obj\Debug\WcfServicioCoronApp.csproj.CopyComplete
+C:\emanuel_ort\corona-app\WcfServicioVacunas\obj\Debug\WcfServicioVacunas.dll
+C:\emanuel_ort\corona-app\WcfServicioVacunas\obj\Debug\WcfServicioVacunas.pdb

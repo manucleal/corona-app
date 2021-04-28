@@ -2,6 +2,7 @@
 using System.Web.Mvc;
 using Repositorios;
 using Dominio.EntidadesNegocio;
+using WcfServicioCoronApp;
 
 namespace WebApplication.Controllers
 {
@@ -18,8 +19,8 @@ namespace WebApplication.Controllers
                 return RedirectToAction("Login", "Usuario");
             }
 
-            RepositorioVacuna repoVacuna = new RepositorioVacuna();
-            return View(repoVacuna.FindAll());
+            ServicioVacunas serviciosVacunas = new ServicioVacunas();
+            return View(serviciosVacunas.GetTodasLasVacunas());
         }
 
         [HttpGet]
