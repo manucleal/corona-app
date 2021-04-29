@@ -14,6 +14,18 @@ namespace WcfServicioCoronApp
         IEnumerable<DtoVacunas> GetTodasLasVacunas();
         [OperationContract]
         IEnumerable<DtoVacunas> GetTodasLasVacunasPorNombre(string nombre);
+        [OperationContract]
+        IEnumerable<DtoVacunas> GetTodasLasVacunasPorFaseAprob(int faseClinicaAprob);
+        [OperationContract]
+        IEnumerable<DtoVacunas> GetTodasLasVacunasPorPaisLab(string pais);
+        [OperationContract]
+        IEnumerable<DtoVacunas> GetTodasLasVacunasPorTipoVac(string idTipo);
+        [OperationContract]
+        IEnumerable<DtoVacunas> GetTodasLasVacunasPorTopeSuperior(decimal precio);
+        [OperationContract]
+        IEnumerable<DtoVacunas> GetTodasLasVacunasPorTopeInferior(decimal precio);
+        [OperationContract]
+        IEnumerable<DtoVacunas> GetTodasLasVacunasPorNombreLab(string nombre);
     }
 
     [DataContract]

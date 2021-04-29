@@ -228,15 +228,15 @@ namespace Repositorios
 
             try
             {
-                SqlCommand query = new SqlCommand("Select * from Vacunas " +
-                                                   "where Id in (select IdVacuna " +
-                                                                "from VacunaLaboratorios" +
-                                                                "where IdLaboratorio in (select Id" +
-                                                                                        "from Laboratorios" +
-                                                                                        "where @PaisOrigen = PaisOrigen)", con);
+                SqlCommand query = new SqlCommand("SELECT * FROM Vacunas " +
+                                                   "WHERE Id IN (SELECT IdVacuna " +
+                                                                "FROM VacunaLaboratorios " +
+                                                                "WHERE IdLaboratorio IN (SELECT Id " +
+                                                                                        "FROM Laboratorios " +
+                                                                                        "WHERE PaisOrigen = @PaisOrigen))", con);
                 manejadorConexion.AbrirConexion(con);
 
-                query.Parameters.AddWithValue("@pais", pais);
+                query.Parameters.AddWithValue("@PaisOrigen", pais);
                 SqlDataReader dataReader = query.ExecuteReader();
 
                 List<Vacuna> vacunas = new List<Vacuna>();
@@ -266,21 +266,18 @@ namespace Repositorios
 
         }
 
-        public IEnumerable<Vacuna> FindAllByIdTypeVac(int idVac)
+        public IEnumerable<Vacuna> FindAllByTypeVac(string idTipo)
         {
             Conexion manejadorConexion = new Conexion();
             SqlConnection con = manejadorConexion.crearConexion();
 
             try
             {
-                SqlCommand query = new SqlCommand("select * " +
-                                                  "from Vacunas" +
-                                                  "where IdTipo in (select Id" +
-                                                                    "from TipoVacunas" +
-                                                                    "where Id = @Id)", con);
+                SqlCommand query = new SqlCommand("SELECT * FROM Vacunas " +
+                                                  "WHERE IdTipo = @idTipo", con);
                 manejadorConexion.AbrirConexion(con);
 
-                query.Parameters.AddWithValue("@idVac", idVac);
+                query.Parameters.AddWithValue("@idTipo", idTipo);
                 SqlDataReader dataReader = query.ExecuteReader();
 
                 List<Vacuna> vacunas = new List<Vacuna>();
@@ -317,16 +314,15 @@ namespace Repositorios
 
             try
             {
-                SqlCommand query = new SqlCommand("select * " +
-                                                  "from Vacunas" +
-                                                  "where Id in (select IdVacuna" +
-                                                                "from VacunaLaboratorios" +
-                                                                "where IdLaboratorio in (select Id" +
-                                                                                        "from Laboratorios" +
-                                                                                        "where Nombre like @Nombre %)", con);
+                SqlCommand query = new SqlCommand("SELECT * FROM Vacunas " +
+                                                  "WHERE Id IN (SELECT IdVacuna " +
+                                                                "FROM VacunaLaboratorios " +
+                                                                "WHERE IdLaboratorio IN (SELECT Id " +
+                                                                                        "FROM Laboratorios " +
+                                                                                        "WHERE Nombre like @Nombre))", con);
                 manejadorConexion.AbrirConexion(con);
 
-                query.Parameters.AddWithValue("@idVac", nombreLab);
+                query.Parameters.AddWithValue("@Nombre", nombreLab + "%");
                 SqlDataReader dataReader = query.ExecuteReader();
 
                 List<Vacuna> vacunas = new List<Vacuna>();
@@ -355,7 +351,7 @@ namespace Repositorios
             }
         }
 
-        public IEnumerable<Vacuna> FindAllByMaxPrice(int precioMax)
+        public IEnumerable<Vacuna> FindAllByMaxPrice(decimal precioMax)
         {
             Conexion manejadorConexion = new Conexion();
             SqlConnection con = manejadorConexion.crearConexion();
@@ -365,7 +361,7 @@ namespace Repositorios
                 SqlCommand query = new SqlCommand("Select * from Vacunas where Precio <= @Precio", con);
                 manejadorConexion.AbrirConexion(con);
 
-                query.Parameters.AddWithValue("@idVac", precioMax);
+                query.Parameters.AddWithValue("@Precio", precioMax);
                 SqlDataReader dataReader = query.ExecuteReader();
 
                 List<Vacuna> vacunas = new List<Vacuna>();
@@ -395,7 +391,7 @@ namespace Repositorios
 
         }
 
-        public IEnumerable<Vacuna> FindAllByMinPrice(int precioMin)
+        public IEnumerable<Vacuna> FindAllByMinPrice(decimal precioMin)
         {
             Conexion manejadorConexion = new Conexion();
             SqlConnection con = manejadorConexion.crearConexion();
@@ -405,7 +401,7 @@ namespace Repositorios
                 SqlCommand query = new SqlCommand("Select * from vacunas where Precio >= @Precio", con);
                 manejadorConexion.AbrirConexion(con);
 
-                query.Parameters.AddWithValue("@idVac", precioMin);
+                query.Parameters.AddWithValue("@Precio", precioMin);
                 SqlDataReader dataReader = query.ExecuteReader();
 
                 List<Vacuna> vacunas = new List<Vacuna>();

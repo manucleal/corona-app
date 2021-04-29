@@ -23,11 +23,11 @@ namespace Dominio.InterfacesRepositorio
 
         IEnumerable<Vacuna> FindAllByCountry(string pais);
 
-        IEnumerable<Vacuna> FindAllByMaxPrice(int precioMax);
+        IEnumerable<Vacuna> FindAllByMaxPrice(decimal precioMax);
 
-        IEnumerable<Vacuna> FindAllByMinPrice(int precioMin);
+        IEnumerable<Vacuna> FindAllByMinPrice(decimal precioMin);
 
-        IEnumerable<Vacuna> FindAllByIdTypeVac(int idVac);
+        IEnumerable<Vacuna> FindAllByTypeVac(string idTipo);
 
         IEnumerable<Vacuna> FindAllByLabName(string nombreLab);
     }

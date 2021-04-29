@@ -15,7 +15,12 @@
                 <select name="TipoFiltro">
                     <option value="">Seleccione el filtro </option>
                     <option value="PorNombre">Nombre</option>
-                    <option value="PorFaseAprob">Fase Aprobación</option>
+                    <option value="PorFaseAprob">Fase de aprobación</option>
+                    <option value="PorPaisLab">País de laboratorio</option>
+                    <option value="PorTipoVac">Tipo de Vacuna</option>
+                    <option value="PorTopeInferior">Tope inferior de precio</option>
+                    <option value="PorTopeSuperior">Tope superior de precio</option>
+                    <option value="PorNombreLab">Nombre Laboratorio</option>
                 </select>
                 <input type="text" name="filtro" />
                 <input type="submit" id="login" value="Buscar">
@@ -47,7 +52,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @if (ViewBag.Vacunas != null)
+                    @if (ViewBag.Vacunas != null && ViewBag.Vacunas.Count > 0)
                     {
                         foreach (WcfServicioCoronApp.DtoVacunas item in ViewBag.Vacunas)
                         {

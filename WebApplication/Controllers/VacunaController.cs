@@ -12,7 +12,6 @@ namespace WebApplication.Controllers
         // GET: Vacuna
         public ActionResult Index()
         {
-
             if ((string)Session["documento"] == null)
             {
                 Session["documento"] = null;
@@ -36,9 +35,32 @@ namespace WebApplication.Controllers
 
             if (tipoFiltro != null && filtro != null)
             {
-                if (tipoFiltro == "PorNombre") {
-
-                    ViewBag.Vacunas = serviciosVacunas.GetTodasLasVacunasPorNombre(filtro);
+                switch (tipoFiltro)
+                {
+                    case "PorNombre":
+                        ViewBag.Vacunas = serviciosVacunas.GetTodasLasVacunasPorNombre(filtro);
+                        break;
+                    case "PorFaseAprob":
+                        ViewBag.Vacunas = serviciosVacunas.GetTodasLasVacunasPorFaseAprob(4);
+                        break;
+                    case "PorPaisLab":
+                        ViewBag.Vacunas = serviciosVacunas.GetTodasLasVacunasPorPaisLab(filtro);
+                        break;
+                    case "PorTipoVac":
+                        ViewBag.Vacunas = serviciosVacunas.GetTodasLasVacunasPorTipoVac(filtro);
+                        break;
+                    case "PorTopeInferior":
+                        ViewBag.Vacunas = serviciosVacunas.GetTodasLasVacunasPorTopeInferior(23);
+                        break;
+                    case "PorTopeSuperior":
+                        ViewBag.Vacunas = serviciosVacunas.GetTodasLasVacunasPorTopeSuperior(23);
+                        break;
+                    case "PorNombreLab":
+                        ViewBag.Vacunas = serviciosVacunas.GetTodasLasVacunasPorNombreLab(filtro);
+                        break;
+                    default:
+                        ViewBag.Vacunas = serviciosVacunas.GetTodasLasVacunas();
+                        break;
                 }
             }
             else
