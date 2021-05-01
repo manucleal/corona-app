@@ -1,0 +1,11 @@
+C:\Users\tatop\corona-app\ArchivoTexto\bin\Debug\ArchivoTexto.dll
+C:\Users\tatop\corona-app\ArchivoTexto\bin\Debug\ArchivoTexto.pdb
+C:\Users\tatop\corona-app\ArchivoTexto\bin\Debug\Repositorios.dll
+C:\Users\tatop\corona-app\ArchivoTexto\bin\Debug\Dominio.dll
+C:\Users\tatop\corona-app\ArchivoTexto\bin\Debug\Repositorios.pdb
+C:\Users\tatop\corona-app\ArchivoTexto\bin\Debug\Dominio.pdb
+C:\Users\tatop\corona-app\ArchivoTexto\obj\Debug\ArchivoTexto.csprojAssemblyReference.cache
+C:\Users\tatop\corona-app\ArchivoTexto\obj\Debug\ArchivoTexto.csproj.CoreCompileInputs.cache
+C:\Users\tatop\corona-app\ArchivoTexto\obj\Debug\ArchivoTexto.csproj.CopyComplete
+C:\Users\tatop\corona-app\ArchivoTexto\obj\Debug\ArchivoTexto.dll
+C:\Users\tatop\corona-app\ArchivoTexto\obj\Debug\ArchivoTexto.pdb

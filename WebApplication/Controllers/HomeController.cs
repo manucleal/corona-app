@@ -3,6 +3,7 @@ using System.Data.SqlClient;
 using Dominio.EntidadesNegocio;
 using Repositorios;
 using System;
+using ArchivoTexto;
 
 namespace WebApplication.Controllers
 {
@@ -11,31 +12,7 @@ namespace WebApplication.Controllers
         // GET: Home
         public ActionResult Index()
         {
-            //agregando vacuna
-            Vacuna Vacuna = new Vacuna();
-            Vacuna.Nombre = "Nombre Vacuna 1";
-            Vacuna.CantidadDosis = 2;
-            Vacuna.LapsoDiasDosis = 20;
-            Vacuna.MinEdad = 50;
-            Vacuna.MaxEdad = 60;
-            Vacuna.EficaciaPrev = 65;
-            Vacuna.EficaciaHosp = 80;
-            Vacuna.EficaciaCti = 75;
-            Vacuna.MinTemp = -10;
-            Vacuna.MaxTemp = 15;
-            Vacuna.ProduccionAnual = 1000000;
-            Vacuna.FaseClinicaAprob = 3;
-            Vacuna.Emergencia = false;
-            Vacuna.EfectosAdversos = "fiebre y dolor de cabeza";
-            Vacuna.Precio = 100;
-            Vacuna.UltimaModificacion = new DateTime();
-
-            RepositorioVacuna repoVacuna = new RepositorioVacuna();
-            bool result = repoVacuna.Add(Vacuna);
-            if (!result)
-            {
-                throw new NotImplementedException();
-            }
+            AccesoArchivo.GenerarArchivos();
             return View();
         }
         // GET: Home
