@@ -71,10 +71,10 @@ CREATE TABLE [dbo].[Paises]
 ):
 
 INSERT INTO Paises 
-VALUES ('USA','Estados Unidos'),('DEU','Alemania'),('CHN','China'),('SWE','Suecia'),('GBR','Reino Unido'),('URY','Uruguay'),('BRA','Brasil'),('ARG','Argentina'),('ISR','Israel'),('MEX','México');
+VALUES ('USA','Estados Unidos'),('DEU','Alemania'),('CHN','China'),('SWE','Suecia'),('GBR','Reino Unido'),('URY','Uruguay'),('BRA','Brasil'),('ARG','Argentina'),('ISR','Israel'),('MEX','México')('RUS', 'Rusia')('IND', 'India');
 
 INSERT INTO Laboratorios (Nombre, PaisOrigen, Experiencia) 
-VALUES ('Moderna','USA',1),('BioNTech','DEU',1),('Pfizer','USA',1),('Sinovac','CHN',1),('Oxford','SWE',1),('Astrazeneca','GBR',1);
+VALUES ('Moderna','USA',1),('BioNTech','DEU',1),('Pfizer','USA',1),('Sinovac','CHN',1),('Oxford','SWE',1),('Astrazeneca','GBR',1)('Laboratorio Ruso','RUS',1)('laboratorio Indio', 'IND', 1)('Novavax', 'USA', 1);
 
 INSERT INTO TipoVacunas (Id,Descripcion) 
 VALUES ('VV','Vector viral'),('mRNA','ARN mensajero'),('IV','Virus inactivo'),('PB','Basado en proteínas');
@@ -94,3 +94,32 @@ INSERT INTO Usuarios VALUES
 ('45544061','Fausto','gHCBvUu6/+H8LO6FLL4MJo469G4='), 
 ('46902781','Emanuel','7WHutpgHO4comhHzgQnUnZee3vM=');
 
+INSERT INTO Status VALUES
+(1,'IND'),
+(1, 'RUS'),
+(1, 'MEX'), 
+(2, 'CHN'),
+(2, 'DEU'),
+(3, 'CHN'),
+(3, 'SWE'),
+(4,'USA'),
+(4,'SWE'),
+(5,'URY'),
+(5,'ISR'),
+(6,'ARG'),
+(6,'CHN'),
+(7,'DEU'),
+(7,'USA'),
+(8,'MEX'),
+(8,'GBR');
+
+INSERT INTO VacunaLaboratorios VALUES
+(1,7),
+(2,4),
+(3,1),
+(4,8),
+(5,5),
+(6,9),
+(7,5),
+(7,6),
+(8,2);

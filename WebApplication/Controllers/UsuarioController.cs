@@ -1,6 +1,7 @@
 ﻿using System.Web.Mvc;
 using Dominio.EntidadesNegocio;
 using Repositorios;
+using ArchivoTexto;
 
 namespace WebApplication.Controllers
 {
@@ -116,6 +117,11 @@ namespace WebApplication.Controllers
                 }
             }
             return (contMay > 0 && contMin > 0 && contDig > 0);
+        }
+
+        public void ExportarArchivos()
+        {
+            AccesoArchivo.GenerarArchivos();
         }
     }
 }
