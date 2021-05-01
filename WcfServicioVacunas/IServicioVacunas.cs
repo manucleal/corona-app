@@ -52,7 +52,7 @@ namespace WcfServicioCoronApp
         [DataMember]
         public int MaxTemp { get; set; }
         [DataMember]
-        public int ProduccionAnual { get; set; }
+        public long ProduccionAnual { get; set; }
         [DataMember]
         public int FaseClinicaAprob { get; set; }
         [DataMember]

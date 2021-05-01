@@ -10,8 +10,16 @@
     <div class="FormEmpleados">
         <form method="post" action="/Vacuna/Alta" autocomplete="on">
             <div class="infoPersonal">
+
                 <label for="nombre"></label>
                 <input type="text" name="nombre" placeholder="Nombre vacuna (*)" required />
+                <div class="has-error">
+                    <span className="text-danger text-small d-block mb-2">
+                        @Html.ValidationMessageFor(model => model.Nombre, "", new { @class = "help-block" })
+                        @Html.HiddenFor(model => model.Nombre)
+                    </span>
+                </div>
+
                 <input type="number" name="cantidadDosis" placeholder="Cantidad dosis (*)" required />
                 <input type="number" name="lapsoDiasDosis" placeholder="Días entre dosis (*)" required />
                 <input type="number" name="produccionAnual" placeholder="Producción anual (*)" required />

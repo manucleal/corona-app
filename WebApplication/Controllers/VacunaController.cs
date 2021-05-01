@@ -4,16 +4,15 @@ using Repositorios;
 using Dominio.EntidadesNegocio;
 using WcfServicioCoronApp;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace WebApplication.Controllers
 {
     public class VacunaController : Controller
     {
-        // GET: Vacuna
         public ActionResult Index()
         {
-            if ((string)Session["documento"] == null)
-            {
+            if ((string)Session["documento"] == null){
                 Session["documento"] = null;
                 Session["nombre"] = null;
                 return RedirectToAction("Login", "Usuario");
@@ -29,34 +28,34 @@ namespace WebApplication.Controllers
         }
 
         [HttpPost]
-        public ActionResult Index(string tipoFiltro, string filtro)
+        public ActionResult Index(string tipoFiltro, string filtroText = "", int filtroNumber = 0)
         {
             ServicioVacunas serviciosVacunas = new ServicioVacunas();
 
-            if (tipoFiltro != null && filtro != null)
+            if (tipoFiltro != null && (filtroText != "" || filtroNumber >= 0))
             {
                 switch (tipoFiltro)
                 {
                     case "PorNombre":
-                        ViewBag.Vacunas = serviciosVacunas.GetTodasLasVacunasPorNombre(filtro);
+                        ViewBag.Vacunas = serviciosVacunas.GetTodasLasVacunasPorNombre(filtroText);
                         break;
                     case "PorFaseAprob":
-                        ViewBag.Vacunas = serviciosVacunas.GetTodasLasVacunasPorFaseAprob(4);
+                        ViewBag.Vacunas = serviciosVacunas.GetTodasLasVacunasPorFaseAprob(filtroNumber);
                         break;
                     case "PorPaisLab":
-                        ViewBag.Vacunas = serviciosVacunas.GetTodasLasVacunasPorPaisLab(filtro);
+                        ViewBag.Vacunas = serviciosVacunas.GetTodasLasVacunasPorPaisLab(filtroText);
                         break;
                     case "PorTipoVac":
-                        ViewBag.Vacunas = serviciosVacunas.GetTodasLasVacunasPorTipoVac(filtro);
+                        ViewBag.Vacunas = serviciosVacunas.GetTodasLasVacunasPorTipoVac(filtroText);
                         break;
                     case "PorTopeInferior":
-                        ViewBag.Vacunas = serviciosVacunas.GetTodasLasVacunasPorTopeInferior(23);
+                        ViewBag.Vacunas = serviciosVacunas.GetTodasLasVacunasPorTopeInferior(filtroNumber);
                         break;
                     case "PorTopeSuperior":
-                        ViewBag.Vacunas = serviciosVacunas.GetTodasLasVacunasPorTopeSuperior(23);
+                        ViewBag.Vacunas = serviciosVacunas.GetTodasLasVacunasPorTopeSuperior(filtroNumber);
                         break;
                     case "PorNombreLab":
-                        ViewBag.Vacunas = serviciosVacunas.GetTodasLasVacunasPorNombreLab(filtro);
+                        ViewBag.Vacunas = serviciosVacunas.GetTodasLasVacunasPorNombreLab(filtroText);
                         break;
                     default:
                         ViewBag.Vacunas = serviciosVacunas.GetTodasLasVacunas();
@@ -74,18 +73,13 @@ namespace WebApplication.Controllers
         [HttpGet]
         public ActionResult Alta()
         {
-            if ((string)Session["documento"] == null)
-            {
+            if ((string)Session["documento"] == null) {
                 Session["documento"] = null;
                 Session["nombre"] = null;
                 return RedirectToAction("Login", "Usuario");
             }
-            
-            RepositorioLaboratorio repoLaboratorio = new RepositorioLaboratorio();
-            ViewBag.Laboratorios = repoLaboratorio.FindAll();
-            RepositorioTipoVacuna repoTipoVacuna = new RepositorioTipoVacuna();
-            ViewBag.TipoVacunas = repoTipoVacuna.FindAll();
 
+            cargarFiltros();
             return View();
         }
 
@@ -94,25 +88,37 @@ namespace WebApplication.Controllers
         {
             if (ModelState.IsValid)
             {
-                if (unaVacuna.MinTemp <= unaVacuna.MinTemp)
+                unaVacuna.IdUsuario = (string)Session["documento"];
+                RepositorioVacuna repoVacuna = new RepositorioVacuna();
+                IEnumerable<Vacuna> vacunas = repoVacuna.FindAllByName(unaVacuna.Nombre);
+                if (vacunas.ToList().Count == 0)
                 {
-                    unaVacuna.IdUsuario = (string)Session["documento"];
-                    RepositorioVacuna repoVacuna = new RepositorioVacuna();
-
-                    if (repoVacuna.Add(unaVacuna))
+                    if (unaVacuna.MinTemp <= unaVacuna.MaxTemp)
                     {
-                        return RedirectToAction("Index", "Vacuna");
+                        if (repoVacuna.Add(unaVacuna))
+                        {
+                            return RedirectToAction("Index", "Vacuna");
+                        }
                     }
-                }
-                else
+                    else
+                    {
+                        ModelState.AddModelError("minTemp", "Debe ser menor o igual a Máxima temp.");
+                    }
+                } else
                 {
-                    ModelState.AddModelError("minTemp", "Debe ser menor o igual a Máxima temp.");
+                    ModelState.AddModelError("nombre", "Ya existe una vacuna con ese nombre");
                 }
-
             }
-
+            cargarFiltros();
             return View();
         }
 
+        public void cargarFiltros()
+        {
+            RepositorioLaboratorio repoLaboratorio = new RepositorioLaboratorio();
+            ViewBag.Laboratorios = repoLaboratorio.FindAll();
+            RepositorioTipoVacuna repoTipoVacuna = new RepositorioTipoVacuna();
+            ViewBag.TipoVacunas = repoTipoVacuna.FindAll();
+        }
     }
 }

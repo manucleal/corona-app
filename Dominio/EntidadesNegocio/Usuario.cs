@@ -8,7 +8,8 @@ namespace Dominio.EntidadesNegocio
     public class Usuario
     {
         [Required(ErrorMessage = "El documento es obligatorio")]
-        [StringLength(8, ErrorMessage = "Documento incorrecto")]
+        [MinLength(7, ErrorMessage = "Documento incorrecto")]
+        [MaxLength(8, ErrorMessage = "Documento incorrecto")]
         public string Documento { get; set; }
 
         [MinLength(3, ErrorMessage = "Debe superar 3 caracteres")]

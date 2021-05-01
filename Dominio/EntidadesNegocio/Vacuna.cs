@@ -46,7 +46,7 @@ namespace Dominio.EntidadesNegocio
         public int MaxTemp { get; set; }
 
         [Required(ErrorMessage = "La Produccion anual es obligatorio")]
-        public int ProduccionAnual { get; set; }
+        public long ProduccionAnual { get; set; }
 
         [Required(ErrorMessage = "La Fase Clínica aprob. es obligatorio")]
         [Range(1, 4, ErrorMessage = "El valor {0} debe estar entr {1} y {2}.")]

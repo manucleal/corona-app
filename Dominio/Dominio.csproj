@@ -46,7 +46,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Categoria.cs" />
     <Compile Include="EntidadesNegocio\IValidable.cs" />
     <Compile Include="EntidadesNegocio\TipoVacuna.cs" />
     <Compile Include="EntidadesNegocio\Usuario.cs" />

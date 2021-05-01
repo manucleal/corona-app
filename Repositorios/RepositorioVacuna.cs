@@ -97,7 +97,7 @@ namespace Repositorios
                         EficaciaCti = (int)dataReader["EficaciaCti"],
                         MaxTemp = (int)dataReader["MaxTemp"],
                         MinTemp = (int)dataReader["MinTemp"],
-                        ProduccionAnual = (int)dataReader["ProduccionAnual"],
+                        ProduccionAnual = (long)dataReader["ProduccionAnual"],
                         FaseClinicaAprob = (int)dataReader["FaseClinicaAprob"],
                         Emergencia = (bool)dataReader["Emergencia"],
                         EfectosAdversos = (string)dataReader["EfectosAdversos"],

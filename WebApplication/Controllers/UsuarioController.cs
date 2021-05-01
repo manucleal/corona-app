@@ -8,6 +8,9 @@ namespace WebApplication.Controllers
     {
         public ActionResult Registro()
         {
+            if ((string)Session["documento"] != null && Session["nombre"] != null) {
+                return RedirectToAction("Index", "Vacuna");
+            }
             return View("Registro");
         }
 
@@ -45,11 +48,7 @@ namespace WebApplication.Controllers
 
         public ActionResult Login()
         {
-            string doc = (string)Session["documento"];
-            string nom = (string)Session["nombre"];
-
-            if ((string)Session["documento"] != null && Session["nombre"] != null)
-            {
+            if ((string)Session["documento"] != null && (string)Session["nombre"] != null){
                 return RedirectToAction("Index", "Vacuna");
             }
             return View();
