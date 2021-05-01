@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Data.SqlClient;
-using System.Linq;
 using Dominio.EntidadesNegocio;
 using Dominio.InterfacesRepositorio;
 using Repositorios.UtilidadesBD;
@@ -54,6 +52,16 @@ namespace Repositorios
                         cmd2.Parameters.AddWithValue("@IdLaboratorio", (int)lab);
                         cmd2.ExecuteNonQuery();
                     }
+
+                    SqlCommand cmd3 = new SqlCommand("INSERT INTO Status VALUES (@IdVac,@CodPais)", con);
+                    foreach (string pais in unaVacuna.Paises)
+                    {
+                        cmd3.Parameters.Clear();
+                        cmd3.Parameters.AddWithValue("@IdVac", (int)modified);
+                        cmd3.Parameters.AddWithValue("@CodPais", (string)pais);
+                        cmd3.ExecuteNonQuery();
+                    }
+
                     handler.CerrarConexion(con);
                     return true;
                 }

@@ -58,6 +58,7 @@ namespace Dominio.EntidadesNegocio
         public DateTime UltimaModificacion { get; set; }
         public string IdUsuario { get; set; }
         public string IdTipo { get; set; }
+        public string[] Paises { get; set; }
         public int[] Laboratorios { get; set; }
         public ICollection<Laboratorio> ListaLaboratorios { get; set; } = new List<Laboratorio>();
         public bool Covax { get; set; }

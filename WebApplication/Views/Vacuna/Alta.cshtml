@@ -51,6 +51,15 @@
                         <option value="@item.Id">@item.Nombre</option>
                     }
                 </select>
+
+                <select name="Paises" multiple>
+                    <option value="">Seleccione el/los Países (*)</option>
+                    @foreach (Dominio.EntidadesNegocio.Pais item in ViewBag.Paises)
+                    {
+                        <option value="@item.CodPais">@item.Nombre</option>
+                    }
+                </select>
+
             </div>
             <div class="formInfo">
                 <fieldset>

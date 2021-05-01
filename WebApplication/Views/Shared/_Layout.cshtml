@@ -26,13 +26,15 @@
         <header>
             <h1>@ViewBag.H1</h1>
             <div id="iconPersona">
-                <span>
-                    @if (Session["documento"] != null)
-                    {
-                        @Session["nombre"]
-                    }
-                </span>
-                <a href="/usuario/salir"><img src="~/Content/img/iconPersona.png" alt="icono de persona"></a>
+                @if (Session["documento"] != null)
+                {
+                    <span>@Session["nombre"]</span>
+                    <a href="/Usuario/Salir"><img src="~/Content/img/iconPersona.png" alt="icono de persona"></a>
+                }
+                else
+                {
+                    <a href="/Usuario/Login"><span>Ingresar </span></a>
+                }
             </div>
         </header>
     </div>

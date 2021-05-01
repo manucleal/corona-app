@@ -1,0 +1,27 @@
+﻿
+@{
+    ViewBag.Title = "Modificar";
+}
+
+<main>
+    <small>Dashboard / <em>Modificar <p style="color:red;">@ViewBag.mensaje</p></em></small>
+    <div class="FormEmpleados">
+        <form method="post" action="/proyecto/AsignarAusenciasEmpleado" autocomplete="on">
+            <div class="infoPersonal">
+                <div class="formInfo">
+                    <fieldset>
+                        <legend>Fase clínica de aprobación (*)</legend>
+                        <input type="number" name="faseClinicaAprob" class="ajustarAnchoInput"onkeypress="return justNumbers(event);" min="1" pattern="^[1-9]" min="1" max="4" required/>
+                    </fieldset>
+                </div>
+            </div>
+            <div class="formInfo">
+                <fieldset>
+                    <legend>Precio</legend>
+                    <input type="number" onkeypress="return justNumbers(event);" min="1" pattern="^[1-9]" name="precio" required />
+                </fieldset>
+            </div>
+        </form>
+    </div>
+</main>
+

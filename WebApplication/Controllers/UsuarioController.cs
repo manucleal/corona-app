@@ -9,7 +9,7 @@ namespace WebApplication.Controllers
         public ActionResult Registro()
         {
             if ((string)Session["documento"] != null && Session["nombre"] != null) {
-                return RedirectToAction("Index", "Vacuna");
+                return RedirectToAction("IndexAuth", "Vacuna");
             }
             return View("Registro");
         }
@@ -31,7 +31,7 @@ namespace WebApplication.Controllers
                 {
                     Session["documento"] = unUsuario.Documento;
                     Session["nombre"] = usuario.Nombre;
-                    return RedirectToAction("Index", "Vacuna");
+                    return RedirectToAction("IndexAuth", "Vacuna");
                 }
                 else
                 {
@@ -49,7 +49,7 @@ namespace WebApplication.Controllers
         public ActionResult Login()
         {
             if ((string)Session["documento"] != null && (string)Session["nombre"] != null){
-                return RedirectToAction("Index", "Vacuna");
+                return RedirectToAction("IndexAuth", "Vacuna");
             }
             return View();
         }
@@ -69,7 +69,7 @@ namespace WebApplication.Controllers
                     {
                         Session["documento"] = usuario.Documento;
                         Session["nombre"] = usuario.Nombre;
-                        return RedirectToAction("Index", "Vacuna");
+                        return RedirectToAction("IndexAuth", "Vacuna");
                     }
                     else
                     {
@@ -89,7 +89,7 @@ namespace WebApplication.Controllers
         {
             Session["documento"] = null;
             Session["nombre"] = null;
-            return RedirectToAction("Login");
+            return RedirectToAction("Index", "Vacuna");
         }
 
         public bool VerificoPass(string password)

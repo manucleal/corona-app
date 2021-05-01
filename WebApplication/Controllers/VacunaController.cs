@@ -10,25 +10,48 @@ namespace WebApplication.Controllers
 {
     public class VacunaController : Controller
     {
+        private ServicioVacunas serviciosVacunas = new ServicioVacunas();
+        private RepositorioLaboratorio repoLaboratorio = new RepositorioLaboratorio();
+        private RepositorioTipoVacuna repoTipoVacuna = new RepositorioTipoVacuna();
+        private RepositorioPais repoPais = new RepositorioPais();
+
+        [HttpGet]
         public ActionResult Index()
         {
-            if ((string)Session["documento"] == null){
+            IEnumerable<DtoVacunas> vacunas = serviciosVacunas.GetTodasLasVacunas();
+            ViewBag.Vacunas = vacunas;
+            return View();
+        }
+
+        [HttpGet]
+        public ActionResult IndexAuth()
+        {
+            if ((string)Session["documento"] == null)
+            {
                 Session["documento"] = null;
                 Session["nombre"] = null;
-                return RedirectToAction("Login", "Usuario");
+                return RedirectToAction("Vacuna", "Index");
             }
 
-            ServicioVacunas serviciosVacunas = new ServicioVacunas();
             IEnumerable<DtoVacunas> vacunas = serviciosVacunas.GetTodasLasVacunas();
-            if (vacunas != null)
+            ViewBag.Vacunas = vacunas;
+            return View();
+        }
+
+        [HttpGet]
+        public ActionResult Modificar()
+        {
+            if ((string)Session["documento"] == null)
             {
-                ViewBag.Vacunas = vacunas;
+                Session["documento"] = null;
+                Session["nombre"] = null;
+                return RedirectToAction("Vacuna", "Index");
             }
             return View();
         }
 
         [HttpPost]
-        public ActionResult Index(string tipoFiltro, string filtroText = "", int filtroNumber = 0)
+        public ActionResult IndexAuth(string tipoFiltro, string filtroText = "", int filtroNumber = 0)
         {
             ServicioVacunas serviciosVacunas = new ServicioVacunas();
 
@@ -67,7 +90,7 @@ namespace WebApplication.Controllers
                 ViewBag.Vacunas = serviciosVacunas.GetTodasLasVacunas();
             }
 
-            return View();
+            return View("IndexAuth");
         }
 
         [HttpGet]
@@ -76,7 +99,7 @@ namespace WebApplication.Controllers
             if ((string)Session["documento"] == null) {
                 Session["documento"] = null;
                 Session["nombre"] = null;
-                return RedirectToAction("Login", "Usuario");
+                return RedirectToAction("Vacuna", "Index");
             }
 
             cargarFiltros();
@@ -114,11 +137,10 @@ namespace WebApplication.Controllers
         }
 
         public void cargarFiltros()
-        {
-            RepositorioLaboratorio repoLaboratorio = new RepositorioLaboratorio();
-            ViewBag.Laboratorios = repoLaboratorio.FindAll();
-            RepositorioTipoVacuna repoTipoVacuna = new RepositorioTipoVacuna();
-            ViewBag.TipoVacunas = repoTipoVacuna.FindAll();
+        {            
+            ViewBag.Laboratorios = repoLaboratorio.FindAll();            
+            ViewBag.TipoVacunas = repoTipoVacuna.FindAll();            
+            ViewBag.Paises = repoPais.FindAll();
         }
     }
 }

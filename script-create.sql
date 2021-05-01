@@ -34,7 +34,7 @@ CREATE TABLE [dbo].[Vacunas] (
     [EficaciaCti]        INT            NOT NULL,
     [MaxTemp]            INT            NOT NULL,
     [MinTemp]            INT            NOT NULL,
-    [ProduccionAnual]    INT            NOT NULL,
+    [ProduccionAnual]    BIGINT         NOT NULL,
     [FaseClinicaAprob]   INT            NOT NULL,
     [Emergencia]         BIT            NOT NULL,
     [EfectosAdversos]    TEXT           NOT NULL,
@@ -47,11 +47,12 @@ CREATE TABLE [dbo].[Vacunas] (
     FOREIGN KEY ([IdUsuario]) REFERENCES [dbo].[Usuarios] ([Documento])
 );
 
-CREATE TABLE [dbo].[Status](
-	[IdVac] INT NOT NULL, 
-    [CodPais] CHAR(3) NOT NULL,
-	PRIMARY KEY(IdVac,CodPais),
-	FOREIGN KEY ([IdVac]) REFERENCES Vacunas([Id])
+CREATE TABLE [dbo].[Status] (
+    [IdVac]   INT      NOT NULL,
+    [CodPais] CHAR (3) NOT NULL,
+    PRIMARY KEY CLUSTERED ([IdVac] ASC, [CodPais] ASC),
+    FOREIGN KEY ([IdVac]) REFERENCES [dbo].[Vacunas] ([Id]),
+	FOREIGN KEY ([CodPais]) REFERENCES [dbo].[Paises] ([CodPais])
 );
 
 CREATE TABLE [dbo].[VacunaLaboratorios]
@@ -62,6 +63,15 @@ CREATE TABLE [dbo].[VacunaLaboratorios]
 	FOREIGN KEY ([IdVacuna]) REFERENCES Vacunas([Id]),
 	FOREIGN KEY ([IdLaboratorio]) REFERENCES Laboratorios([Id])
 );
+
+CREATE TABLE [dbo].[Paises]
+(
+	[CodPais] CHAR(3) NOT NULL PRIMARY KEY, 
+    [Nombre] VARCHAR(50) NOT NULL UNIQUE
+):
+
+INSERT INTO Paises 
+VALUES ('USA','Estados Unidos'),('DEU','Alemania'),('CHN','China'),('SWE','Suecia'),('GBR','Reino Unido'),('URY','Uruguay'),('BRA','Brasil'),('ARG','Argentina'),('ISR','Israel'),('MEX','México');
 
 INSERT INTO Laboratorios (Nombre, PaisOrigen, Experiencia) 
 VALUES ('Moderna','USA',1),('BioNTech','DEU',1),('Pfizer','USA',1),('Sinovac','CHN',1),('Oxford','SWE',1),('Astrazeneca','GBR',1);
