@@ -68,3 +68,19 @@ VALUES ('Moderna','USA',1),('BioNTech','DEU',1),('Pfizer','USA',1),('Sinovac','C
 
 INSERT INTO TipoVacunas (Id,Descripcion) 
 VALUES ('VV','Vector viral'),('mRNA','ARN mensajero'),('IV','Virus inactivo'),('PB','Basado en proteínas');
+
+INSERT INTO Vacunas (idTipo, IdUsuario, Nombre, CantidadDosis, LapsoDiasDosis, MaxEdad, MinEdad, EficaciaPrev, EficaciaHosp, EficaciaCti, MaxTemp, MinTemp, ProduccionAnual, FaseClinicaAprob, Emergencia, EfectosAdversos, Precio, UltimaModificacion,Covax) 
+VALUES 
+('VV','45544061','Sputnik V', 2, 30, 60, 18, 91.6, 85, 87, 23, 2, 45000000, 4,1, 'Irritaciones de piel, gripe, dolor de cabeza y fatiga', 15,GETDATE(),0),
+('IV','45544061','Sinopharm', 2, 45, 90, 15, 79, 87, 85, 25, 0, 19800000, 3,1, 'Fiebre, diarrea, dolor de cabeza', 20,GETDATE(), 0),
+('mRNA ','46902781','Moderna',2,90,100,15,94.1,98,100,15, -5, 300000000, 4,1, 'fiebre, escalofríos, cansancio y dolor de cabeza', 23, GETDATE(), 0),
+('IV','46902781','Covaxin', 2, 28, 65,12, 81, 85, 90, 8, 2, 20400000, 4,1, 'Fiebre, nausas', 17, GETDATE(), 0),
+('VV','46902781','Janssen', 1, 0, 120, 18, 66.3, 70, 68, 12, 2, 45900000, 3, 1, 'Fiebre, gripe severa, calambres', 23, GETDATE(), 0),
+('PB','45544061','Novavax', 1, 0, 90, 10, 96.4, 95, 100, 12, 0, 2909990, 3,0, 'Jaqueca, fiebre', 26, GETDATE(), 0),
+('PB','45544061' ,'Oxford-Astrazeneca', 2, 90, 90, 15, 70, 65, 73, 18, 5, 54000000, 3, 0, 'Trombosis, fiebre, gripe', 16, GETDATE(), 1),
+('mRNA','46902781','Vacunita', 1, 0, 90, 12, 70,78,80, 20, 5, 12300000, 2, 0, 'Diarrea, vomitos, dolor de espalda' , 5, GETDATE(), 1);
+
+INSERT INTO Usuarios VALUES
+('45544061','Fausto','gHCBvUu6/+H8LO6FLL4MJo469G4='), 
+('46902781','Emanuel','7WHutpgHO4comhHzgQnUnZee3vM=');
+
