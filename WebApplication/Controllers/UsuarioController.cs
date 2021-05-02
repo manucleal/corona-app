@@ -119,9 +119,17 @@ namespace WebApplication.Controllers
             return (contMay > 0 && contMin > 0 && contDig > 0);
         }
 
-        public void ExportarArchivos()
+
+        public ActionResult GenerarArchivos()
         {
-            AccesoArchivo.GenerarArchivos();
+            if ((string)Session["documento"] != null && Session["nombre"] != null)
+            {
+                AccesoArchivo.GenerarArchivos();
+                ViewBag.Vacunas = "Archivos de texto generados";
+                return RedirectToAction("IndexAuth", "Vacuna");
+            }
+            return View("Registro");
+
         }
     }
 }

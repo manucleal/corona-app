@@ -17,6 +17,7 @@ namespace ArchivoTexto
         private static string nombreArchivoUsuarios= "Usuarios.txt";
         private static string nombreArchivoVacunaLaboratorios= "VacunaLaboratorios.txt";
         private static string nombreArchivoVacunas = "Vacunas.txt";
+        private static string nombreArchivoPaises = "Paises.txt";
         private static string carpeta = "ExportTablas";
         private static string raiz = AppDomain.CurrentDomain.BaseDirectory;
 
@@ -28,6 +29,7 @@ namespace ArchivoTexto
             GuardarArchivoUsuarios();
             GuardarArchivoVacunaLaboratorios();
             GuardarArchivoVacunas();
+            GuardarArchivoPaises();
         }
 
         public static bool GuardarArchivoLaboratorios()
@@ -92,7 +94,7 @@ namespace ArchivoTexto
                     while (dr.Read())
                     {
                         int idVac = (int)dr["IdVac"];
-                        int codPais = (int)dr["CodPais"];
+                        string codPais = dr["CodPais"].ToString();
                         sr.WriteLine($"{idVac} | {codPais}");
                     }
                     dr.Close();
@@ -302,6 +304,49 @@ namespace ArchivoTexto
             catch (Exception ex)
             {
                 System.Diagnostics.Debug.Assert(false, "Error al grabar la tabla Vacunas" + ex.Message);
+                return false;
+            }
+            finally
+            {
+                handler.CerrarConexion(con);
+            }
+
+        }
+
+        public static bool GuardarArchivoPaises()
+        {
+
+            Conexion handler = new Conexion();
+            SqlConnection con = new Conexion().crearConexion();
+
+            try
+            {
+                SqlCommand cmd = new SqlCommand("Select * from Paises", con);
+
+                if (handler.AbrirConexion(con))
+                {
+                    SqlDataReader dr = cmd.ExecuteReader();
+                    StreamWriter sr = new StreamWriter(Path.Combine(raiz, carpeta, nombreArchivoPaises));
+                    while (dr.Read())
+                    {
+                        string codPais = dr["CodPais"].ToString();
+                        string nombre = dr["Nombre"].ToString();
+                        sr.WriteLine($"{codPais} | {nombre}");
+                    }
+                    dr.Close();
+                    sr.Close();
+                    return true;
+                }
+                return false;
+            }
+            catch (IOException ex)
+            {
+                System.Diagnostics.Debug.Assert(false, "Error al grabar la tabla Paises" + ex.Message);
+                return false;
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.Assert(false, "Error al grabar la tabla Paises" + ex.Message);
                 return false;
             }
             finally
