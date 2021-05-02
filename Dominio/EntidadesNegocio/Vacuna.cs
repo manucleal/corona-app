@@ -12,17 +12,19 @@ namespace Dominio.EntidadesNegocio
         public string Nombre { get; set; }
 
         [Required(ErrorMessage = "La cantidad dosis es obligatorio")]
+        [Range(1, 10, ErrorMessage = "El valor {0} debe estar entr {1} y {2}.")]
         public int CantidadDosis { get; set; }
 
         [Required(ErrorMessage = "El lapso días es obligatorio")]
+        [Range(0, 300, ErrorMessage = "El valor {0} debe estar entr {1} y {2}.")]
         public int LapsoDiasDosis { get; set; }
 
         [Required(ErrorMessage = "El Min Edad es obligatorio")]
-        [Range(18, 90, ErrorMessage = "El valor {0} debe estar entr {1} y {2}.")]
+        [Range(0, 120, ErrorMessage = "El valor {0} debe estar entr {1} y {2}.")]
         public int MinEdad { get; set; }
 
         [Required(ErrorMessage = "El Max Edad es obligatorio")]
-        [Range(18, 90, ErrorMessage = "El valor {0} debe estar entr {1} y {2}.")]
+        [Range(0, 120, ErrorMessage = "El valor {0} debe estar entr {1} y {2}.")]
         public int MaxEdad { get; set; }
 
         [Required(ErrorMessage = "La Eficacía. prev es obligatorio")]
@@ -46,6 +48,7 @@ namespace Dominio.EntidadesNegocio
         public int MaxTemp { get; set; }
 
         [Required(ErrorMessage = "La Produccion anual es obligatorio")]
+        [Range(1, 9999000000000000, ErrorMessage = "El valor {0} debe estar entr {1} y {2}.")]
         public long ProduccionAnual { get; set; }
 
         [Required(ErrorMessage = "La Fase Clínica aprob. es obligatorio")]
@@ -55,6 +58,7 @@ namespace Dominio.EntidadesNegocio
         public bool Emergencia { get; set; }
         public string EfectosAdversos { get; set; }
         public decimal Precio { get; set; }
+
         public DateTime UltimaModificacion { get; set; }
         public string IdUsuario { get; set; }
         public string IdTipo { get; set; }
@@ -64,5 +68,43 @@ namespace Dominio.EntidadesNegocio
         public bool Covax { get; set; }
 
         public Vacuna() { }
+
+        public bool ValidateTemperature(Vacuna unaVacuna)
+        {
+            if (unaVacuna == null) return false;
+            if (unaVacuna.MinTemp <= unaVacuna.MaxTemp) return true;
+            return false;
+        }
+
+        public decimal ValidatePrice(Vacuna unaVacuna)
+        {
+            if (unaVacuna == null || unaVacuna.Precio <= 0 || unaVacuna.Precio > 1000) return -1;
+            return unaVacuna.Precio;
+        }
+
+        public int VaidateLapsoDiasDosis(Vacuna unaVacuna)
+        {
+            if (unaVacuna == null || unaVacuna.LapsoDiasDosis <= 0 || unaVacuna.LapsoDiasDosis > 300) return 0;
+            return unaVacuna.LapsoDiasDosis;
+        }
+
+        public bool VaidateAge(Vacuna unaVacuna)
+        {
+            if (unaVacuna == null) return false;
+            if (unaVacuna.MinEdad <= unaVacuna.MaxEdad) return true;
+            return false;
+        }
+
+        public bool ValidateCantidadDosis(Vacuna unaVacuna)
+        {
+            if (unaVacuna != null && unaVacuna.CantidadDosis > 0 && unaVacuna.CantidadDosis <= 10) return true;
+            return false;
+        }
+
+        public bool ValidateProduccionAnual(Vacuna unaVacuna)
+        {
+            if (unaVacuna.ProduccionAnual > 0) return true;
+            return false;
+        }
     }
 }

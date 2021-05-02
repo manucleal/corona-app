@@ -11,6 +11,8 @@ namespace Repositorios
     {
         public bool Add(Vacuna unaVacuna)
         {
+            if (!unaVacuna.ValidateTemperature(unaVacuna)) return false;
+
             try
             {
                 Conexion handler = new Conexion();
@@ -24,7 +26,7 @@ namespace Repositorios
                 cmd.Parameters.AddWithValue("@IdUsuario", unaVacuna.IdUsuario);
                 cmd.Parameters.AddWithValue("@Nombre", unaVacuna.Nombre);
                 cmd.Parameters.AddWithValue("@CantidadDosis", unaVacuna.CantidadDosis);
-                cmd.Parameters.AddWithValue("@LapsoDiasDosis", unaVacuna.LapsoDiasDosis);
+                cmd.Parameters.AddWithValue("@LapsoDiasDosis", unaVacuna.VaidateLapsoDiasDosis(unaVacuna));
                 cmd.Parameters.AddWithValue("@MaxEdad", unaVacuna.MaxEdad);
                 cmd.Parameters.AddWithValue("@MinEdad", unaVacuna.MinEdad);
                 cmd.Parameters.AddWithValue("@EficaciaPrev", unaVacuna.EficaciaPrev);
@@ -36,7 +38,7 @@ namespace Repositorios
                 cmd.Parameters.AddWithValue("@FaseClinicaAprob", unaVacuna.FaseClinicaAprob);
                 cmd.Parameters.AddWithValue("@Emergencia", unaVacuna.Emergencia);
                 cmd.Parameters.AddWithValue("@EfectosAdversos", unaVacuna.EfectosAdversos);
-                cmd.Parameters.AddWithValue("@Precio", unaVacuna.Precio);
+                cmd.Parameters.AddWithValue("@Precio", unaVacuna.ValidatePrice(unaVacuna));
                 cmd.Parameters.AddWithValue("@UltimaModificacion", DateTime.Now);
                 cmd.Parameters.AddWithValue("@Covax", unaVacuna.Covax);
 
@@ -502,7 +504,7 @@ namespace Repositorios
                 query.Parameters.AddWithValue("@Id", unaVacuna.Id);
                 query.Parameters.AddWithValue("@IdUsuario", unaVacuna.IdUsuario);
                 query.Parameters.AddWithValue("@FaseClinicaAprob", unaVacuna.FaseClinicaAprob);
-                query.Parameters.AddWithValue("@Precio", unaVacuna.Precio);
+                query.Parameters.AddWithValue("@Precio", unaVacuna.ValidatePrice(unaVacuna));
                 query.Parameters.AddWithValue("@UltimaModificacion", DateTime.Now);
                 SqlDataReader dataReader = query.ExecuteReader();
                 return true;

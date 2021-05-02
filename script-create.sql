@@ -45,7 +45,7 @@ CREATE TABLE [dbo].[Vacunas] (
     [FaseClinicaAprob]   INT            NOT NULL,
     [Emergencia]         BIT            NOT NULL,
     [EfectosAdversos]    TEXT           NOT NULL,
-    [Precio]             DECIMAL (8, 2) DEFAULT ((-1)) NOT NULL,
+    [Precio]             DECIMAL (8, 2) DEFAULT ((-1)),
     [UltimaModificacion] DATETIME       NOT NULL,
     [Covax]              BIT            DEFAULT ((0)) NOT NULL,
     PRIMARY KEY CLUSTERED ([Id] ASC),

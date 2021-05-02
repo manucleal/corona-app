@@ -50,15 +50,14 @@
     <Compile Include="EntidadesNegocio\TipoVacuna.cs" />
     <Compile Include="EntidadesNegocio\Usuario.cs" />
     <Compile Include="EntidadesNegocio\Vacuna.cs" />
-	<Compile Include="EntidadesNegocio\Pais.cs" />
+    <Compile Include="EntidadesNegocio\Pais.cs" />
     <Compile Include="InterfacesRepositorio\IRepositorioLaboratorio.cs" />
     <Compile Include="InterfacesRepositorio\IRepositorioTipoVacuna.cs" />
     <Compile Include="InterfacesRepositorio\IRepositorioUsuario.cs" />
     <Compile Include="InterfacesRepositorio\IRepositorioVacuna.cs" />
-	<Compile Include="InterfacesRepositorio\IRepositorioPais.cs" />
+    <Compile Include="InterfacesRepositorio\IRepositorioPais.cs" />
     <Compile Include="EntidadesNegocio\Laboratorio.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Validacion.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

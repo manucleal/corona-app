@@ -123,31 +123,46 @@ namespace WebApplication.Controllers
         [HttpPost]
         public ActionResult Alta(Vacuna unaVacuna)
         {
-            if (ModelState.IsValid)
-            {
-                unaVacuna.IdUsuario = (string)Session["documento"];                
-                IEnumerable<Vacuna> vacunas = repoVacuna.FindAllByName(unaVacuna.Nombre);
+            unaVacuna.IdUsuario = (string)Session["documento"];                
+            IEnumerable<Vacuna> vacunas = repoVacuna.FindAllByName(unaVacuna.Nombre);
 
-                if (vacunas.ToList().Count == 0)
+            if (vacunas.ToList().Count == 0)
+            {
+                if (unaVacuna.ValidateTemperature(unaVacuna))
                 {
-                    if (unaVacuna.MinTemp <= unaVacuna.MaxTemp)
+                    if (unaVacuna.VaidateAge(unaVacuna))
                     {
-                        if (repoVacuna.Add(unaVacuna))
+                        if (unaVacuna.ValidateCantidadDosis(unaVacuna))
                         {
-                            return RedirectToAction("Index", "Vacuna");
+                            if (unaVacuna.ValidateProduccionAnual(unaVacuna))
+                            {
+                                if (repoVacuna.Add(unaVacuna)) return RedirectToAction("Index", "Vacuna");
+                            }
+                            else
+                            {
+                                ModelState.AddModelError("produccionAnual", "Debe ser positivo");
+                            }
+                        }
+                        else
+                        {
+                            ModelState.AddModelError("cantidadDosis", "Debe ser positivo");
                         }
                     }
                     else
                     {
-                        ModelState.AddModelError("minTemp", "Debe ser menor o igual a Máxima temp.");
+                        ModelState.AddModelError("minEdad", "Debe ser menor o igual a Máxima edad.");
                     }
-                } else
-                {
-                    ModelState.AddModelError("nombre", "Ya existe una vacuna con ese nombre");
                 }
+                else
+                {
+                    ModelState.AddModelError("minTemp", "Debe ser menor o igual a Máxima temp.");
+                }
+            } else
+            {
+                ModelState.AddModelError("nombre", "Ya existe una vacuna con ese nombre");
             }
             cargarFiltros();
-            return View();
+            return View(unaVacuna);
         }
 
         public void cargarFiltros()

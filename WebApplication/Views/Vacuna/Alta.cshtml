@@ -11,7 +11,6 @@
         <form method="post" action="/Vacuna/Alta" autocomplete="on">
             <div class="infoPersonal">
 
-                <label for="nombre"></label>
                 <input type="text" name="nombre" placeholder="Nombre vacuna (*)" required />
                 <div class="has-error">
                     <span className="text-danger text-small d-block mb-2">
@@ -20,23 +19,43 @@
                     </span>
                 </div>
 
-                <input type="number" name="cantidadDosis" placeholder="Cantidad dosis (*)" required />
-                <input type="number" name="lapsoDiasDosis" placeholder="Días entre dosis (*)" required />
-                <input type="number" name="produccionAnual" placeholder="Producción anual (*)" required />
+                <input type="number" name="cantidadDosis" placeholder="Cantidad dosis (*)" max="10" required />
+                <div class="has-error">
+                    <span className="text-danger text-small d-block mb-2">
+                        @Html.ValidationMessageFor(model => model.CantidadDosis, "", new { @class = "help-block" })
+                        @Html.HiddenFor(model => model.CantidadDosis)
+                    </span>
+                </div>
 
-                <select name="Emergencia">
+                <input type="number" name="lapsoDiasDosis" placeholder="Días entre dosis" max="300" />
+                <div class="has-error">
+                    <span className="text-danger text-small d-block mb-2">
+                        @Html.ValidationMessageFor(model => model.LapsoDiasDosis, "", new { @class = "help-block" })
+                        @Html.HiddenFor(model => model.LapsoDiasDosis)
+                    </span>
+                </div>
+
+                <input type="number" name="produccionAnual" placeholder="Producción anual (*)" required />
+                <div class="has-error">
+                    <span className="text-danger text-small d-block mb-2">
+                        @Html.ValidationMessageFor(model => model.ProduccionAnual, "", new { @class = "help-block" })
+                        @Html.HiddenFor(model => model.ProduccionAnual)
+                    </span>
+                </div>
+
+                <select name="Emergencia" required>
                     <option value="">Indique si es de emergencia (*)</option>
                     <option value="true">Si</option>
                     <option value="false">No</option>
                 </select>
 
-                <select name="Covax">
+                <select name="Covax" required>
                     <option value="">Indique si pertenece a COVAX(*)</option>
                     <option value="true">Si</option>
                     <option value="false">No</option>
                 </select>
 
-                <select name="IdTipo">
+                <select name="IdTipo" required>
                     <option value="">Seleccione un tipo de vacuna (*)</option>
                     @foreach (Dominio.EntidadesNegocio.TipoVacuna item in ViewBag.TipoVacunas)
                     {
@@ -44,7 +63,7 @@
                     }
                 </select>
 
-                <select name="Laboratorios" multiple>
+                <select name="Laboratorios" multiple required>
                     <option value="">Seleccione el/los laboratorios (*)</option>
                     @foreach (Dominio.EntidadesNegocio.Laboratorio item in ViewBag.Laboratorios)
                     {
@@ -52,7 +71,7 @@
                     }
                 </select>
 
-                <select name="Paises" multiple>
+                <select name="Paises" multiple required>
                     <option value="">Seleccione el/los Países (*)</option>
                     @foreach (Dominio.EntidadesNegocio.Pais item in ViewBag.Paises)
                     {
@@ -64,7 +83,7 @@
             <div class="formInfo">
                 <fieldset>
                     <legend>Mínima edad (*)</legend>
-                    <input type="number" name="minEdad" class="ajustarAnchoInput" min="18" max="100" required />
+                    <input type="number" name="minEdad" class="ajustarAnchoInput" min="0" max="120" required />
                     <div class="has-error">
                         <span className="text-danger text-small d-block mb-2">
                             @Html.ValidationMessageFor(model => model.MinEdad, "", new { @class = "help-block" })
@@ -74,7 +93,7 @@
                 </fieldset>
                 <fieldset>
                     <legend>Máxima edad (*)</legend>
-                    <input type="number" name="maxEdad" class="ajustarAnchoInput" min="18" max="100" required />
+                    <input type="number" name="maxEdad" class="ajustarAnchoInput" min="0" max="120" required />
                     <div class="has-error">
                         <span className="text-danger text-small d-block mb-2">
                             @Html.ValidationMessageFor(model => model.MaxEdad, "", new { @class = "help-block" })
@@ -84,7 +103,7 @@
                 </fieldset>
                 <fieldset>
                     <legend>Eficacia Prevención</legend>
-                    <input type="number" id="montoHide" name="eficaciaPrev" required />
+                    <input type="number" id="montoHide" name="eficaciaPrev" min="0" max="100" required />
                     <div class="has-error">
                         <span className="text-danger text-small d-block mb-2">
                             @Html.ValidationMessageFor(model => model.EficaciaPrev, "", new { @class = "help-block" })
@@ -94,7 +113,7 @@
                 </fieldset>
                 <fieldset>
                     <legend>Eficacia Hospitalización</legend>
-                    <input type="number" name="eficaciaHosp" required />
+                    <input type="number" name="eficaciaHosp" min="0" max="100" required />
                     <div class="has-error">
                         <span className="text-danger text-small d-block mb-2">
                             @Html.ValidationMessageFor(model => model.EficaciaHosp, "", new { @class = "help-block" })
@@ -104,7 +123,7 @@
                 </fieldset>
                 <fieldset>
                     <legend>Eficacia CTI</legend>
-                    <input type="number" name="eficaciaCti" required />
+                    <input type="number" name="eficaciaCti" min="0" max="100" required />
                     <div class="has-error">
                         <span className="text-danger text-small d-block mb-2">
                             @Html.ValidationMessageFor(model => model.EficaciaCti, "", new { @class = "help-block" })
@@ -114,7 +133,7 @@
                 </fieldset>
                 <fieldset>
                     <legend>Mínima Temperatura (*)</legend>
-                    <input type="number" name="MinTemp" required />
+                    <input type="number" name="MinTemp" min="-100" max="50" required />
                     <div class="has-error">
                         <span className="text-danger text-small d-block mb-2">
                             @Html.ValidationMessageFor(model => model.MinTemp, "", new { @class = "help-block" })
@@ -124,7 +143,7 @@
                 </fieldset>
                 <fieldset>
                     <legend>Máxima Temperatura (*)</legend>
-                    <input type="number" name="MaxTemp" required />
+                    <input type="number" name="MaxTemp" min="-100" max="50" required />
                     <div class="has-error">
                         <span className="text-danger text-small d-block mb-2">
                             @Html.ValidationMessageFor(model => model.MaxTemp, "", new { @class = "help-block" })
@@ -134,11 +153,17 @@
                 </fieldset>
                 <fieldset>
                     <legend>Precio en USD </legend>
-                    <input type="number" name="precio" required />
+                    <input type="number" name="precio" max="1000" />
                 </fieldset>
                 <fieldset>
                     <legend>Fase clínica de aprobación (*)</legend>
                     <input type="number" name="faseClinicaAprob" class="ajustarAnchoInput" min="1" max="4" />
+                    <div class="has-error">
+                        <span className="text-danger text-small d-block mb-2">
+                            @Html.ValidationMessageFor(model => model.FaseClinicaAprob, "", new { @class = "help-block" })
+                            @Html.HiddenFor(model => model.FaseClinicaAprob)
+                        </span>
+                    </div>
                 </fieldset>
                 <textarea name="efectosAdversos" rows="15">
                         Los efectos adversos de la Usuario son:
