@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.IO;
 using System.Data.SqlClient;
 using Repositorios.UtilidadesBD;
@@ -12,7 +8,7 @@ namespace ArchivoTexto
     public class AccesoArchivo
     {
         private static string nombreArchivoLaboratorio = "Laboratorios.txt";
-        private static string nombreArchivoStatus = "Status.txt";
+        private static string nombreArchivoStatusVacuna = "StatusVacuna.txt";
         private static string nombreArchivoTipoVacunas= "TipoVacunas.txt";
         private static string nombreArchivoUsuarios= "Usuarios.txt";
         private static string nombreArchivoVacunaLaboratorios= "VacunaLaboratorios.txt";
@@ -24,7 +20,7 @@ namespace ArchivoTexto
         public static void GenerarArchivos()
         {
             GuardarArchivoLaboratorios();
-            GuardarArchivoStatus();
+            GuardarArchivoStatusVacuna();
             GuardarArchivoTipoVacunas();
             GuardarArchivoUsuarios();
             GuardarArchivoVacunaLaboratorios();
@@ -77,7 +73,7 @@ namespace ArchivoTexto
 
         }
 
-        public static bool GuardarArchivoStatus()
+        public static bool GuardarArchivoStatusVacuna()
         {
 
             Conexion handler = new Conexion();
@@ -85,12 +81,12 @@ namespace ArchivoTexto
 
             try
             {
-                SqlCommand cmd = new SqlCommand("Select * from Status", con);
+                SqlCommand cmd = new SqlCommand("Select * from StatusVacuna", con);
 
                 if (handler.AbrirConexion(con))
                 {
                     SqlDataReader dr = cmd.ExecuteReader();
-                    StreamWriter sr = new StreamWriter(Path.Combine(raiz, carpeta, nombreArchivoStatus));
+                    StreamWriter sr = new StreamWriter(Path.Combine(raiz, carpeta, nombreArchivoStatusVacuna));
                     while (dr.Read())
                     {
                         int idVac = (int)dr["IdVac"];
@@ -105,12 +101,12 @@ namespace ArchivoTexto
             }
             catch (IOException ex)
             {
-                System.Diagnostics.Debug.Assert(false, "Error al grabar la tabla status" + ex.Message);
+                System.Diagnostics.Debug.Assert(false, "Error al grabar la tabla StatusVacuna" + ex.Message);
                 return false;
             }
             catch (Exception ex)
             {
-                System.Diagnostics.Debug.Assert(false, "Error al grabar la tabla status" + ex.Message);
+                System.Diagnostics.Debug.Assert(false, "Error al grabar la tabla StatusVacuna" + ex.Message);
                 return false;
             }
             finally

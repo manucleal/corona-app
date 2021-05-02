@@ -11,6 +11,12 @@ CREATE TABLE [dbo].[Usuarios] (
     PRIMARY KEY CLUSTERED ([Documento] ASC)
 );
 
+CREATE TABLE [dbo].[Paises]
+(
+	[CodPais] CHAR(3) NOT NULL PRIMARY KEY, 
+    [Nombre] VARCHAR(50) NOT NULL UNIQUE
+);
+
 CREATE TABLE [dbo].[Laboratorios] (
     [Id]          INT          IDENTITY (1, 1) NOT NULL,
     [Nombre]      VARCHAR (50) NOT NULL,
@@ -48,7 +54,7 @@ CREATE TABLE [dbo].[Vacunas] (
     FOREIGN KEY ([IdUsuario]) REFERENCES [dbo].[Usuarios] ([Documento])
 );
 
-CREATE TABLE [dbo].[Status] (
+CREATE TABLE [dbo].[StatusVacuna] (
     [IdVac]   INT      NOT NULL,
     [CodPais] CHAR (3) NOT NULL,
     PRIMARY KEY CLUSTERED ([IdVac] ASC, [CodPais] ASC),
@@ -65,20 +71,18 @@ CREATE TABLE [dbo].[VacunaLaboratorios]
 	FOREIGN KEY ([IdLaboratorio]) REFERENCES Laboratorios([Id])
 );
 
-CREATE TABLE [dbo].[Paises]
-(
-	[CodPais] CHAR(3) NOT NULL PRIMARY KEY, 
-    [Nombre] VARCHAR(50) NOT NULL UNIQUE
-):
-
 INSERT INTO Paises 
-VALUES ('USA','Estados Unidos'),('DEU','Alemania'),('CHN','China'),('SWE','Suecia'),('GBR','Reino Unido'),('URY','Uruguay'),('BRA','Brasil'),('ARG','Argentina'),('ISR','Israel'),('MEX','México')('RUS', 'Rusia')('IND', 'India');
+VALUES ('USA','Estados Unidos'),('DEU','Alemania'),('CHN','China'),('SWE','Suecia'),('GBR','Reino Unido'),('URY','Uruguay'),('BRA','Brasil'),('ARG','Argentina'),('ISR','Israel'),('MEX','México'),('RUS', 'Rusia'),('IND', 'India');
 
 INSERT INTO Laboratorios (Nombre, PaisOrigen, Experiencia) 
-VALUES ('Moderna','USA',1),('BioNTech','DEU',1),('Pfizer','USA',1),('Sinovac','CHN',1),('Oxford','SWE',1),('Astrazeneca','GBR',1)('Laboratorio Ruso','RUS',1)('laboratorio Indio', 'IND', 1)('Novavax', 'USA', 1);
+VALUES ('Moderna','USA',1),('BioNTech','DEU',1),('Pfizer','USA',1),('Sinovac','CHN',1),('Oxford','SWE',1),('Astrazeneca','GBR',1),('Laboratorio Ruso','RUS',1),('laboratorio Indio', 'IND', 1),('Novavax', 'USA', 1);
 
 INSERT INTO TipoVacunas (Id,Descripcion) 
 VALUES ('VV','Vector viral'),('mRNA','ARN mensajero'),('IV','Virus inactivo'),('PB','Basado en proteínas');
+
+INSERT INTO Usuarios VALUES
+('45544061','Fausto','gHCBvUu6/+H8LO6FLL4MJo469G4='), 
+('46902781','Emanuel','7WHutpgHO4comhHzgQnUnZee3vM=');
 
 INSERT INTO Vacunas (idTipo, IdUsuario, Nombre, CantidadDosis, LapsoDiasDosis, MaxEdad, MinEdad, EficaciaPrev, EficaciaHosp, EficaciaCti, MaxTemp, MinTemp, ProduccionAnual, FaseClinicaAprob, Emergencia, EfectosAdversos, Precio, UltimaModificacion,Covax) 
 VALUES 
@@ -91,11 +95,7 @@ VALUES
 ('PB','45544061' ,'Oxford-Astrazeneca', 2, 90, 90, 15, 70, 65, 73, 18, 5, 54000000, 3, 0, 'Trombosis, fiebre, gripe', 16, GETDATE(), 1),
 ('mRNA','46902781','Vacunita', 1, 0, 90, 12, 70,78,80, 20, 5, 12300000, 2, 0, 'Diarrea, vomitos, dolor de espalda' , 5, GETDATE(), 1);
 
-INSERT INTO Usuarios VALUES
-('45544061','Fausto','gHCBvUu6/+H8LO6FLL4MJo469G4='), 
-('46902781','Emanuel','7WHutpgHO4comhHzgQnUnZee3vM=');
-
-INSERT INTO Status VALUES
+INSERT INTO StatusVacuna VALUES
 (1,'IND'),
 (1, 'RUS'),
 (1, 'MEX'), 

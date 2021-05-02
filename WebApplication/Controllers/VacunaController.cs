@@ -49,6 +49,7 @@ namespace WebApplication.Controllers
                 return RedirectToAction("Index", "Vacuna");
             }
             Vacuna vacuna = repoVacuna.FindById(id);
+            ViewBag.H1 = "";
             return View(vacuna);
         }
 

@@ -53,7 +53,7 @@ namespace Repositorios
                         cmd2.ExecuteNonQuery();
                     }
 
-                    SqlCommand cmd3 = new SqlCommand("INSERT INTO Status VALUES (@IdVac,@CodPais)", con);
+                    SqlCommand cmd3 = new SqlCommand("INSERT INTO StatusVacuna VALUES (@IdVac,@CodPais)", con);
                     foreach (string pais in unaVacuna.Paises)
                     {
                         cmd3.Parameters.Clear();

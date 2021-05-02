@@ -63,9 +63,6 @@ namespace Dominio.EntidadesNegocio
         public ICollection<Laboratorio> ListaLaboratorios { get; set; } = new List<Laboratorio>();
         public bool Covax { get; set; }
 
-        public Vacuna()
-        {
-
-        }
+        public Vacuna() { }
     }
 }
