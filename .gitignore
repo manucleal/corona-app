@@ -7,10 +7,5 @@ WebApplication/bin
 /WebApplication/obj/Debug
 /Repositorios/obj/Debug
 /Dominio/obj/Debug
-<<<<<<< Updated upstream
-/WebApplication/Scripts
 /WebApplication/Content
 /WebApplication/ExportTablas
-=======
-/WebApplication/Content
->>>>>>> Stashed changes

@@ -125,7 +125,6 @@ namespace WebApplication.Controllers
             if ((string)Session["documento"] != null && Session["nombre"] != null)
             {
                 AccesoArchivo.GenerarArchivos();
-                ViewBag.Vacunas = "Archivos de texto generados";
                 return RedirectToAction("IndexAuth", "Vacuna");
             }
             return View("Registro");
