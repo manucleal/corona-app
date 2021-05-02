@@ -32,6 +32,8 @@ namespace WcfServicioCoronApp
     public class DtoVacunas
     {
         [DataMember]
+        public int Id { get; set; }
+        [DataMember]
         public string Nombre { get; set; }
         [DataMember]
         public int CantidadDosis { get; set; }
@@ -68,33 +70,34 @@ namespace WcfServicioCoronApp
         [DataMember]
         public bool Covax { get; set; }
 
-        internal Vacuna ConvertirHaciaCliente()
-        {
-            return new Vacuna()
-            {
-                Nombre = this.Nombre,
-                CantidadDosis = this.CantidadDosis,
-                LapsoDiasDosis = this.LapsoDiasDosis,
-                MinEdad = this.MinEdad,
-                MaxEdad = this.MaxEdad,
-                EficaciaPrev = this.EficaciaPrev,
-                EficaciaHosp = this.EficaciaHosp,
-                EficaciaCti = this.EficaciaCti,
-                MinTemp = this.MinEdad,
-                MaxTemp = this.MaxTemp,
-                ProduccionAnual = this.ProduccionAnual,
-                FaseClinicaAprob = this.FaseClinicaAprob,
-                Emergencia = this.Emergencia,
-                EfectosAdversos = this.EfectosAdversos,
-                Precio = this.Precio,
-                IdTipo = this.IdTipo,
-                ListaLaboratorios = this.ListaLaboratorios,
-                Covax = this.Covax
-            };
-        }
+        //internal Vacuna ConvertirHaciaCliente()
+        //{
+        //    return new Vacuna()
+        //    {
+        //        Nombre = this.Nombre,
+        //        CantidadDosis = this.CantidadDosis,
+        //        LapsoDiasDosis = this.LapsoDiasDosis,
+        //        MinEdad = this.MinEdad,
+        //        MaxEdad = this.MaxEdad,
+        //        EficaciaPrev = this.EficaciaPrev,
+        //        EficaciaHosp = this.EficaciaHosp,
+        //        EficaciaCti = this.EficaciaCti,
+        //        MinTemp = this.MinEdad,
+        //        MaxTemp = this.MaxTemp,
+        //        ProduccionAnual = this.ProduccionAnual,
+        //        FaseClinicaAprob = this.FaseClinicaAprob,
+        //        Emergencia = this.Emergencia,
+        //        EfectosAdversos = this.EfectosAdversos,
+        //        Precio = this.Precio,
+        //        IdTipo = this.IdTipo,
+        //        ListaLaboratorios = this.ListaLaboratorios,
+        //        Covax = this.Covax
+        //    };
+        //}
 
         internal void ConvertirDesdeVacuna(Vacuna vacuna)
         {
+            Id = vacuna.Id;
             Nombre = vacuna.Nombre;
             CantidadDosis = vacuna.CantidadDosis;
             LapsoDiasDosis = vacuna.LapsoDiasDosis;

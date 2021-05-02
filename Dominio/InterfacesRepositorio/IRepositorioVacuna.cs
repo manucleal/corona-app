@@ -15,8 +15,6 @@ namespace Dominio.InterfacesRepositorio
 
         IEnumerable<Vacuna> FindAll();
 
-        Vacuna FindByAll(string nombre);
-
         IEnumerable<Vacuna> FindAllByName(string nombre);
 
         IEnumerable<Vacuna> FindAllByApprovalPhase(int FaseClinicaAprob);

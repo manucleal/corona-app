@@ -438,14 +438,44 @@ namespace Repositorios
             }
         }
 
-        public Vacuna FindByAll(string nombre)
-        {
-            throw new NotImplementedException();
-        }
-
         public Vacuna FindById(int idVacuna)
         {
-            throw new NotImplementedException();
+            Conexion manejadorConexion = new Conexion();
+            SqlConnection con = manejadorConexion.crearConexion();
+
+            try
+            {
+                SqlCommand query = new SqlCommand("SELECT * FROM Vacunas WHERE Id = @Id", con);
+                manejadorConexion.AbrirConexion(con);
+
+                query.Parameters.AddWithValue("@Id", idVacuna);
+                SqlDataReader dataReader = query.ExecuteReader();
+
+                Vacuna vacuna = null;
+
+                while (dataReader.Read())
+                {
+                    Vacuna unaVacuna = new Vacuna()
+                    {
+                        Id = (int)dataReader["Id"],
+                        Nombre = (string)dataReader["Nombre"],
+                        IdTipo = (string)dataReader["IdTipo"],
+                        FaseClinicaAprob = (int)dataReader["FaseClinicaAprob"],
+                        Precio = (decimal)dataReader["Precio"]
+                    };
+                    vacuna = unaVacuna;
+                }
+                return vacuna;
+            }
+            catch (Exception e)
+            {
+                System.Diagnostics.Debug.Assert(false, "Error al buscar vacuna" + e.Message);
+                return null;
+            }
+            finally
+            {
+                manejadorConexion.CerrarConexion(con);
+            }
         }
 
         public bool Remove(int idVacuna)
@@ -455,14 +485,37 @@ namespace Repositorios
 
         public bool Update(Vacuna unaVacuna)
         {
-            throw new NotImplementedException();
+            if (unaVacuna == null) return false;
+
+            Conexion manejadorConexion = new Conexion();
+            SqlConnection con = manejadorConexion.crearConexion();
+
+            try
+            {
+                SqlCommand query = new SqlCommand("UPDATE Vacunas SET FaseClinicaAprob=@FaseClinicaAprob, " +
+                                                                        "Precio=@Precio, " +
+                                                                        "IdUsuario=@IdUsuario, " +
+                                                                        "UltimaModificacion=@UltimaModificacion " +
+                                                                        "WHERE Id=@Id", con);
+                manejadorConexion.AbrirConexion(con);
+
+                query.Parameters.AddWithValue("@Id", unaVacuna.Id);
+                query.Parameters.AddWithValue("@IdUsuario", unaVacuna.IdUsuario);
+                query.Parameters.AddWithValue("@FaseClinicaAprob", unaVacuna.FaseClinicaAprob);
+                query.Parameters.AddWithValue("@Precio", unaVacuna.Precio);
+                query.Parameters.AddWithValue("@UltimaModificacion", DateTime.Now);
+                SqlDataReader dataReader = query.ExecuteReader();
+                return true;
+            }
+            catch (Exception e)
+            {
+                System.Diagnostics.Debug.Assert(false, "Error al editar una vacuna" + e.Message);
+                return false;
+            }
+            finally
+            {
+                manejadorConexion.CerrarConexion(con);
+            }
         }
-
-
-
-
-
-
-
     }
 }

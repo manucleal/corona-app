@@ -11,6 +11,7 @@ namespace WebApplication.Controllers
     public class VacunaController : Controller
     {
         private ServicioVacunas serviciosVacunas = new ServicioVacunas();
+        private RepositorioVacuna repoVacuna = new RepositorioVacuna();
         private RepositorioLaboratorio repoLaboratorio = new RepositorioLaboratorio();
         private RepositorioTipoVacuna repoTipoVacuna = new RepositorioTipoVacuna();
         private RepositorioPais repoPais = new RepositorioPais();
@@ -26,11 +27,11 @@ namespace WebApplication.Controllers
         [HttpGet]
         public ActionResult IndexAuth()
         {
-            if ((string)Session["documento"] == null)
+            if ((string)Session["documento"] == null && (string)Session["nombre"] == null)
             {
                 Session["documento"] = null;
                 Session["nombre"] = null;
-                return RedirectToAction("Vacuna", "Index");
+                return RedirectToAction("Index", "Vacuna");
             }
 
             IEnumerable<DtoVacunas> vacunas = serviciosVacunas.GetTodasLasVacunas();
@@ -39,13 +40,25 @@ namespace WebApplication.Controllers
         }
 
         [HttpGet]
-        public ActionResult Modificar()
+        public ActionResult Modificar(int id)
         {
-            if ((string)Session["documento"] == null)
+            if ((string)Session["documento"] == null && (string)Session["nombre"] == null)
             {
                 Session["documento"] = null;
                 Session["nombre"] = null;
-                return RedirectToAction("Vacuna", "Index");
+                return RedirectToAction("Index", "Vacuna");
+            }
+            Vacuna vacuna = repoVacuna.FindById(id);
+            return View(vacuna);
+        }
+
+        [HttpPost]
+        public ActionResult Modificar(Vacuna unaVauna)
+        {
+            unaVauna.IdUsuario = (string)Session["documento"];
+            if (repoVacuna.Update(unaVauna))
+            {
+                return RedirectToAction("IndexAuth", "Vacuna");
             }
             return View();
         }
@@ -96,10 +109,10 @@ namespace WebApplication.Controllers
         [HttpGet]
         public ActionResult Alta()
         {
-            if ((string)Session["documento"] == null) {
+            if ((string)Session["documento"] == null && (string)Session["nombre"] == null) {
                 Session["documento"] = null;
                 Session["nombre"] = null;
-                return RedirectToAction("Vacuna", "Index");
+                return RedirectToAction("Index", "Vacuna");
             }
 
             cargarFiltros();
@@ -111,9 +124,9 @@ namespace WebApplication.Controllers
         {
             if (ModelState.IsValid)
             {
-                unaVacuna.IdUsuario = (string)Session["documento"];
-                RepositorioVacuna repoVacuna = new RepositorioVacuna();
+                unaVacuna.IdUsuario = (string)Session["documento"];                
                 IEnumerable<Vacuna> vacunas = repoVacuna.FindAllByName(unaVacuna.Nombre);
+
                 if (vacunas.ToList().Count == 0)
                 {
                     if (unaVacuna.MinTemp <= unaVacuna.MaxTemp)

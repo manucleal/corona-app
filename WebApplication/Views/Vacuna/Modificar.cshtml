@@ -1,25 +1,28 @@
-﻿
+﻿@model Dominio.EntidadesNegocio.Vacuna
 @{
+    ViewBag.H1 = "Modificar Vacuna";
     ViewBag.Title = "Modificar";
 }
 
 <main>
-    <small>Dashboard / <em>Modificar <p style="color:red;">@ViewBag.mensaje</p></em></small>
+    <small>Dashboard / <em>Modificar <p style="color:red;"></p></em></small>
     <div class="FormEmpleados">
-        <form method="post" action="/proyecto/AsignarAusenciasEmpleado" autocomplete="on">
-            <div class="infoPersonal">
-                <div class="formInfo">
-                    <fieldset>
-                        <legend>Fase clínica de aprobación (*)</legend>
-                        <input type="number" name="faseClinicaAprob" class="ajustarAnchoInput"onkeypress="return justNumbers(event);" min="1" pattern="^[1-9]" min="1" max="4" required/>
-                    </fieldset>
-                </div>
-            </div>
+        <form method="post" action="/Vacuna/Modificar" autocomplete="on">
             <div class="formInfo">
                 <fieldset>
-                    <legend>Precio</legend>
-                    <input type="number" onkeypress="return justNumbers(event);" min="1" pattern="^[1-9]" name="precio" required />
+                    <legend>Fase clínica de aprobación (*)</legend>
+                    <input type="number" name="faseClinicaAprob" value="@Model.FaseClinicaAprob" onkeypress="return justNumbers(event);" pattern="^[1-9]" min="1" max="4" required />
                 </fieldset>
+                <fieldset>
+                    <legend>Precio (*)</legend>
+                    <input type="number" onkeypress="return justNumbers(event);" min="1" pattern="^[1-9]" name="precio" value="@Model.Precio" required />
+                    <input type="number" hidden name="Id" value="@Model.Id">
+                </fieldset>
+            </div>
+            <div class="divFooter">
+                <span>Campos Obligatorios (*)</span>
+                <input type="submit" class="botones" value="MODIFICAR">
+                <input type="reset" id="limpiar" value="LIMPIAR">
             </div>
         </form>
     </div>

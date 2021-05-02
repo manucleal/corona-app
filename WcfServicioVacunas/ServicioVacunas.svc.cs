@@ -13,49 +13,57 @@ namespace WcfServicioCoronApp
         public IEnumerable<DtoVacunas> GetTodasLasVacunas()
         {
             IEnumerable<Vacuna> vacunas = repositorioVacuna.FindAll();
-            if (vacunas == null) return null;            return ConvertirListaDtosDesdeVacunas(vacunas);
+            if (vacunas == null) return null;
+            return ConvertirListaDtosDesdeVacunas(vacunas);
         }
 
         public IEnumerable<DtoVacunas> GetTodasLasVacunasPorFaseAprob(int faseClinicaAprob)
         {
             IEnumerable<Vacuna> vacunas = repositorioVacuna.FindAllByApprovalPhase(faseClinicaAprob);
-            if (vacunas == null) return null;            return ConvertirListaDtosDesdeVacunas(vacunas);
+            if (vacunas == null) return null;
+            return ConvertirListaDtosDesdeVacunas(vacunas);
         }
 
         public IEnumerable<DtoVacunas> GetTodasLasVacunasPorNombre(string nombre)
         {
             IEnumerable<Vacuna> vacunas = repositorioVacuna.FindAllByName(nombre);
-            if (vacunas == null) return null;            return ConvertirListaDtosDesdeVacunas(vacunas);
+            if (vacunas == null) return null;
+            return ConvertirListaDtosDesdeVacunas(vacunas);
         }
 
         public IEnumerable<DtoVacunas> GetTodasLasVacunasPorNombreLab(string nombre)
         {
             IEnumerable<Vacuna> vacunas = repositorioVacuna.FindAllByLabName(nombre);
-            if (vacunas == null) return null;            return ConvertirListaDtosDesdeVacunas(vacunas);
+            if (vacunas == null) return null;
+            return ConvertirListaDtosDesdeVacunas(vacunas);
         }
 
         public IEnumerable<DtoVacunas> GetTodasLasVacunasPorPaisLab(string pais)
         {
             IEnumerable<Vacuna> vacunas = repositorioVacuna.FindAllByCountry(pais);
-            if (vacunas == null) return null;            return ConvertirListaDtosDesdeVacunas(vacunas);
+            if (vacunas == null) return null;
+            return ConvertirListaDtosDesdeVacunas(vacunas);
         }
 
         public IEnumerable<DtoVacunas> GetTodasLasVacunasPorTipoVac(string idTipo)
         {
             IEnumerable<Vacuna> vacunas = repositorioVacuna.FindAllByTypeVac(idTipo);
-            if (vacunas == null) return null;            return ConvertirListaDtosDesdeVacunas(vacunas);
+            if (vacunas == null) return null;
+            return ConvertirListaDtosDesdeVacunas(vacunas);
         }
 
         public IEnumerable<DtoVacunas> GetTodasLasVacunasPorTopeInferior(decimal precio)
         {
             IEnumerable<Vacuna> vacunas = repositorioVacuna.FindAllByMinPrice(precio);
-            if (vacunas == null) return null;            return ConvertirListaDtosDesdeVacunas(vacunas);
+            if (vacunas == null) return null;
+            return ConvertirListaDtosDesdeVacunas(vacunas);
         }
 
         public IEnumerable<DtoVacunas> GetTodasLasVacunasPorTopeSuperior(decimal precio)
         {
             IEnumerable<Vacuna> vacunas = repositorioVacuna.FindAllByMaxPrice(precio);
-            if (vacunas == null) return null;            return ConvertirListaDtosDesdeVacunas(vacunas);
+            if (vacunas == null) return null;
+            return ConvertirListaDtosDesdeVacunas(vacunas);
         }
 
         private IEnumerable<DtoVacunas> ConvertirListaDtosDesdeVacunas(IEnumerable<Vacuna> vacunas)
@@ -69,6 +77,5 @@ namespace WcfServicioCoronApp
             }
             return lista;
         }
-
     }
 }
