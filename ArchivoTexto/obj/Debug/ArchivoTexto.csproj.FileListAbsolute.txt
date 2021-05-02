@@ -9,3 +9,14 @@ C:\Users\tatop\corona-app\ArchivoTexto\obj\Debug\ArchivoTexto.csproj.CoreCompile
 C:\Users\tatop\corona-app\ArchivoTexto\obj\Debug\ArchivoTexto.csproj.CopyComplete
 C:\Users\tatop\corona-app\ArchivoTexto\obj\Debug\ArchivoTexto.dll
 C:\Users\tatop\corona-app\ArchivoTexto\obj\Debug\ArchivoTexto.pdb
+C:\emanuel_ort\corona-app\ArchivoTexto\bin\Debug\ArchivoTexto.dll
+C:\emanuel_ort\corona-app\ArchivoTexto\bin\Debug\ArchivoTexto.pdb
+C:\emanuel_ort\corona-app\ArchivoTexto\bin\Debug\Repositorios.dll
+C:\emanuel_ort\corona-app\ArchivoTexto\bin\Debug\Dominio.dll
+C:\emanuel_ort\corona-app\ArchivoTexto\bin\Debug\Repositorios.pdb
+C:\emanuel_ort\corona-app\ArchivoTexto\bin\Debug\Dominio.pdb
+C:\emanuel_ort\corona-app\ArchivoTexto\obj\Debug\ArchivoTexto.csprojAssemblyReference.cache
+C:\emanuel_ort\corona-app\ArchivoTexto\obj\Debug\ArchivoTexto.csproj.CoreCompileInputs.cache
+C:\emanuel_ort\corona-app\ArchivoTexto\obj\Debug\ArchivoTexto.csproj.CopyComplete
+C:\emanuel_ort\corona-app\ArchivoTexto\obj\Debug\ArchivoTexto.dll
+C:\emanuel_ort\corona-app\ArchivoTexto\obj\Debug\ArchivoTexto.pdb

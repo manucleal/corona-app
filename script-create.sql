@@ -14,9 +14,10 @@ CREATE TABLE [dbo].[Usuarios] (
 CREATE TABLE [dbo].[Laboratorios] (
     [Id]          INT          IDENTITY (1, 1) NOT NULL,
     [Nombre]      VARCHAR (50) NOT NULL,
-    [PaisOrigen] CHAR (3)     NOT NULL,
+    [PaisOrigen]  CHAR (3)     NOT NULL,
     [Experiencia] BIT          NOT NULL,
     PRIMARY KEY CLUSTERED ([Id] ASC),
+	FOREIGN KEY ([PaisOrigen]) REFERENCES [dbo].[Paises] ([CodPais]),
     UNIQUE NONCLUSTERED ([Nombre] ASC)
 );
 
