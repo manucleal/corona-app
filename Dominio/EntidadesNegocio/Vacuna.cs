@@ -55,10 +55,11 @@ namespace Dominio.EntidadesNegocio
         [Range(1, 4, ErrorMessage = "El valor {0} debe estar entre {1} y {2}.")]
         public int FaseClinicaAprob { get; set; }
 
-        public bool Emergencia { get; set; }
+        [StringLength(200, ErrorMessage = "Solamente estan permitidos 100 caracteres")]
         public string EfectosAdversos { get; set; }
-        public decimal Precio { get; set; }
 
+        public bool Emergencia { get; set; }
+        public decimal Precio { get; set; }
         public DateTime UltimaModificacion { get; set; }
         public string IdUsuario { get; set; }
         public string IdTipo { get; set; }

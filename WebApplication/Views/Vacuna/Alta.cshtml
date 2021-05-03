@@ -165,9 +165,13 @@
                         </span>
                     </div>
                 </fieldset>
-                <textarea name="efectosAdversos" rows="15">
-                        Los efectos adversos de la Usuario son:
-                </textarea>
+                <textarea name="EfectosAdversos" maxlength="200" rows="15"></textarea>
+                <div class="has-error">
+                    <span className="text-danger text-small d-block mb-2">
+                        @Html.ValidationMessageFor(model => model.EfectosAdversos, "", new { @class = "help-block" })
+                        @Html.HiddenFor(model => model.EfectosAdversos)
+                    </span>
+                </div>
             </div>
             <div class="divFooter">
                 <span>Campos Obligatorios (*)</span>

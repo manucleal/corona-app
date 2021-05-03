@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data.SqlClient;
 using Dominio.EntidadesNegocio;
 using Dominio.InterfacesRepositorio;
@@ -11,6 +10,7 @@ namespace Repositorios
     {
         public bool Add(Usuario unUsuario)
         {
+            if (unUsuario == null || !unUsuario.VerificoPass(unUsuario.Password)) return false;
             try
             {
                 Conexion handler = new Conexion();

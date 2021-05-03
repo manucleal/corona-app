@@ -11,7 +11,7 @@ namespace Repositorios
     {
         public bool Add(Vacuna unaVacuna)
         {
-            if (!unaVacuna.ValidateTemperature(unaVacuna)) return false;
+            if (!unaVacuna.ValidateTemperature(unaVacuna) || !unaVacuna.ValidateAge(unaVacuna) || !unaVacuna.ValidateCantidadDosis(unaVacuna) || !unaVacuna.ValidateProduccionAnual(unaVacuna)) return false;
 
             try
             {

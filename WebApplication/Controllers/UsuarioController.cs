@@ -18,8 +18,7 @@ namespace WebApplication.Controllers
         [HttpPost]
         public ActionResult Registro(Usuario unUsuario)
         {
-
-            if (this.VerificoPass(unUsuario.Password))
+            if (unUsuario.VerificoPass(unUsuario.Password))
             {
                 RepositorioUsuario repoUsuario = new RepositorioUsuario();
                 Usuario usuario = repoUsuario.FindById(unUsuario.Documento);
@@ -58,10 +57,9 @@ namespace WebApplication.Controllers
         [HttpPost]
         public ActionResult Login(Usuario unUsuario)
         { 
-
             if (ModelState.IsValid)
             {
-                if (this.VerificoPass(unUsuario.Password))
+                if (unUsuario.VerificoPass(unUsuario.Password))
                 {
                     RepositorioUsuario repoUsuario = new RepositorioUsuario();
                     Usuario usuario = repoUsuario.Login(unUsuario);
@@ -93,33 +91,6 @@ namespace WebApplication.Controllers
             return RedirectToAction("Index", "Vacuna");
         }
 
-        public bool VerificoPass(string password)
-        {
-            int contMay = 0;
-            int contMin = 0;
-            int contDig = 0;
-            if (password.Length >= 6)
-            {
-                for (int i = 0; i < password.Length; i++)
-                {
-                    if (char.IsUpper(password[i]))
-                    {
-                        contMay++;
-                    }
-                    if (char.IsLower(password[i]))
-                    {
-                        contMin++;
-                    }
-                    if (char.IsNumber(password[i]))
-                    {
-                        contDig++;
-                    }
-                }
-            }
-            return (contMay > 0 && contMin > 0 && contDig > 0);
-        }
-
-
         public ActionResult GenerarArchivos()
         {
             if ((string)Session["documento"] != null && Session["nombre"] != null)
@@ -127,8 +98,7 @@ namespace WebApplication.Controllers
                 AccesoArchivo.GenerarArchivos();
                 return RedirectToAction("IndexAuth", "Vacuna");
             }
-            return View("Registro");
-
+            return View("Login");
         }
     }
 }
