@@ -130,7 +130,7 @@ namespace WebApplication.Controllers
             {
                 if (unaVacuna.ValidateTemperature(unaVacuna))
                 {
-                    if (unaVacuna.VaidateAge(unaVacuna))
+                    if (unaVacuna.ValidateAge(unaVacuna))
                     {
                         if (unaVacuna.ValidateCantidadDosis(unaVacuna))
                         {

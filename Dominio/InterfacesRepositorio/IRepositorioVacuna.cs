@@ -7,8 +7,6 @@ namespace Dominio.InterfacesRepositorio
     {
         bool Add(Vacuna unaVacuna);
 
-        bool Remove(int idVacuna);
-
         bool Update(Vacuna unaVacuna);
 
         Vacuna FindById(int idVacuna);

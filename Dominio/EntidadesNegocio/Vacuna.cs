@@ -12,47 +12,47 @@ namespace Dominio.EntidadesNegocio
         public string Nombre { get; set; }
 
         [Required(ErrorMessage = "La cantidad dosis es obligatorio")]
-        [Range(1, 10, ErrorMessage = "El valor {0} debe estar entr {1} y {2}.")]
+        [Range(1, 10, ErrorMessage = "El valor {0} debe estar entre {1} y {2}.")]
         public int CantidadDosis { get; set; }
 
         [Required(ErrorMessage = "El lapso días es obligatorio")]
-        [Range(0, 300, ErrorMessage = "El valor {0} debe estar entr {1} y {2}.")]
+        [Range(0, 300, ErrorMessage = "El valor {0} debe estar entre {1} y {2}.")]
         public int LapsoDiasDosis { get; set; }
 
         [Required(ErrorMessage = "El Min Edad es obligatorio")]
-        [Range(0, 120, ErrorMessage = "El valor {0} debe estar entr {1} y {2}.")]
+        [Range(0, 120, ErrorMessage = "El valor {0} debe estar entre {1} y {2}.")]
         public int MinEdad { get; set; }
 
         [Required(ErrorMessage = "El Max Edad es obligatorio")]
-        [Range(0, 120, ErrorMessage = "El valor {0} debe estar entr {1} y {2}.")]
+        [Range(0, 120, ErrorMessage = "El valor {0} debe estar entre {1} y {2}.")]
         public int MaxEdad { get; set; }
 
         [Required(ErrorMessage = "La Eficacía. prev es obligatorio")]
-        [Range(0, 100, ErrorMessage = "El valor {0} debe estar entr {1} y {2}.")]
+        [Range(0, 100, ErrorMessage = "El valor {0} debe estar entre {1} y {2}.")]
         public int EficaciaPrev { get; set; }
 
         [Required(ErrorMessage = "La Efic. hos es obligatorio")]
-        [Range(0, 100, ErrorMessage = "El valor {0} debe estar entr {1} y {2}.")]
+        [Range(0, 100, ErrorMessage = "El valor {0} debe estar entre {1} y {2}.")]
         public int EficaciaHosp { get; set; }
 
         [Required(ErrorMessage = "La Efic. CTI es obligatorio")]
-        [Range(0, 100, ErrorMessage = "El valor {0} debe estar entr {1} y {2}.")]
+        [Range(0, 100, ErrorMessage = "El valor {0} debe estar entre {1} y {2}.")]
         public int EficaciaCti { get; set; }
 
         [Required(ErrorMessage = "La Min temp. es obligatorio")]
-        [Range(-100, 50, ErrorMessage = "El valor {0} debe estar entr {1} y {2}.")]
+        [Range(-100, 50, ErrorMessage = "El valor {0} debe estar entre {1} y {2}.")]
         public int MinTemp { get; set; }
 
         [Required(ErrorMessage = "La Max temp. es obligatorio")]
-        [Range(-100, 50, ErrorMessage = "El valor {0} debe estar entr {1} y {2}.")]
+        [Range(-100, 50, ErrorMessage = "El valor {0} debe estar entre {1} y {2}.")]
         public int MaxTemp { get; set; }
 
         [Required(ErrorMessage = "La Produccion anual es obligatorio")]
-        [Range(1, 9999000000000000, ErrorMessage = "El valor {0} debe estar entr {1} y {2}.")]
+        [Range(1, 9999000000000000, ErrorMessage = "El valor {0} debe estar entre {1} y {2}.")]
         public long ProduccionAnual { get; set; }
 
         [Required(ErrorMessage = "La Fase Clínica aprob. es obligatorio")]
-        [Range(1, 4, ErrorMessage = "El valor {0} debe estar entr {1} y {2}.")]
+        [Range(1, 4, ErrorMessage = "El valor {0} debe estar entre {1} y {2}.")]
         public int FaseClinicaAprob { get; set; }
 
         public bool Emergencia { get; set; }
@@ -82,13 +82,13 @@ namespace Dominio.EntidadesNegocio
             return unaVacuna.Precio;
         }
 
-        public int VaidateLapsoDiasDosis(Vacuna unaVacuna)
+        public int ValidateLapsoDiasDosis(Vacuna unaVacuna)
         {
             if (unaVacuna == null || unaVacuna.LapsoDiasDosis <= 0 || unaVacuna.LapsoDiasDosis > 300) return 0;
             return unaVacuna.LapsoDiasDosis;
         }
 
-        public bool VaidateAge(Vacuna unaVacuna)
+        public bool ValidateAge(Vacuna unaVacuna)
         {
             if (unaVacuna == null) return false;
             if (unaVacuna.MinEdad <= unaVacuna.MaxEdad) return true;

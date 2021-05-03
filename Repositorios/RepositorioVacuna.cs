@@ -16,7 +16,7 @@ namespace Repositorios
             try
             {
                 Conexion handler = new Conexion();
-                SqlConnection con = new Conexion().crearConexion();
+                SqlConnection con = new Conexion().CrearConexion();
 
                 SqlCommand cmd = new SqlCommand("INSERT INTO Vacunas output INSERTED.ID VALUES (@IdTipo,@IdUsuario,@Nombre,@CantidadDosis," +
                     "@LapsoDiasDosis,@MaxEdad,@MinEdad,@EficaciaPrev,@EficaciaHosp,@EficaciaCti,@MaxTemp,@MinTemp," + 
@@ -26,7 +26,7 @@ namespace Repositorios
                 cmd.Parameters.AddWithValue("@IdUsuario", unaVacuna.IdUsuario);
                 cmd.Parameters.AddWithValue("@Nombre", unaVacuna.Nombre);
                 cmd.Parameters.AddWithValue("@CantidadDosis", unaVacuna.CantidadDosis);
-                cmd.Parameters.AddWithValue("@LapsoDiasDosis", unaVacuna.VaidateLapsoDiasDosis(unaVacuna));
+                cmd.Parameters.AddWithValue("@LapsoDiasDosis", unaVacuna.ValidateLapsoDiasDosis(unaVacuna));
                 cmd.Parameters.AddWithValue("@MaxEdad", unaVacuna.MaxEdad);
                 cmd.Parameters.AddWithValue("@MinEdad", unaVacuna.MinEdad);
                 cmd.Parameters.AddWithValue("@EficaciaPrev", unaVacuna.EficaciaPrev);
@@ -80,7 +80,7 @@ namespace Repositorios
         public IEnumerable<Vacuna> FindAll()
         {
             Conexion manejadorConexion = new Conexion();
-            SqlConnection con = manejadorConexion.crearConexion();
+            SqlConnection con = manejadorConexion.CrearConexion();
 
             try
             {
@@ -156,7 +156,7 @@ namespace Repositorios
         public IEnumerable<Vacuna> FindAllByName(string nombre)
         {
             Conexion manejadorConexion = new Conexion();
-            SqlConnection con = manejadorConexion.crearConexion();
+            SqlConnection con = manejadorConexion.CrearConexion();
 
             try
             {
@@ -195,7 +195,7 @@ namespace Repositorios
         public IEnumerable<Vacuna> FindAllByApprovalPhase(int FaseClinicaAprob)
         {
             Conexion manejadorConexion = new Conexion();
-            SqlConnection con = manejadorConexion.crearConexion();
+            SqlConnection con = manejadorConexion.CrearConexion();
 
             try
             {
@@ -234,7 +234,7 @@ namespace Repositorios
         public IEnumerable<Vacuna> FindAllByCountry(string pais)
         {
             Conexion manejadorConexion = new Conexion();
-            SqlConnection con = manejadorConexion.crearConexion();
+            SqlConnection con = manejadorConexion.CrearConexion();
 
             try
             {
@@ -279,7 +279,7 @@ namespace Repositorios
         public IEnumerable<Vacuna> FindAllByTypeVac(string idTipo)
         {
             Conexion manejadorConexion = new Conexion();
-            SqlConnection con = manejadorConexion.crearConexion();
+            SqlConnection con = manejadorConexion.CrearConexion();
 
             try
             {
@@ -320,7 +320,7 @@ namespace Repositorios
         public IEnumerable<Vacuna> FindAllByLabName(string nombreLab)
         {
             Conexion manejadorConexion = new Conexion();
-            SqlConnection con = manejadorConexion.crearConexion();
+            SqlConnection con = manejadorConexion.CrearConexion();
 
             try
             {
@@ -364,7 +364,7 @@ namespace Repositorios
         public IEnumerable<Vacuna> FindAllByMaxPrice(decimal precioMax)
         {
             Conexion manejadorConexion = new Conexion();
-            SqlConnection con = manejadorConexion.crearConexion();
+            SqlConnection con = manejadorConexion.CrearConexion();
 
             try
             {
@@ -404,7 +404,7 @@ namespace Repositorios
         public IEnumerable<Vacuna> FindAllByMinPrice(decimal precioMin)
         {
             Conexion manejadorConexion = new Conexion();
-            SqlConnection con = manejadorConexion.crearConexion();
+            SqlConnection con = manejadorConexion.CrearConexion();
 
             try
             {
@@ -443,7 +443,7 @@ namespace Repositorios
         public Vacuna FindById(int idVacuna)
         {
             Conexion manejadorConexion = new Conexion();
-            SqlConnection con = manejadorConexion.crearConexion();
+            SqlConnection con = manejadorConexion.CrearConexion();
 
             try
             {
@@ -480,17 +480,12 @@ namespace Repositorios
             }
         }
 
-        public bool Remove(int idVacuna)
-        {
-            throw new NotImplementedException();
-        }
-
         public bool Update(Vacuna unaVacuna)
         {
             if (unaVacuna == null) return false;
 
             Conexion manejadorConexion = new Conexion();
-            SqlConnection con = manejadorConexion.crearConexion();
+            SqlConnection con = manejadorConexion.CrearConexion();
 
             try
             {

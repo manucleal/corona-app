@@ -19,10 +19,7 @@ namespace Dominio.EntidadesNegocio
         [MinLength(6, ErrorMessage = "Debe superar 6 caracteres")]
         public string Password { get; set; }
 
-        public Usuario()
-        {
-
-        }        
+        public Usuario() { }
 
         public static string EncodePasswordToBase64(string password)
         {

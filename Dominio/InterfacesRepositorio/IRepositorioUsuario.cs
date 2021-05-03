@@ -7,14 +7,6 @@ namespace Dominio.InterfacesRepositorio
     {
         bool Add(Usuario unUsuario);
 
-        bool Remove(int documento);
-
-        bool Update(Usuario unUsuario);
-
         Usuario FindById(string documento);
-
-        IEnumerable<Usuario> FindAll();
-
-        Usuario FindByAll(string nombre);
     }
 }

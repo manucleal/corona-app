@@ -32,7 +32,7 @@ namespace ArchivoTexto
         {
 
             Conexion handler = new Conexion();
-            SqlConnection con = new Conexion().crearConexion();
+            SqlConnection con = new Conexion().CrearConexion();
 
             try
             {
@@ -77,7 +77,7 @@ namespace ArchivoTexto
         {
 
             Conexion handler = new Conexion();
-            SqlConnection con = new Conexion().crearConexion();
+            SqlConnection con = new Conexion().CrearConexion();
 
             try
             {
@@ -120,7 +120,7 @@ namespace ArchivoTexto
         {
 
             Conexion handler = new Conexion();
-            SqlConnection con = new Conexion().crearConexion();
+            SqlConnection con = new Conexion().CrearConexion();
 
             try
             {
@@ -163,7 +163,7 @@ namespace ArchivoTexto
         {
 
             Conexion handler = new Conexion();
-            SqlConnection con = new Conexion().crearConexion();
+            SqlConnection con = new Conexion().CrearConexion();
 
             try
             {
@@ -207,7 +207,7 @@ namespace ArchivoTexto
         {
 
             Conexion handler = new Conexion();
-            SqlConnection con = new Conexion().crearConexion();
+            SqlConnection con = new Conexion().CrearConexion();
 
             try
             {
@@ -250,7 +250,7 @@ namespace ArchivoTexto
         {
 
             Conexion handler = new Conexion();
-            SqlConnection con = new Conexion().crearConexion();
+            SqlConnection con = new Conexion().CrearConexion();
 
             try
             {
@@ -313,7 +313,7 @@ namespace ArchivoTexto
         {
 
             Conexion handler = new Conexion();
-            SqlConnection con = new Conexion().crearConexion();
+            SqlConnection con = new Conexion().CrearConexion();
 
             try
             {

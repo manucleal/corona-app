@@ -12,7 +12,7 @@ namespace Repositorios
         public IEnumerable<Pais> FindAll()
         {
             Conexion manejadorConexion = new Conexion();
-            SqlConnection con = manejadorConexion.crearConexion();
+            SqlConnection con = manejadorConexion.CrearConexion();
 
             try
             {

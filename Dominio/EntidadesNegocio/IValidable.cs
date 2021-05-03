@@ -10,11 +10,11 @@ namespace Dominio.EntidadesNegocio
     {
         bool ValidateTemperature(Vacuna unaVacuna);
 
-        bool VaidateAge(Vacuna unaVacuna);
+        bool ValidateAge(Vacuna unaVacuna);
 
         decimal ValidatePrice(Vacuna unaVacuna);
 
-        int VaidateLapsoDiasDosis(Vacuna unaVacuna);
+        int ValidateLapsoDiasDosis(Vacuna unaVacuna);
 
         bool ValidateCantidadDosis(Vacuna unaVacuna);
 

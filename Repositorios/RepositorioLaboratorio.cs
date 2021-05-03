@@ -9,17 +9,12 @@ namespace Repositorios
 {
     public class RepositorioLaboratorio : IRepositorioLaboratorio
     {
-        public bool Add(Laboratorio unLaboratorio)
-        {
-            throw new NotImplementedException();
-        }
-
         public IEnumerable<Laboratorio> FindAll()
         {
             try
             {
                 Conexion manejadorConexion = new Conexion();
-                SqlConnection con = manejadorConexion.crearConexion();
+                SqlConnection con = manejadorConexion.CrearConexion();
                 SqlCommand cmd = new SqlCommand("SELECT * FROM Laboratorios", con);
 
                 manejadorConexion.AbrirConexion(con);
@@ -44,26 +39,6 @@ namespace Repositorios
                 System.Diagnostics.Debug.Assert(false, "Error al ingresar Laboratorio" + e.Message);
                 return null;
             }
-        }
-
-        public Laboratorio FindByAll(string nombre)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Laboratorio FindById(int idLaboratorio)
-        {
-            throw new NotImplementedException();
-        }
-
-        public bool Remove(int idLaboratorio)
-        {
-            throw new NotImplementedException();
-        }
-
-        public bool Update(Laboratorio unLaboratorio)
-        {
-            throw new NotImplementedException();
         }
     }
 }

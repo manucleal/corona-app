@@ -1,6 +1,4 @@
-﻿using System;
-using System.ComponentModel.DataAnnotations;
-
+﻿
 namespace Dominio.EntidadesNegocio
 {
     public class Laboratorio
@@ -10,10 +8,6 @@ namespace Dominio.EntidadesNegocio
         public string PaisOrigen { get; set; }
         public bool Experiencia { get; set; }
 
-        public Laboratorio()
-        {
-
-        }
-
+        public Laboratorio() { }
     }
 }

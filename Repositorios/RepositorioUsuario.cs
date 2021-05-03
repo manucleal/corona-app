@@ -8,21 +8,19 @@ using Repositorios.UtilidadesBD;
 namespace Repositorios
 {
     public class RepositorioUsuario : IRepositorioUsuario
-
     {
-
-        public bool Add(Usuario unaUsuario)
+        public bool Add(Usuario unUsuario)
         {
             try
             {
                 Conexion handler = new Conexion();
-                SqlConnection con = new Conexion().crearConexion();
+                SqlConnection con = new Conexion().CrearConexion();
 
                 SqlCommand cmd = new SqlCommand("INSERT INTO Usuarios VALUES (@Documento,@Nombre,@Password)", con);
 
-                cmd.Parameters.AddWithValue("@Documento", unaUsuario.Documento);
-                cmd.Parameters.AddWithValue("@Nombre", unaUsuario.Nombre);
-                cmd.Parameters.AddWithValue("@Password", Usuario.EncodePasswordToBase64(unaUsuario.Password));
+                cmd.Parameters.AddWithValue("@Documento", unUsuario.Documento);
+                cmd.Parameters.AddWithValue("@Nombre", unUsuario.Nombre);
+                cmd.Parameters.AddWithValue("@Password", Usuario.EncodePasswordToBase64(unUsuario.Password));
 
                 if (handler.AbrirConexion(con))
                 {
@@ -39,22 +37,12 @@ namespace Repositorios
             }
         }
 
-        public IEnumerable<Usuario> FindAll()
-        {
-            throw new NotImplementedException();
-        }
-
-        public Usuario FindByAll(string nombre)
-        {
-            throw new NotImplementedException();
-        }
-
         public Usuario FindById(string documento)
         {
             try
             {
                 Conexion handler = new Conexion();
-                SqlConnection con = new Conexion().crearConexion();
+                SqlConnection con = new Conexion().CrearConexion();
 
                 SqlCommand cmd = new SqlCommand("SELECT * FROM Usuarios WHERE Documento=@documento", con);
                 cmd.Parameters.AddWithValue("@documento", documento);
@@ -83,16 +71,6 @@ namespace Repositorios
             }
 
             return new Usuario();
-        }
-
-        public bool Remove(int documento)
-        {
-            throw new NotImplementedException();
-        }
-
-        public bool Update(Usuario unUsuario)
-        {
-            throw new NotImplementedException();
         }
 
         public Usuario Login(Usuario unUsuario)

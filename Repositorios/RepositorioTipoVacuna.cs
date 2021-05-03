@@ -9,17 +9,12 @@ namespace Repositorios
 {
     public class RepositorioTipoVacuna : IRepositorioTipoVacuna
     {
-        public bool Add(TipoVacuna unTipoVacuna)
-        {
-            throw new NotImplementedException();
-        }
-
         public IEnumerable<TipoVacuna> FindAll()
         {
             try
             {
                 Conexion manejadorConexion = new Conexion();
-                SqlConnection con = manejadorConexion.crearConexion();
+                SqlConnection con = manejadorConexion.CrearConexion();
                 SqlCommand cmd = new SqlCommand("SELECT * FROM TipoVacunas", con);
 
                 manejadorConexion.AbrirConexion(con);
@@ -42,21 +37,6 @@ namespace Repositorios
                 System.Diagnostics.Debug.Assert(false, "Error al listar Tipo de Vacunas" + e.Message);
                 return null;
             }
-        }
-
-        public TipoVacuna FindById(string idTipoVacuna)
-        {
-            throw new NotImplementedException();
-        }
-
-        public bool Remove(int idTipoVacuna)
-        {
-            throw new NotImplementedException();
-        }
-
-        public bool Update(TipoVacuna unTipoVacuna)
-        {
-            throw new NotImplementedException();
         }
     }
 }
