@@ -29,7 +29,7 @@
                         <th>Covax</th>
                         <th>Labs</th>
                         <th>Precio</th>
-                        <th>Efect.<br>Adversos</th>
+                        <th id="thEfectos">Efect.<br>Adversos</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -68,7 +68,7 @@
                                     <th>N/a</th>
                                 }
                                 <th>$ @item.Precio</th>
-                                <th>$ @item.Precio</th>
+                                <th class="efectos"><span>@item.EfectosAdversos</span> </th>
                             </tr>
                         }
                     }

@@ -119,11 +119,12 @@ main small{
 
 /*table lista empleados*/
 
-table{
+table {
     width: 100%;
     text-align: center;
     border-collapse: collapse;
     font-size: 12px;
+    margin-bottom: 2%;
 }
 
 /*pinta la primera fila*/
@@ -174,7 +175,7 @@ td img{
     display: inline-block;
     float: right;
     padding: 1% 3% 3% 0;
-    letter-spacing: 5px;
+    letter-spacing: 1px;
 }
 
 #tableEmpleados input[value]{
@@ -729,3 +730,15 @@ footer#footerIndex{
 } 
 
 /*  Fin Footer dashboard y listado */
+.efectos {
+    display: flex;
+    /*background-color: yellowgreen;*/
+    /*width: 21%;*/
+    text-align: center;
+    padding: 3px 5px 3px 5px;
+}
+
+#thEfectos {
+    text-align: left;
+    padding-left: 4%;
+}
