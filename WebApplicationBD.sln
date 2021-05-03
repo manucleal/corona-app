@@ -4,6 +4,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 15.0.28307.1231
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApplication", "WebApplication\WebApplication.csproj", "{22F0584D-5C24-4DBF-A195-0F01EDDFCCDB}"
+	ProjectSection(ProjectDependencies) = postProject
+		{BBB905B1-5E89-4F6D-9076-AA59A78068B2} = {BBB905B1-5E89-4F6D-9076-AA59A78068B2}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dominio", "Dominio\Dominio.csproj", "{48ACDBA2-CEB3-4597-BA43-9ABE1602A2C2}"
 EndProject

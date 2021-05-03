@@ -14,7 +14,7 @@
                 </fieldset>
                 <fieldset>
                     <legend>Precio (*)</legend>
-                    <input type="number" onkeypress="return justNumbers(event);" min="1" pattern="^[1-9]" name="precio" value="@Model.Precio" required />
+                    <input type="number" onkeypress="return justNumbers(event);" min="0" pattern="^[1-9]" name="precio" value="@Model.Precio" required />
                     <input type="number" hidden name="Id" value="@Model.Id">
                 </fieldset>
             </div>

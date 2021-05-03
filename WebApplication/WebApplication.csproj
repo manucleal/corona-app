@@ -44,6 +44,8 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -88,6 +90,13 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <None Include="Connected Services\ReferenciaServicioVacunas\ServicioVacunas.disco" />
+    <None Include="Connected Services\ReferenciaServicioVacunas\configuration91.svcinfo" />
+    <None Include="Connected Services\ReferenciaServicioVacunas\configuration.svcinfo" />
+    <None Include="Connected Services\ReferenciaServicioVacunas\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -103,6 +112,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Connected Services\ReferenciaServicioVacunas\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="Controllers\UsuarioController.cs" />
     <Compile Include="Controllers\VacunaController.cs" />
     <Compile Include="Global.asax.cs">
@@ -115,6 +129,22 @@
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <None Include="Connected Services\ReferenciaServicioVacunas\ServicioVacunas.wsdl" />
+    <None Include="Connected Services\ReferenciaServicioVacunas\ServicioVacunas.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\ReferenciaServicioVacunas\ServicioVacunas1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\ReferenciaServicioVacunas\ServicioVacunas2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\ReferenciaServicioVacunas\ServicioVacunas3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <Content Include="Connected Services\ReferenciaServicioVacunas\WebApplication.ReferenciaServicioVacunas.DtoVacunas.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
     <None Include="packages.config" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
@@ -150,10 +180,12 @@
       <Project>{211554cb-46f8-4b9c-84fc-2ec00150d5b5}</Project>
       <Name>Repositorios</Name>
     </ProjectReference>
-    <ProjectReference Include="..\WcfServicioVacunas\WcfServicioCoronApp.csproj">
-      <Project>{bbb905b1-5e89-4f6d-9076-aa59a78068b2}</Project>
-      <Name>WcfServicioCoronApp</Name>
-    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Connected Services\ReferenciaServicioVacunas\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

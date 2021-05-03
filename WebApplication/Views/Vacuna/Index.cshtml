@@ -1,4 +1,4 @@
-﻿@model IEnumerable<WcfServicioCoronApp.DtoVacunas>
+﻿@model IEnumerable<WebApplication.ReferenciaServicioVacunas.DtoVacunas>
 @{
     ViewBag.H1 = "Listar Vacuna";
     ViewBag.Title = "Listar Vacuna";
@@ -33,9 +33,9 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @if (ViewBag.Vacunas != null && ViewBag.Vacunas.Count > 0)
+                    @if (ViewBag.Vacunas != null)
                     {
-                        foreach (WcfServicioCoronApp.DtoVacunas item in ViewBag.Vacunas)
+                        foreach (WebApplication.ReferenciaServicioVacunas.DtoVacunas item in ViewBag.Vacunas)
                         {
                             <tr>
                                 <th>@item.Nombre</th>
@@ -54,7 +54,7 @@
                                 <th>@(item.Emergencia ? "Si" : "No")</th>
                                 <th>@(item.Covax ? "Si" : "No")</th>
 
-                                @if (item.ListaLaboratorios.Count > 0)
+                                @if (item.ListaLaboratorios.Length > 0)
                                 {
                                     <th>
                                         @foreach (var lab in item.ListaLaboratorios)

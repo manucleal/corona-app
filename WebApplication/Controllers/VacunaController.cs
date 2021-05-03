@@ -2,7 +2,7 @@
 using System.Web.Mvc;
 using Repositorios;
 using Dominio.EntidadesNegocio;
-using WcfServicioCoronApp;
+using WebApplication.ReferenciaServicioVacunas;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -10,7 +10,7 @@ namespace WebApplication.Controllers
 {
     public class VacunaController : Controller
     {
-        private ServicioVacunas serviciosVacunas = new ServicioVacunas();
+        private ServicioVacunasClient serviciosVacunas = new ServicioVacunasClient();
         private RepositorioVacuna repoVacuna = new RepositorioVacuna();
         private RepositorioLaboratorio repoLaboratorio = new RepositorioLaboratorio();
         private RepositorioTipoVacuna repoTipoVacuna = new RepositorioTipoVacuna();
@@ -67,8 +67,6 @@ namespace WebApplication.Controllers
         [HttpPost]
         public ActionResult IndexAuth(string tipoFiltro, string filtroText = "", int filtroNumber = 0)
         {
-            ServicioVacunas serviciosVacunas = new ServicioVacunas();
-
             if (tipoFiltro != null && (filtroText != "" || filtroNumber >= 0))
             {
                 switch (tipoFiltro)

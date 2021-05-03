@@ -1,11 +1,4 @@
-﻿
-@{
-    ViewBag.Title = "IndexAuth";
-}
-
-<h2>IndexAuth</h2>
-
-@model IEnumerable<WcfServicioCoronApp.DtoVacunas>
+﻿@model IEnumerable<WebApplication.ReferenciaServicioVacunas.DtoVacunas>
 @{
     ViewBag.H1 = "Listar Vacuna";
     ViewBag.Title = "Listar Vacuna";
@@ -14,28 +7,26 @@
 <html lang="es">
 <body>
     <main>
-        @if ((string)Session["documento"] != null)
-        {
-            <form method="post" action="/Vacuna/IndexAuth" autocomplete="on">
+        <form method="post" action="/Vacuna/IndexAuth" autocomplete="on">
 
-                <select name="TipoFiltro" id="selectFilter">
-                    <option value="">Seleccione el filtro </option>
-                    <option value="PorNombre">Nombre</option>
-                    <option value="PorFaseAprob">Fase de aprobación</option>
-                    <option value="PorPaisLab">País de laboratorio</option>
-                    <option value="PorTipoVac">Tipo de Vacuna</option>
-                    <option value="PorTopeInferior">Tope inferior de precio</option>
-                    <option value="PorTopeSuperior">Tope superior de precio</option>
-                    <option value="PorNombreLab">Nombre Laboratorio</option>
-                </select>
+            <select name="TipoFiltro" id="selectFilter">
+                <option value="">Seleccione el filtro </option>
+                <option value="PorNombre">Nombre</option>
+                <option value="PorFaseAprob">Fase de aprobación</option>
+                <option value="PorPaisLab">País de laboratorio</option>
+                <option value="PorTipoVac">Tipo de Vacuna</option>
+                <option value="PorTopeInferior">Tope inferior de precio</option>
+                <option value="PorTopeSuperior">Tope superior de precio</option>
+                <option value="PorNombreLab">Nombre Laboratorio</option>
+            </select>
 
-                <input type="text" id="filtroText" name="filtroText" />
-                @*<input type="number" id="filtroNumber" onkeypress="return justNumbers(event);" min="1" pattern="^[1-9]" name="filtroNumber" />*@
-                <input type="text" id="filtroNumber" name="filtroNumber" />
+            <input type="text" id="filtroText" name="filtroText" />
+            @*<input type="number" id="filtroNumber" onkeypress="return justNumbers(event);" min="1" pattern="^[1-9]" name="filtroNumber" />*@
+            <input type="text" id="filtroNumber" name="filtroNumber" />
 
-                <input type="submit" id="login" value="Buscar">
-            </form>
-        }
+            <input type="submit" id="login" value="Buscar">
+        </form>
+
         <small>Dashboard / <em>Lista Vacunas <p style="color:red;">@ViewBag.mensaje</p></em></small>
         <div id="tableEmpleados">
             <table>
@@ -49,15 +40,15 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @if (ViewBag.Vacunas != null && ViewBag.Vacunas.Count > 0)
+                    @if (ViewBag.Vacunas != null)
                     {
-                        foreach (WcfServicioCoronApp.DtoVacunas item in ViewBag.Vacunas)
+                        foreach (WebApplication.ReferenciaServicioVacunas.DtoVacunas item in ViewBag.Vacunas)
                         {
                             <tr>
                                 <th>@item.Nombre</th>
                                 <th>@item.IdTipo</th>
 
-                                @if (item.ListaLaboratorios.Count > 0)
+                                @if (item.ListaLaboratorios.Length > 0)
                                 {
                                     <th>
                                         @foreach (var lab in item.ListaLaboratorios)

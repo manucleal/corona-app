@@ -153,6 +153,32 @@ namespace Repositorios
             }
         }
 
+        private ICollection<Laboratorio> AddLabsToVacunas(int idVacuna, SqlConnection con)
+        {
+            SqlCommand query = new SqlCommand("SELECT * FROM Laboratorios l " +
+                                  "WHERE l.Id IN (SELECT IdLaboratorio FROM VacunaLaboratorios vl " +
+                                  "WHERE IdVacuna=@IdVacuna)", con);
+            query.Parameters.AddWithValue("@IdVacuna", idVacuna);
+            SqlDataReader labs = query.ExecuteReader();
+            ICollection<Laboratorio> ListaLaboratorios = new List<Laboratorio>();
+            while (labs.Read())
+            {
+                Laboratorio lab = new Laboratorio()
+                {
+                    Id = (int)labs["Id"],
+                    Nombre = (string)labs["Nombre"],
+                    PaisOrigen = (string)labs["PaisOrigen"],
+                    Experiencia = (bool)labs["Experiencia"]
+                };
+
+                ListaLaboratorios.Add(lab);
+            }
+
+            labs.Close();
+
+            return ListaLaboratorios;
+        }
+
         public IEnumerable<Vacuna> FindAllByName(string nombre)
         {
             Conexion manejadorConexion = new Conexion();
@@ -170,14 +196,17 @@ namespace Repositorios
 
                 while (dataReader.Read())
                 {
+                    int idVacuna = (int)dataReader["Id"];
                     Vacuna unaVacuna = new Vacuna()
                     {
+                        Id = idVacuna,
                         Nombre = (string)dataReader["Nombre"],
                         IdTipo = (string)dataReader["IdTipo"],
                         Precio = (decimal)dataReader["Precio"],
 
                     };
                     vacunas.Add(unaVacuna);
+                    unaVacuna.ListaLaboratorios = AddLabsToVacunas(idVacuna, con);
                 }
                 return vacunas;
             }
@@ -209,14 +238,17 @@ namespace Repositorios
 
                 while (dataReader.Read())
                 {
+                    int idVacuna = (int)dataReader["Id"];
                     Vacuna unaVacuna = new Vacuna()
                     {
+                        Id = idVacuna,
                         Nombre = (string)dataReader["Nombre"],
                         IdTipo = (string)dataReader["IdTipo"],
                         Precio = (decimal)dataReader["Precio"],
 
                     };
                     vacunas.Add(unaVacuna);
+                    unaVacuna.ListaLaboratorios = AddLabsToVacunas(idVacuna, con);
                 }
                 return vacunas;
             }
@@ -241,26 +273,29 @@ namespace Repositorios
                 SqlCommand query = new SqlCommand("SELECT * FROM Vacunas " +
                                                    "WHERE Id IN (SELECT IdVacuna " +
                                                                 "FROM VacunaLaboratorios " +
-                                                                "WHERE IdLaboratorio IN (SELECT Id " +
-                                                                                        "FROM Laboratorios " +
-                                                                                        "WHERE PaisOrigen = @PaisOrigen))", con);
+                                                                "WHERE IdLaboratorio IN (SELECT l.Id " +
+                                                                                        "FROM Laboratorios l, Paises p " +
+                                                                                        "WHERE l.PaisOrigen = p.CodPais AND (p.Nombre = @Pais OR p.CodPais = @Pais)))", con);
                 manejadorConexion.AbrirConexion(con);
 
-                query.Parameters.AddWithValue("@PaisOrigen", pais);
+                query.Parameters.AddWithValue("@Pais", pais);
                 SqlDataReader dataReader = query.ExecuteReader();
 
                 List<Vacuna> vacunas = new List<Vacuna>();
 
                 while (dataReader.Read())
                 {
+                    int idVacuna = (int)dataReader["Id"];
                     Vacuna unaVacuna = new Vacuna()
                     {
+                        Id = idVacuna,
                         Nombre = (string)dataReader["Nombre"],
                         IdTipo = (string)dataReader["IdTipo"],
                         Precio = (decimal)dataReader["Precio"],
 
                     };
                     vacunas.Add(unaVacuna);
+                    unaVacuna.ListaLaboratorios = AddLabsToVacunas(idVacuna, con);
                 }
                 return vacunas;
             }
@@ -294,14 +329,17 @@ namespace Repositorios
 
                 while (dataReader.Read())
                 {
+                    int idVacuna = (int)dataReader["Id"];
                     Vacuna unaVacuna = new Vacuna()
                     {
+                        Id = idVacuna,
                         Nombre = (string)dataReader["Nombre"],
                         IdTipo = (string)dataReader["IdTipo"],
                         Precio = (decimal)dataReader["Precio"],
 
                     };
                     vacunas.Add(unaVacuna);
+                    unaVacuna.ListaLaboratorios = AddLabsToVacunas(idVacuna, con);
                 }
                 return vacunas;
             }
@@ -339,14 +377,17 @@ namespace Repositorios
 
                 while (dataReader.Read())
                 {
+                    int idVacuna = (int)dataReader["Id"];
                     Vacuna unaVacuna = new Vacuna()
                     {
+                        Id = idVacuna,
                         Nombre = (string)dataReader["Nombre"],
                         IdTipo = (string)dataReader["IdTipo"],
                         Precio = (decimal)dataReader["Precio"],
 
                     };
                     vacunas.Add(unaVacuna);
+                    unaVacuna.ListaLaboratorios = AddLabsToVacunas(idVacuna, con);
                 }
                 return vacunas;
             }
@@ -378,14 +419,17 @@ namespace Repositorios
 
                 while (dataReader.Read())
                 {
+                    int idVacuna = (int)dataReader["Id"];
                     Vacuna unaVacuna = new Vacuna()
                     {
+                        Id = idVacuna,
                         Nombre = (string)dataReader["Nombre"],
                         IdTipo = (string)dataReader["IdTipo"],
                         Precio = (decimal)dataReader["Precio"],
 
                     };
                     vacunas.Add(unaVacuna);
+                    unaVacuna.ListaLaboratorios = AddLabsToVacunas(idVacuna, con);
                 }
                 return vacunas;
             }
@@ -418,14 +462,17 @@ namespace Repositorios
 
                 while (dataReader.Read())
                 {
+                    int idVacuna = (int)dataReader["Id"];
                     Vacuna unaVacuna = new Vacuna()
                     {
+                        Id = idVacuna,
                         Nombre = (string)dataReader["Nombre"],
                         IdTipo = (string)dataReader["IdTipo"],
                         Precio = (decimal)dataReader["Precio"],
 
                     };
                     vacunas.Add(unaVacuna);
+                    unaVacuna.ListaLaboratorios = AddLabsToVacunas(idVacuna, con);
                 }
                 return vacunas;
             }
@@ -457,15 +504,17 @@ namespace Repositorios
 
                 while (dataReader.Read())
                 {
+                    int id = (int)dataReader["Id"];
                     Vacuna unaVacuna = new Vacuna()
                     {
-                        Id = (int)dataReader["Id"],
+                        Id = id,
                         Nombre = (string)dataReader["Nombre"],
                         IdTipo = (string)dataReader["IdTipo"],
                         FaseClinicaAprob = (int)dataReader["FaseClinicaAprob"],
                         Precio = (decimal)dataReader["Precio"]
                     };
                     vacuna = unaVacuna;
+                    unaVacuna.ListaLaboratorios = AddLabsToVacunas(id, con);
                 }
                 return vacuna;
             }

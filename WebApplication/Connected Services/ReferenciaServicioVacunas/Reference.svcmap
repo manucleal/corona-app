@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="cb6d651e-b7a2-49bd-8504-293241781ccd" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:52831/ServicioVacunas.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="ServicioVacunas.xsd" MetadataType="Schema" ID="3f48fcea-7d41-48a4-a9d4-338f13574b75" SourceId="1" SourceUrl="http://localhost:52831/ServicioVacunas.svc?xsd=xsd0" />
+    <MetadataFile FileName="ServicioVacunas1.xsd" MetadataType="Schema" ID="1ccd97d1-c1aa-446b-9f4d-9cb6a5fd7f57" SourceId="1" SourceUrl="http://localhost:52831/ServicioVacunas.svc?xsd=xsd1" />
+    <MetadataFile FileName="ServicioVacunas2.xsd" MetadataType="Schema" ID="acc2cdc9-c7bf-43e2-bb2b-079938a4664a" SourceId="1" SourceUrl="http://localhost:52831/ServicioVacunas.svc?xsd=xsd2" />
+    <MetadataFile FileName="ServicioVacunas.wsdl" MetadataType="Wsdl" ID="241256dd-2557-4404-bbe4-6ebbb6469788" SourceId="1" SourceUrl="http://localhost:52831/ServicioVacunas.svc?wsdl" />
+    <MetadataFile FileName="ServicioVacunas3.xsd" MetadataType="Schema" ID="435c7562-d482-4f1e-8c9a-cab720fe04f0" SourceId="1" SourceUrl="http://localhost:52831/ServicioVacunas.svc?xsd=xsd3" />
+    <MetadataFile FileName="ServicioVacunas.disco" MetadataType="Disco" ID="38e77c0a-e44d-4e49-87ea-04da8ac22e1b" SourceId="1" SourceUrl="http://localhost:52831/ServicioVacunas.svc?disco" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>
