@@ -79,6 +79,9 @@ namespace WebApplication.ReferenciaServicioVacunas {
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private long ProduccionAnualField;
         
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private Dominio.EntidadesNegocio.TipoVacuna TipoVacunaField;
+        
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
             get {
@@ -332,6 +335,19 @@ namespace WebApplication.ReferenciaServicioVacunas {
                 if ((this.ProduccionAnualField.Equals(value) != true)) {
                     this.ProduccionAnualField = value;
                     this.RaisePropertyChanged("ProduccionAnual");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public Dominio.EntidadesNegocio.TipoVacuna TipoVacuna {
+            get {
+                return this.TipoVacunaField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.TipoVacunaField, value) != true)) {
+                    this.TipoVacunaField = value;
+                    this.RaisePropertyChanged("TipoVacuna");
                 }
             }
         }

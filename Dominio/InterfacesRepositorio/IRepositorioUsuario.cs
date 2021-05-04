@@ -1,6 +1,4 @@
 ﻿using Dominio.EntidadesNegocio;
-using System.Collections.Generic;
-
 namespace Dominio.InterfacesRepositorio
 {
     public interface IRepositorioUsuario
@@ -8,5 +6,7 @@ namespace Dominio.InterfacesRepositorio
         bool Add(Usuario unUsuario);
 
         Usuario FindById(string documento);
+
+        Usuario Login(Usuario unUsuario);
     }
 }

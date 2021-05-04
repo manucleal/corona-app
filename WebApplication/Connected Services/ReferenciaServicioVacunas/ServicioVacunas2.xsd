@@ -28,6 +28,7 @@
       <xs:element minOccurs="0" name="Nombre" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Precio" type="xs:decimal" />
       <xs:element minOccurs="0" name="ProduccionAnual" type="xs:long" />
+      <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/Dominio.EntidadesNegocio" minOccurs="0" name="TipoVacuna" nillable="true" type="q2:TipoVacuna" />
     </xs:sequence>
   </xs:complexType>
   <xs:element name="DtoVacunas" nillable="true" type="tns:DtoVacunas" />

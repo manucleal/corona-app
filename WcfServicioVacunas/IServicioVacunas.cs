@@ -64,9 +64,11 @@ namespace WcfServicioCoronApp
         [DataMember]
         public decimal Precio { get; set; }
         [DataMember]
-        public string IdTipo { get; set; }
+        public TipoVacuna TipoVacuna { get; set; }
         [DataMember]
         public ICollection<Laboratorio> ListaLaboratorios { get; set; } = new List<Laboratorio>();
+        [DataMember]
+        public ICollection<Pais> ListaPaises { get; set; } = new List<Pais>();
         [DataMember]
         public bool Covax { get; set; }
 
@@ -88,8 +90,9 @@ namespace WcfServicioCoronApp
             Emergencia = vacuna.Emergencia;
             EfectosAdversos = vacuna.EfectosAdversos;
             Precio = vacuna.Precio;
-            IdTipo = vacuna.IdTipo;
+            TipoVacuna = vacuna.TipoVacuna;
             ListaLaboratorios = vacuna.ListaLaboratorios;
+            ListaPaises = vacuna.ListaPaises;
             Covax = vacuna.Covax;
         }
     }

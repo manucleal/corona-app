@@ -62,10 +62,14 @@ namespace Dominio.EntidadesNegocio
         public decimal Precio { get; set; }
         public DateTime UltimaModificacion { get; set; }
         public string IdUsuario { get; set; }
+
         public string IdTipo { get; set; }
+        public TipoVacuna TipoVacuna { get; set; }
+
         public string[] Paises { get; set; }
         public int[] Laboratorios { get; set; }
         public ICollection<Laboratorio> ListaLaboratorios { get; set; } = new List<Laboratorio>();
+        public ICollection<Pais> ListaPaises { get; set; } = new List<Pais>();
         public bool Covax { get; set; }
 
         public Vacuna() { }

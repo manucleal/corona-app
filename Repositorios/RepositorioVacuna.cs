@@ -93,11 +93,12 @@ namespace Repositorios
                 while (dataReader.Read())
                 {
                     int idVacuna = (int)dataReader["Id"];
+                    string idTipo = (string)dataReader["IdTipo"];
                     Vacuna unaVacuna = new Vacuna()
                     {
                         Id = idVacuna,
                         Nombre = (string)dataReader["Nombre"],
-                        IdTipo = (string)dataReader["IdTipo"],
+                        IdTipo = idTipo,
                         CantidadDosis = (int)dataReader["CantidadDosis"],
                         LapsoDiasDosis = (int)dataReader["LapsoDiasDosis"],
                         MaxEdad = (int)dataReader["MaxEdad"],
@@ -116,27 +117,9 @@ namespace Repositorios
                     };
 
                     vacunas.Add(unaVacuna);
-
-                    SqlCommand query = new SqlCommand("SELECT * FROM Laboratorios l " +
-                                                      "WHERE l.Id IN (SELECT IdLaboratorio FROM VacunaLaboratorios vl " + 
-                                                      "WHERE IdVacuna=@IdVacuna)", con);
-                    query.Parameters.AddWithValue("@IdVacuna", idVacuna);
-                    SqlDataReader labs = query.ExecuteReader();
-
-                    while (labs.Read())
-                    {
-                        Laboratorio lab = new Laboratorio()
-                        {
-                            Id = (int)labs["Id"],
-                            Nombre = (string)labs["Nombre"],
-                            PaisOrigen = (string)labs["PaisOrigen"],
-                            Experiencia = (bool)labs["Experiencia"]
-                        };
-
-                        unaVacuna.ListaLaboratorios.Add(lab);
-                    }
-
-                    labs.Close();
+                    unaVacuna.ListaLaboratorios = AddLabsToVacunas(idVacuna, con);
+                    unaVacuna.TipoVacuna = AddTipoVacunaToVacunas(idTipo, con);
+                    unaVacuna.ListaPaises = AddPaisToVacunas(idVacuna, con);
                 }
                 dataReader.Close();
 
@@ -144,7 +127,7 @@ namespace Repositorios
             }
             catch (Exception e)
             {
-                System.Diagnostics.Debug.Assert(false, "Error al ingresar Vacuna" + e.Message);
+                System.Diagnostics.Debug.Assert(false, "Error al listar Vacuna" + e.Message);
                 return null;
             }
             finally
@@ -179,6 +162,56 @@ namespace Repositorios
             return ListaLaboratorios;
         }
 
+        private TipoVacuna AddTipoVacunaToVacunas(string idTipo, SqlConnection con)
+        {
+            SqlCommand query = new SqlCommand("SELECT * FROM TipoVacunas " +                                  
+                                  "WHERE Id LIKE @idTipo", con);
+            query.Parameters.AddWithValue("@idTipo", '%' + idTipo + '%');
+
+            SqlDataReader reader = query.ExecuteReader();
+            TipoVacuna tipoVacuna = null;
+            while (reader.Read())
+            {
+                TipoVacuna unaVacuna = new TipoVacuna()
+                {
+                    Id = (string)reader["Id"],
+                    Descripcion = (string)reader["Descripcion"]
+                };
+
+                tipoVacuna = unaVacuna;
+            }
+
+            reader.Close();
+
+            return tipoVacuna;
+        }
+
+        private ICollection<Pais> AddPaisToVacunas(int idVacuna, SqlConnection con)
+        {
+            SqlCommand query = new SqlCommand("SELECT * FROM Paises p WHERE p.CodPais IN(" +
+                                              "SELECT s.CodPais FROM StatusVacuna s " +
+                                              "WHERE s.IdVac=@idVacuna)", con);
+            query.Parameters.AddWithValue("@idVacuna", idVacuna);
+
+            SqlDataReader reader = query.ExecuteReader();
+            ICollection<Pais> ListaPaises = new List<Pais>();
+
+            while (reader.Read())
+            {
+                Pais unPais = new Pais()
+                {
+                    CodPais = (string)reader["CodPais"],
+                    Nombre = (string)reader["Nombre"]
+                };
+
+                ListaPaises.Add(unPais);
+            }
+
+            reader.Close();
+
+            return ListaPaises;
+        }
+
         public IEnumerable<Vacuna> FindAllByName(string nombre)
         {
             Conexion manejadorConexion = new Conexion();
@@ -197,16 +230,19 @@ namespace Repositorios
                 while (dataReader.Read())
                 {
                     int idVacuna = (int)dataReader["Id"];
+                    string idTipo = (string)dataReader["IdTipo"];
                     Vacuna unaVacuna = new Vacuna()
                     {
                         Id = idVacuna,
                         Nombre = (string)dataReader["Nombre"],
-                        IdTipo = (string)dataReader["IdTipo"],
+                        IdTipo = idTipo,
                         Precio = (decimal)dataReader["Precio"],
 
                     };
                     vacunas.Add(unaVacuna);
                     unaVacuna.ListaLaboratorios = AddLabsToVacunas(idVacuna, con);
+                    unaVacuna.TipoVacuna = AddTipoVacunaToVacunas(idTipo, con);
+                    unaVacuna.ListaPaises = AddPaisToVacunas(idVacuna, con);
                 }
                 return vacunas;
             }
@@ -239,16 +275,19 @@ namespace Repositorios
                 while (dataReader.Read())
                 {
                     int idVacuna = (int)dataReader["Id"];
+                    string idTipo = (string)dataReader["IdTipo"];
                     Vacuna unaVacuna = new Vacuna()
                     {
                         Id = idVacuna,
                         Nombre = (string)dataReader["Nombre"],
-                        IdTipo = (string)dataReader["IdTipo"],
+                        IdTipo = idTipo,
                         Precio = (decimal)dataReader["Precio"],
 
                     };
                     vacunas.Add(unaVacuna);
                     unaVacuna.ListaLaboratorios = AddLabsToVacunas(idVacuna, con);
+                    unaVacuna.TipoVacuna = AddTipoVacunaToVacunas(idTipo, con);
+                    unaVacuna.ListaPaises = AddPaisToVacunas(idVacuna, con);
                 }
                 return vacunas;
             }
@@ -286,16 +325,19 @@ namespace Repositorios
                 while (dataReader.Read())
                 {
                     int idVacuna = (int)dataReader["Id"];
+                    string idTipo = (string)dataReader["IdTipo"];
                     Vacuna unaVacuna = new Vacuna()
                     {
                         Id = idVacuna,
                         Nombre = (string)dataReader["Nombre"],
-                        IdTipo = (string)dataReader["IdTipo"],
+                        IdTipo = idTipo,
                         Precio = (decimal)dataReader["Precio"],
 
                     };
                     vacunas.Add(unaVacuna);
                     unaVacuna.ListaLaboratorios = AddLabsToVacunas(idVacuna, con);
+                    unaVacuna.TipoVacuna = AddTipoVacunaToVacunas(idTipo, con);
+                    unaVacuna.ListaPaises = AddPaisToVacunas(idVacuna, con);
                 }
                 return vacunas;
             }
@@ -319,7 +361,7 @@ namespace Repositorios
             try
             {
                 SqlCommand query = new SqlCommand("SELECT * FROM Vacunas " +
-                                                  "WHERE IdTipo = @idTipo", con);
+                                                  "WHERE IdTipo = (SELECT Id FROM TipoVacunas WHERE Descripcion=@idTipo)", con);
                 manejadorConexion.AbrirConexion(con);
 
                 query.Parameters.AddWithValue("@idTipo", idTipo);
@@ -330,16 +372,18 @@ namespace Repositorios
                 while (dataReader.Read())
                 {
                     int idVacuna = (int)dataReader["Id"];
+                    string idTipoDB = (string)dataReader["IdTipo"];
                     Vacuna unaVacuna = new Vacuna()
                     {
                         Id = idVacuna,
                         Nombre = (string)dataReader["Nombre"],
-                        IdTipo = (string)dataReader["IdTipo"],
                         Precio = (decimal)dataReader["Precio"],
 
                     };
                     vacunas.Add(unaVacuna);
                     unaVacuna.ListaLaboratorios = AddLabsToVacunas(idVacuna, con);
+                    unaVacuna.TipoVacuna = AddTipoVacunaToVacunas(idTipoDB, con);
+                    unaVacuna.ListaPaises = AddPaisToVacunas(idVacuna, con);
                 }
                 return vacunas;
             }
@@ -378,16 +422,19 @@ namespace Repositorios
                 while (dataReader.Read())
                 {
                     int idVacuna = (int)dataReader["Id"];
+                    string idTipo = (string)dataReader["IdTipo"];
                     Vacuna unaVacuna = new Vacuna()
                     {
                         Id = idVacuna,
                         Nombre = (string)dataReader["Nombre"],
-                        IdTipo = (string)dataReader["IdTipo"],
+                        IdTipo = idTipo,
                         Precio = (decimal)dataReader["Precio"],
 
                     };
                     vacunas.Add(unaVacuna);
                     unaVacuna.ListaLaboratorios = AddLabsToVacunas(idVacuna, con);
+                    unaVacuna.TipoVacuna = AddTipoVacunaToVacunas(idTipo, con);
+                    unaVacuna.ListaPaises = AddPaisToVacunas(idVacuna, con);
                 }
                 return vacunas;
             }
@@ -420,16 +467,19 @@ namespace Repositorios
                 while (dataReader.Read())
                 {
                     int idVacuna = (int)dataReader["Id"];
+                    string idTipo = (string)dataReader["IdTipo"];
                     Vacuna unaVacuna = new Vacuna()
                     {
                         Id = idVacuna,
                         Nombre = (string)dataReader["Nombre"],
-                        IdTipo = (string)dataReader["IdTipo"],
+                        IdTipo = idTipo,
                         Precio = (decimal)dataReader["Precio"],
 
                     };
                     vacunas.Add(unaVacuna);
                     unaVacuna.ListaLaboratorios = AddLabsToVacunas(idVacuna, con);
+                    unaVacuna.TipoVacuna = AddTipoVacunaToVacunas(idTipo, con);
+                    unaVacuna.ListaPaises = AddPaisToVacunas(idVacuna, con);
                 }
                 return vacunas;
             }
@@ -463,16 +513,19 @@ namespace Repositorios
                 while (dataReader.Read())
                 {
                     int idVacuna = (int)dataReader["Id"];
+                    string idTipo = (string)dataReader["IdTipo"];
                     Vacuna unaVacuna = new Vacuna()
                     {
                         Id = idVacuna,
                         Nombre = (string)dataReader["Nombre"],
-                        IdTipo = (string)dataReader["IdTipo"],
+                        IdTipo = idTipo,
                         Precio = (decimal)dataReader["Precio"],
 
                     };
                     vacunas.Add(unaVacuna);
                     unaVacuna.ListaLaboratorios = AddLabsToVacunas(idVacuna, con);
+                    unaVacuna.TipoVacuna = AddTipoVacunaToVacunas(idTipo, con);
+                    unaVacuna.ListaPaises = AddPaisToVacunas(idVacuna, con);
                 }
                 return vacunas;
             }
@@ -505,16 +558,19 @@ namespace Repositorios
                 while (dataReader.Read())
                 {
                     int id = (int)dataReader["Id"];
+                    string idTipo = (string)dataReader["IdTipo"];
                     Vacuna unaVacuna = new Vacuna()
                     {
                         Id = id,
                         Nombre = (string)dataReader["Nombre"],
-                        IdTipo = (string)dataReader["IdTipo"],
+                        IdTipo = idTipo,
                         FaseClinicaAprob = (int)dataReader["FaseClinicaAprob"],
                         Precio = (decimal)dataReader["Precio"]
                     };
                     vacuna = unaVacuna;
                     unaVacuna.ListaLaboratorios = AddLabsToVacunas(id, con);
+                    unaVacuna.TipoVacuna = AddTipoVacunaToVacunas(idTipo, con);
+                    unaVacuna.ListaPaises = AddPaisToVacunas(idVacuna, con);
                 }
                 return vacuna;
             }

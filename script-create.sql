@@ -1,6 +1,6 @@
 CREATE TABLE [dbo].[TipoVacunas] (
     [Id]          CHAR (5) NOT NULL,
-    [Descripcion] TEXT     NOT NULL,
+    [Descripcion] VARCHAR(255)     NOT NULL,
     PRIMARY KEY CLUSTERED ([Id] ASC)
 );
 

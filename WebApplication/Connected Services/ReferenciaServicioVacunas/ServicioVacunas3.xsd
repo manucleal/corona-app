@@ -15,4 +15,11 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="Laboratorio" nillable="true" type="tns:Laboratorio" />
+  <xs:complexType name="TipoVacuna">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Descripcion" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Id" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="TipoVacuna" nillable="true" type="tns:TipoVacuna" />
 </xs:schema>
