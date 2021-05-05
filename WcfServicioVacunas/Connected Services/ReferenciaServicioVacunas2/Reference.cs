@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace WebApplication.ReferenciaServicioVacunas {
+namespace WcfServicioVacunas.ReferenciaServicioVacunas2 {
     using System.Runtime.Serialization;
     using System;
     
@@ -50,13 +50,13 @@ namespace WebApplication.ReferenciaServicioVacunas {
         private int IdField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string IdTipoField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private int LapsoDiasDosisField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private Dominio.EntidadesNegocio.Laboratorio[] ListaLaboratoriosField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private Dominio.EntidadesNegocio.Pais[] ListaPaisesField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private int MaxEdadField;
@@ -78,9 +78,6 @@ namespace WebApplication.ReferenciaServicioVacunas {
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private long ProduccionAnualField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private Dominio.EntidadesNegocio.TipoVacuna TipoVacunaField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -210,6 +207,19 @@ namespace WebApplication.ReferenciaServicioVacunas {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
+        public string IdTipo {
+            get {
+                return this.IdTipoField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.IdTipoField, value) != true)) {
+                    this.IdTipoField = value;
+                    this.RaisePropertyChanged("IdTipo");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
         public int LapsoDiasDosis {
             get {
                 return this.LapsoDiasDosisField;
@@ -231,19 +241,6 @@ namespace WebApplication.ReferenciaServicioVacunas {
                 if ((object.ReferenceEquals(this.ListaLaboratoriosField, value) != true)) {
                     this.ListaLaboratoriosField = value;
                     this.RaisePropertyChanged("ListaLaboratorios");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public Dominio.EntidadesNegocio.Pais[] ListaPaises {
-            get {
-                return this.ListaPaisesField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.ListaPaisesField, value) != true)) {
-                    this.ListaPaisesField = value;
-                    this.RaisePropertyChanged("ListaPaises");
                 }
             }
         }
@@ -339,19 +336,6 @@ namespace WebApplication.ReferenciaServicioVacunas {
             }
         }
         
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public Dominio.EntidadesNegocio.TipoVacuna TipoVacuna {
-            get {
-                return this.TipoVacunaField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.TipoVacunaField, value) != true)) {
-                    this.TipoVacunaField = value;
-                    this.RaisePropertyChanged("TipoVacuna");
-                }
-            }
-        }
-        
         public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
         
         protected void RaisePropertyChanged(string propertyName) {
@@ -363,65 +347,65 @@ namespace WebApplication.ReferenciaServicioVacunas {
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ReferenciaServicioVacunas.IServicioVacunas")]
+    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ReferenciaServicioVacunas2.IServicioVacunas")]
     public interface IServicioVacunas {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioVacunas/GetTodasLasVacunas", ReplyAction="http://tempuri.org/IServicioVacunas/GetTodasLasVacunasResponse")]
-        WebApplication.ReferenciaServicioVacunas.DtoVacunas[] GetTodasLasVacunas();
+        WcfServicioVacunas.ReferenciaServicioVacunas2.DtoVacunas[] GetTodasLasVacunas();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioVacunas/GetTodasLasVacunas", ReplyAction="http://tempuri.org/IServicioVacunas/GetTodasLasVacunasResponse")]
-        System.Threading.Tasks.Task<WebApplication.ReferenciaServicioVacunas.DtoVacunas[]> GetTodasLasVacunasAsync();
+        System.Threading.Tasks.Task<WcfServicioVacunas.ReferenciaServicioVacunas2.DtoVacunas[]> GetTodasLasVacunasAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioVacunas/GetTodasLasVacunasPorNombre", ReplyAction="http://tempuri.org/IServicioVacunas/GetTodasLasVacunasPorNombreResponse")]
-        WebApplication.ReferenciaServicioVacunas.DtoVacunas[] GetTodasLasVacunasPorNombre(string nombre);
+        WcfServicioVacunas.ReferenciaServicioVacunas2.DtoVacunas[] GetTodasLasVacunasPorNombre(string nombre);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioVacunas/GetTodasLasVacunasPorNombre", ReplyAction="http://tempuri.org/IServicioVacunas/GetTodasLasVacunasPorNombreResponse")]
-        System.Threading.Tasks.Task<WebApplication.ReferenciaServicioVacunas.DtoVacunas[]> GetTodasLasVacunasPorNombreAsync(string nombre);
+        System.Threading.Tasks.Task<WcfServicioVacunas.ReferenciaServicioVacunas2.DtoVacunas[]> GetTodasLasVacunasPorNombreAsync(string nombre);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioVacunas/GetTodasLasVacunasPorFaseAprob", ReplyAction="http://tempuri.org/IServicioVacunas/GetTodasLasVacunasPorFaseAprobResponse")]
-        WebApplication.ReferenciaServicioVacunas.DtoVacunas[] GetTodasLasVacunasPorFaseAprob(int faseClinicaAprob);
+        WcfServicioVacunas.ReferenciaServicioVacunas2.DtoVacunas[] GetTodasLasVacunasPorFaseAprob(int faseClinicaAprob);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioVacunas/GetTodasLasVacunasPorFaseAprob", ReplyAction="http://tempuri.org/IServicioVacunas/GetTodasLasVacunasPorFaseAprobResponse")]
-        System.Threading.Tasks.Task<WebApplication.ReferenciaServicioVacunas.DtoVacunas[]> GetTodasLasVacunasPorFaseAprobAsync(int faseClinicaAprob);
+        System.Threading.Tasks.Task<WcfServicioVacunas.ReferenciaServicioVacunas2.DtoVacunas[]> GetTodasLasVacunasPorFaseAprobAsync(int faseClinicaAprob);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioVacunas/GetTodasLasVacunasPorPaisLab", ReplyAction="http://tempuri.org/IServicioVacunas/GetTodasLasVacunasPorPaisLabResponse")]
-        WebApplication.ReferenciaServicioVacunas.DtoVacunas[] GetTodasLasVacunasPorPaisLab(string pais);
+        WcfServicioVacunas.ReferenciaServicioVacunas2.DtoVacunas[] GetTodasLasVacunasPorPaisLab(string pais);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioVacunas/GetTodasLasVacunasPorPaisLab", ReplyAction="http://tempuri.org/IServicioVacunas/GetTodasLasVacunasPorPaisLabResponse")]
-        System.Threading.Tasks.Task<WebApplication.ReferenciaServicioVacunas.DtoVacunas[]> GetTodasLasVacunasPorPaisLabAsync(string pais);
+        System.Threading.Tasks.Task<WcfServicioVacunas.ReferenciaServicioVacunas2.DtoVacunas[]> GetTodasLasVacunasPorPaisLabAsync(string pais);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioVacunas/GetTodasLasVacunasPorTipoVac", ReplyAction="http://tempuri.org/IServicioVacunas/GetTodasLasVacunasPorTipoVacResponse")]
-        WebApplication.ReferenciaServicioVacunas.DtoVacunas[] GetTodasLasVacunasPorTipoVac(string idTipo);
+        WcfServicioVacunas.ReferenciaServicioVacunas2.DtoVacunas[] GetTodasLasVacunasPorTipoVac(string idTipo);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioVacunas/GetTodasLasVacunasPorTipoVac", ReplyAction="http://tempuri.org/IServicioVacunas/GetTodasLasVacunasPorTipoVacResponse")]
-        System.Threading.Tasks.Task<WebApplication.ReferenciaServicioVacunas.DtoVacunas[]> GetTodasLasVacunasPorTipoVacAsync(string idTipo);
+        System.Threading.Tasks.Task<WcfServicioVacunas.ReferenciaServicioVacunas2.DtoVacunas[]> GetTodasLasVacunasPorTipoVacAsync(string idTipo);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioVacunas/GetTodasLasVacunasPorTopeSuperior", ReplyAction="http://tempuri.org/IServicioVacunas/GetTodasLasVacunasPorTopeSuperiorResponse")]
-        WebApplication.ReferenciaServicioVacunas.DtoVacunas[] GetTodasLasVacunasPorTopeSuperior(decimal precio);
+        WcfServicioVacunas.ReferenciaServicioVacunas2.DtoVacunas[] GetTodasLasVacunasPorTopeSuperior(decimal precio);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioVacunas/GetTodasLasVacunasPorTopeSuperior", ReplyAction="http://tempuri.org/IServicioVacunas/GetTodasLasVacunasPorTopeSuperiorResponse")]
-        System.Threading.Tasks.Task<WebApplication.ReferenciaServicioVacunas.DtoVacunas[]> GetTodasLasVacunasPorTopeSuperiorAsync(decimal precio);
+        System.Threading.Tasks.Task<WcfServicioVacunas.ReferenciaServicioVacunas2.DtoVacunas[]> GetTodasLasVacunasPorTopeSuperiorAsync(decimal precio);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioVacunas/GetTodasLasVacunasPorTopeInferior", ReplyAction="http://tempuri.org/IServicioVacunas/GetTodasLasVacunasPorTopeInferiorResponse")]
-        WebApplication.ReferenciaServicioVacunas.DtoVacunas[] GetTodasLasVacunasPorTopeInferior(decimal precio);
+        WcfServicioVacunas.ReferenciaServicioVacunas2.DtoVacunas[] GetTodasLasVacunasPorTopeInferior(decimal precio);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioVacunas/GetTodasLasVacunasPorTopeInferior", ReplyAction="http://tempuri.org/IServicioVacunas/GetTodasLasVacunasPorTopeInferiorResponse")]
-        System.Threading.Tasks.Task<WebApplication.ReferenciaServicioVacunas.DtoVacunas[]> GetTodasLasVacunasPorTopeInferiorAsync(decimal precio);
+        System.Threading.Tasks.Task<WcfServicioVacunas.ReferenciaServicioVacunas2.DtoVacunas[]> GetTodasLasVacunasPorTopeInferiorAsync(decimal precio);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioVacunas/GetTodasLasVacunasPorNombreLab", ReplyAction="http://tempuri.org/IServicioVacunas/GetTodasLasVacunasPorNombreLabResponse")]
-        WebApplication.ReferenciaServicioVacunas.DtoVacunas[] GetTodasLasVacunasPorNombreLab(string nombre);
+        WcfServicioVacunas.ReferenciaServicioVacunas2.DtoVacunas[] GetTodasLasVacunasPorNombreLab(string nombre);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioVacunas/GetTodasLasVacunasPorNombreLab", ReplyAction="http://tempuri.org/IServicioVacunas/GetTodasLasVacunasPorNombreLabResponse")]
-        System.Threading.Tasks.Task<WebApplication.ReferenciaServicioVacunas.DtoVacunas[]> GetTodasLasVacunasPorNombreLabAsync(string nombre);
+        System.Threading.Tasks.Task<WcfServicioVacunas.ReferenciaServicioVacunas2.DtoVacunas[]> GetTodasLasVacunasPorNombreLabAsync(string nombre);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public interface IServicioVacunasChannel : WebApplication.ReferenciaServicioVacunas.IServicioVacunas, System.ServiceModel.IClientChannel {
+    public interface IServicioVacunasChannel : WcfServicioVacunas.ReferenciaServicioVacunas2.IServicioVacunas, System.ServiceModel.IClientChannel {
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class ServicioVacunasClient : System.ServiceModel.ClientBase<WebApplication.ReferenciaServicioVacunas.IServicioVacunas>, WebApplication.ReferenciaServicioVacunas.IServicioVacunas {
+    public partial class ServicioVacunasClient : System.ServiceModel.ClientBase<WcfServicioVacunas.ReferenciaServicioVacunas2.IServicioVacunas>, WcfServicioVacunas.ReferenciaServicioVacunas2.IServicioVacunas {
         
         public ServicioVacunasClient() {
         }
@@ -442,67 +426,67 @@ namespace WebApplication.ReferenciaServicioVacunas {
                 base(binding, remoteAddress) {
         }
         
-        public WebApplication.ReferenciaServicioVacunas.DtoVacunas[] GetTodasLasVacunas() {
+        public WcfServicioVacunas.ReferenciaServicioVacunas2.DtoVacunas[] GetTodasLasVacunas() {
             return base.Channel.GetTodasLasVacunas();
         }
         
-        public System.Threading.Tasks.Task<WebApplication.ReferenciaServicioVacunas.DtoVacunas[]> GetTodasLasVacunasAsync() {
+        public System.Threading.Tasks.Task<WcfServicioVacunas.ReferenciaServicioVacunas2.DtoVacunas[]> GetTodasLasVacunasAsync() {
             return base.Channel.GetTodasLasVacunasAsync();
         }
         
-        public WebApplication.ReferenciaServicioVacunas.DtoVacunas[] GetTodasLasVacunasPorNombre(string nombre) {
+        public WcfServicioVacunas.ReferenciaServicioVacunas2.DtoVacunas[] GetTodasLasVacunasPorNombre(string nombre) {
             return base.Channel.GetTodasLasVacunasPorNombre(nombre);
         }
         
-        public System.Threading.Tasks.Task<WebApplication.ReferenciaServicioVacunas.DtoVacunas[]> GetTodasLasVacunasPorNombreAsync(string nombre) {
+        public System.Threading.Tasks.Task<WcfServicioVacunas.ReferenciaServicioVacunas2.DtoVacunas[]> GetTodasLasVacunasPorNombreAsync(string nombre) {
             return base.Channel.GetTodasLasVacunasPorNombreAsync(nombre);
         }
         
-        public WebApplication.ReferenciaServicioVacunas.DtoVacunas[] GetTodasLasVacunasPorFaseAprob(int faseClinicaAprob) {
+        public WcfServicioVacunas.ReferenciaServicioVacunas2.DtoVacunas[] GetTodasLasVacunasPorFaseAprob(int faseClinicaAprob) {
             return base.Channel.GetTodasLasVacunasPorFaseAprob(faseClinicaAprob);
         }
         
-        public System.Threading.Tasks.Task<WebApplication.ReferenciaServicioVacunas.DtoVacunas[]> GetTodasLasVacunasPorFaseAprobAsync(int faseClinicaAprob) {
+        public System.Threading.Tasks.Task<WcfServicioVacunas.ReferenciaServicioVacunas2.DtoVacunas[]> GetTodasLasVacunasPorFaseAprobAsync(int faseClinicaAprob) {
             return base.Channel.GetTodasLasVacunasPorFaseAprobAsync(faseClinicaAprob);
         }
         
-        public WebApplication.ReferenciaServicioVacunas.DtoVacunas[] GetTodasLasVacunasPorPaisLab(string pais) {
+        public WcfServicioVacunas.ReferenciaServicioVacunas2.DtoVacunas[] GetTodasLasVacunasPorPaisLab(string pais) {
             return base.Channel.GetTodasLasVacunasPorPaisLab(pais);
         }
         
-        public System.Threading.Tasks.Task<WebApplication.ReferenciaServicioVacunas.DtoVacunas[]> GetTodasLasVacunasPorPaisLabAsync(string pais) {
+        public System.Threading.Tasks.Task<WcfServicioVacunas.ReferenciaServicioVacunas2.DtoVacunas[]> GetTodasLasVacunasPorPaisLabAsync(string pais) {
             return base.Channel.GetTodasLasVacunasPorPaisLabAsync(pais);
         }
         
-        public WebApplication.ReferenciaServicioVacunas.DtoVacunas[] GetTodasLasVacunasPorTipoVac(string idTipo) {
+        public WcfServicioVacunas.ReferenciaServicioVacunas2.DtoVacunas[] GetTodasLasVacunasPorTipoVac(string idTipo) {
             return base.Channel.GetTodasLasVacunasPorTipoVac(idTipo);
         }
         
-        public System.Threading.Tasks.Task<WebApplication.ReferenciaServicioVacunas.DtoVacunas[]> GetTodasLasVacunasPorTipoVacAsync(string idTipo) {
+        public System.Threading.Tasks.Task<WcfServicioVacunas.ReferenciaServicioVacunas2.DtoVacunas[]> GetTodasLasVacunasPorTipoVacAsync(string idTipo) {
             return base.Channel.GetTodasLasVacunasPorTipoVacAsync(idTipo);
         }
         
-        public WebApplication.ReferenciaServicioVacunas.DtoVacunas[] GetTodasLasVacunasPorTopeSuperior(decimal precio) {
+        public WcfServicioVacunas.ReferenciaServicioVacunas2.DtoVacunas[] GetTodasLasVacunasPorTopeSuperior(decimal precio) {
             return base.Channel.GetTodasLasVacunasPorTopeSuperior(precio);
         }
         
-        public System.Threading.Tasks.Task<WebApplication.ReferenciaServicioVacunas.DtoVacunas[]> GetTodasLasVacunasPorTopeSuperiorAsync(decimal precio) {
+        public System.Threading.Tasks.Task<WcfServicioVacunas.ReferenciaServicioVacunas2.DtoVacunas[]> GetTodasLasVacunasPorTopeSuperiorAsync(decimal precio) {
             return base.Channel.GetTodasLasVacunasPorTopeSuperiorAsync(precio);
         }
         
-        public WebApplication.ReferenciaServicioVacunas.DtoVacunas[] GetTodasLasVacunasPorTopeInferior(decimal precio) {
+        public WcfServicioVacunas.ReferenciaServicioVacunas2.DtoVacunas[] GetTodasLasVacunasPorTopeInferior(decimal precio) {
             return base.Channel.GetTodasLasVacunasPorTopeInferior(precio);
         }
         
-        public System.Threading.Tasks.Task<WebApplication.ReferenciaServicioVacunas.DtoVacunas[]> GetTodasLasVacunasPorTopeInferiorAsync(decimal precio) {
+        public System.Threading.Tasks.Task<WcfServicioVacunas.ReferenciaServicioVacunas2.DtoVacunas[]> GetTodasLasVacunasPorTopeInferiorAsync(decimal precio) {
             return base.Channel.GetTodasLasVacunasPorTopeInferiorAsync(precio);
         }
         
-        public WebApplication.ReferenciaServicioVacunas.DtoVacunas[] GetTodasLasVacunasPorNombreLab(string nombre) {
+        public WcfServicioVacunas.ReferenciaServicioVacunas2.DtoVacunas[] GetTodasLasVacunasPorNombreLab(string nombre) {
             return base.Channel.GetTodasLasVacunasPorNombreLab(nombre);
         }
         
-        public System.Threading.Tasks.Task<WebApplication.ReferenciaServicioVacunas.DtoVacunas[]> GetTodasLasVacunasPorNombreLabAsync(string nombre) {
+        public System.Threading.Tasks.Task<WcfServicioVacunas.ReferenciaServicioVacunas2.DtoVacunas[]> GetTodasLasVacunasPorNombreLabAsync(string nombre) {
             return base.Channel.GetTodasLasVacunasPorNombreLabAsync(nombre);
         }
     }

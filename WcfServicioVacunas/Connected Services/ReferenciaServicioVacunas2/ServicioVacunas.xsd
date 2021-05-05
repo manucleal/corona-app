@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost:52831/ServicioVacunas.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/WcfServicioCoronApp" />
+  <xs:element name="GetTodasLasVacunas">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetTodasLasVacunasResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/WcfServicioCoronApp" minOccurs="0" name="GetTodasLasVacunasResult" nillable="true" type="q1:ArrayOfDtoVacunas" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetTodasLasVacunasPorNombre">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="nombre" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetTodasLasVacunasPorNombreResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/WcfServicioCoronApp" minOccurs="0" name="GetTodasLasVacunasPorNombreResult" nillable="true" type="q2:ArrayOfDtoVacunas" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetTodasLasVacunasPorFaseAprob">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="faseClinicaAprob" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetTodasLasVacunasPorFaseAprobResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/WcfServicioCoronApp" minOccurs="0" name="GetTodasLasVacunasPorFaseAprobResult" nillable="true" type="q3:ArrayOfDtoVacunas" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetTodasLasVacunasPorPaisLab">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="pais" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetTodasLasVacunasPorPaisLabResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/WcfServicioCoronApp" minOccurs="0" name="GetTodasLasVacunasPorPaisLabResult" nillable="true" type="q4:ArrayOfDtoVacunas" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetTodasLasVacunasPorTipoVac">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="idTipo" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetTodasLasVacunasPorTipoVacResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/WcfServicioCoronApp" minOccurs="0" name="GetTodasLasVacunasPorTipoVacResult" nillable="true" type="q5:ArrayOfDtoVacunas" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetTodasLasVacunasPorTopeSuperior">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="precio" type="xs:decimal" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetTodasLasVacunasPorTopeSuperiorResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/WcfServicioCoronApp" minOccurs="0" name="GetTodasLasVacunasPorTopeSuperiorResult" nillable="true" type="q6:ArrayOfDtoVacunas" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetTodasLasVacunasPorTopeInferior">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="precio" type="xs:decimal" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetTodasLasVacunasPorTopeInferiorResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/WcfServicioCoronApp" minOccurs="0" name="GetTodasLasVacunasPorTopeInferiorResult" nillable="true" type="q7:ArrayOfDtoVacunas" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetTodasLasVacunasPorNombreLab">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="nombre" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetTodasLasVacunasPorNombreLabResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/WcfServicioCoronApp" minOccurs="0" name="GetTodasLasVacunasPorNombreLabResult" nillable="true" type="q8:ArrayOfDtoVacunas" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

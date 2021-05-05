@@ -14,7 +14,8 @@
                 </fieldset>
                 <fieldset>
                     <legend>Precio (*)</legend>
-                    <input type="number" onkeypress="return justNumbers(event);" min="0" pattern="^[1-9]" name="precio" value="@Model.Precio"  max="1000" required />
+                    <input type="number" onkeypress="return justNumbers(event);" min="0" pattern="^[1-9]" name="precio" value="@Model.Precio.ToString().Replace("," , ".")"  max="1000" required />
+                    @*<input type="number" min="0" name="precio" value="@Model.Precio.ToString().Replace("," , ".")" max="1000" required />*@
                     <input type="number" hidden name="Id" value="@Model.Id">
                 </fieldset>
             </div>

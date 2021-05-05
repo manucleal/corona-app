@@ -15,24 +15,4 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="Laboratorio" nillable="true" type="tns:Laboratorio" />
-  <xs:complexType name="ArrayOfPais">
-    <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="Pais" nillable="true" type="tns:Pais" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="ArrayOfPais" nillable="true" type="tns:ArrayOfPais" />
-  <xs:complexType name="Pais">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="CodPais" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="Nombre" nillable="true" type="xs:string" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="Pais" nillable="true" type="tns:Pais" />
-  <xs:complexType name="TipoVacuna">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="Descripcion" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="Id" nillable="true" type="xs:string" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="TipoVacuna" nillable="true" type="tns:TipoVacuna" />
 </xs:schema>

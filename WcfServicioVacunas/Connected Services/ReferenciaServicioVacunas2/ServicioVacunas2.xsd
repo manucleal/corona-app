@@ -18,9 +18,9 @@
       <xs:element minOccurs="0" name="Emergencia" type="xs:boolean" />
       <xs:element minOccurs="0" name="FaseClinicaAprob" type="xs:int" />
       <xs:element minOccurs="0" name="Id" type="xs:int" />
+      <xs:element minOccurs="0" name="IdTipo" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="LapsoDiasDosis" type="xs:int" />
       <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/Dominio.EntidadesNegocio" minOccurs="0" name="ListaLaboratorios" nillable="true" type="q1:ArrayOfLaboratorio" />
-      <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/Dominio.EntidadesNegocio" minOccurs="0" name="ListaPaises" nillable="true" type="q2:ArrayOfPais" />
       <xs:element minOccurs="0" name="MaxEdad" type="xs:int" />
       <xs:element minOccurs="0" name="MaxTemp" type="xs:int" />
       <xs:element minOccurs="0" name="MinEdad" type="xs:int" />
@@ -28,7 +28,6 @@
       <xs:element minOccurs="0" name="Nombre" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Precio" type="xs:decimal" />
       <xs:element minOccurs="0" name="ProduccionAnual" type="xs:long" />
-      <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/Dominio.EntidadesNegocio" minOccurs="0" name="TipoVacuna" nillable="true" type="q3:TipoVacuna" />
     </xs:sequence>
   </xs:complexType>
   <xs:element name="DtoVacunas" nillable="true" type="tns:DtoVacunas" />

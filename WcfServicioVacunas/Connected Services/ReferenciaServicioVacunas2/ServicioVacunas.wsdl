@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="ServicioVacunas" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="http://localhost:52831/ServicioVacunas.svc?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://localhost:52831/ServicioVacunas.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://localhost:52831/ServicioVacunas.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/WcfServicioCoronApp" />
+      <xsd:import schemaLocation="http://localhost:52831/ServicioVacunas.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/Dominio.EntidadesNegocio" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IServicioVacunas_GetTodasLasVacunas_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetTodasLasVacunas" />
+  </wsdl:message>
+  <wsdl:message name="IServicioVacunas_GetTodasLasVacunas_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetTodasLasVacunasResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServicioVacunas_GetTodasLasVacunasPorNombre_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetTodasLasVacunasPorNombre" />
+  </wsdl:message>
+  <wsdl:message name="IServicioVacunas_GetTodasLasVacunasPorNombre_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetTodasLasVacunasPorNombreResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServicioVacunas_GetTodasLasVacunasPorFaseAprob_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetTodasLasVacunasPorFaseAprob" />
+  </wsdl:message>
+  <wsdl:message name="IServicioVacunas_GetTodasLasVacunasPorFaseAprob_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetTodasLasVacunasPorFaseAprobResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServicioVacunas_GetTodasLasVacunasPorPaisLab_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetTodasLasVacunasPorPaisLab" />
+  </wsdl:message>
+  <wsdl:message name="IServicioVacunas_GetTodasLasVacunasPorPaisLab_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetTodasLasVacunasPorPaisLabResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServicioVacunas_GetTodasLasVacunasPorTipoVac_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetTodasLasVacunasPorTipoVac" />
+  </wsdl:message>
+  <wsdl:message name="IServicioVacunas_GetTodasLasVacunasPorTipoVac_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetTodasLasVacunasPorTipoVacResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServicioVacunas_GetTodasLasVacunasPorTopeSuperior_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetTodasLasVacunasPorTopeSuperior" />
+  </wsdl:message>
+  <wsdl:message name="IServicioVacunas_GetTodasLasVacunasPorTopeSuperior_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetTodasLasVacunasPorTopeSuperiorResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServicioVacunas_GetTodasLasVacunasPorTopeInferior_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetTodasLasVacunasPorTopeInferior" />
+  </wsdl:message>
+  <wsdl:message name="IServicioVacunas_GetTodasLasVacunasPorTopeInferior_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetTodasLasVacunasPorTopeInferiorResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServicioVacunas_GetTodasLasVacunasPorNombreLab_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetTodasLasVacunasPorNombreLab" />
+  </wsdl:message>
+  <wsdl:message name="IServicioVacunas_GetTodasLasVacunasPorNombreLab_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetTodasLasVacunasPorNombreLabResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IServicioVacunas">
+    <wsdl:operation name="GetTodasLasVacunas">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServicioVacunas/GetTodasLasVacunas" message="tns:IServicioVacunas_GetTodasLasVacunas_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServicioVacunas/GetTodasLasVacunasResponse" message="tns:IServicioVacunas_GetTodasLasVacunas_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTodasLasVacunasPorNombre">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServicioVacunas/GetTodasLasVacunasPorNombre" message="tns:IServicioVacunas_GetTodasLasVacunasPorNombre_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServicioVacunas/GetTodasLasVacunasPorNombreResponse" message="tns:IServicioVacunas_GetTodasLasVacunasPorNombre_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTodasLasVacunasPorFaseAprob">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServicioVacunas/GetTodasLasVacunasPorFaseAprob" message="tns:IServicioVacunas_GetTodasLasVacunasPorFaseAprob_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServicioVacunas/GetTodasLasVacunasPorFaseAprobResponse" message="tns:IServicioVacunas_GetTodasLasVacunasPorFaseAprob_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTodasLasVacunasPorPaisLab">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServicioVacunas/GetTodasLasVacunasPorPaisLab" message="tns:IServicioVacunas_GetTodasLasVacunasPorPaisLab_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServicioVacunas/GetTodasLasVacunasPorPaisLabResponse" message="tns:IServicioVacunas_GetTodasLasVacunasPorPaisLab_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTodasLasVacunasPorTipoVac">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServicioVacunas/GetTodasLasVacunasPorTipoVac" message="tns:IServicioVacunas_GetTodasLasVacunasPorTipoVac_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServicioVacunas/GetTodasLasVacunasPorTipoVacResponse" message="tns:IServicioVacunas_GetTodasLasVacunasPorTipoVac_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTodasLasVacunasPorTopeSuperior">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServicioVacunas/GetTodasLasVacunasPorTopeSuperior" message="tns:IServicioVacunas_GetTodasLasVacunasPorTopeSuperior_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServicioVacunas/GetTodasLasVacunasPorTopeSuperiorResponse" message="tns:IServicioVacunas_GetTodasLasVacunasPorTopeSuperior_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTodasLasVacunasPorTopeInferior">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServicioVacunas/GetTodasLasVacunasPorTopeInferior" message="tns:IServicioVacunas_GetTodasLasVacunasPorTopeInferior_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServicioVacunas/GetTodasLasVacunasPorTopeInferiorResponse" message="tns:IServicioVacunas_GetTodasLasVacunasPorTopeInferior_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTodasLasVacunasPorNombreLab">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServicioVacunas/GetTodasLasVacunasPorNombreLab" message="tns:IServicioVacunas_GetTodasLasVacunasPorNombreLab_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServicioVacunas/GetTodasLasVacunasPorNombreLabResponse" message="tns:IServicioVacunas_GetTodasLasVacunasPorNombreLab_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_IServicioVacunas" type="tns:IServicioVacunas">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetTodasLasVacunas">
+      <soap:operation soapAction="http://tempuri.org/IServicioVacunas/GetTodasLasVacunas" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTodasLasVacunasPorNombre">
+      <soap:operation soapAction="http://tempuri.org/IServicioVacunas/GetTodasLasVacunasPorNombre" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTodasLasVacunasPorFaseAprob">
+      <soap:operation soapAction="http://tempuri.org/IServicioVacunas/GetTodasLasVacunasPorFaseAprob" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTodasLasVacunasPorPaisLab">
+      <soap:operation soapAction="http://tempuri.org/IServicioVacunas/GetTodasLasVacunasPorPaisLab" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTodasLasVacunasPorTipoVac">
+      <soap:operation soapAction="http://tempuri.org/IServicioVacunas/GetTodasLasVacunasPorTipoVac" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTodasLasVacunasPorTopeSuperior">
+      <soap:operation soapAction="http://tempuri.org/IServicioVacunas/GetTodasLasVacunasPorTopeSuperior" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTodasLasVacunasPorTopeInferior">
+      <soap:operation soapAction="http://tempuri.org/IServicioVacunas/GetTodasLasVacunasPorTopeInferior" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTodasLasVacunasPorNombreLab">
+      <soap:operation soapAction="http://tempuri.org/IServicioVacunas/GetTodasLasVacunasPorNombreLab" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ServicioVacunas">
+    <wsdl:port name="BasicHttpBinding_IServicioVacunas" binding="tns:BasicHttpBinding_IServicioVacunas">
+      <soap:address location="http://localhost:52831/ServicioVacunas.svc" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
